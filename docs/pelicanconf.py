@@ -4,7 +4,7 @@ SITEURL = "https://sphinix.kozow.com"
 
 PATH = "content"
 
-THEME = "/Users/slimanaz/pelican-themes/elegant"
+THEME = "/Users/slimanaz/pelican-themes/Flex"
 
 TIMEZONE = 'Africa/Casablanca'
 
