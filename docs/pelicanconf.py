@@ -1,10 +1,10 @@
 AUTHOR = 'MedSecure'
 SITENAME = 'Sphinix Purpose'
-SITEURL = ""
+SITEURL = "https://sphinix.kozow.com"
 
 PATH = "content"
 
-THEME = "/Users/slimanaz/pelican-themes/mnmlist"
+THEME = "/Users/slimanaz/pelican-themes/elegant"
 
 TIMEZONE = 'Africa/Casablanca'
 
