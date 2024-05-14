@@ -1,186 +1,448 @@
-@import url("pygment.css");
-/*
-    Theme Name: mnmlist
-    Theme URI: http://mathieu.agopian.info/mnmlist/theme.html
-    Description: Theme adapted from http://mnmlist.com/theme/ from Leo Babauta, a very clean minimalist theme, without comments, search, archives or other features.
-    Author: Mathieu Agopian
-    Autor URI: http://mathieu.agopian.info
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+ */
+/* Mockingbird Theme by Nevan Scott nevanscott.com */
+/* Modified by Jody Frankowski */
+/* Modified by ix5 */
+/* Modified by Tyler Carr */
 
-    This theme is uncopyrighted, free, and offered as is.
-*/
-/* line 13, ../../compass/src/main.scss */
-body {
-  background: #fff;
-  color: #333;
-  font: 20px Hoefler Text, bodyfont, serif;
-  line-height: 30px;
-  max-width: 30em;
-  margin: 60px 14px 0 64px;
+:root {
+    --main-bg-color: #1c2833;
+    --code-bg-color: #17202a;
+    --accent-color: #C7254E;
+    --tab-bg-hover: var(--code-bg-color);
+    --info-bg-color: var(--code-gb-color);
 }
 
-/* line 28, ../../compass/src/main.scss */
-h1 {
-  color: #333333;
-  font-family: Helvetica, sans-serif;
-  font-size: 1.5em;
-  font-weight: normal;
-  margin-bottom: 0;
-}
 
-/* line 34, ../../compass/src/main.scss */
-h2 {
-  color: #666666;
-  font-family: Helvetica, sans-serif;
-  font-size: 1.3em;
-}
 
-/* line 38, ../../compass/src/main.scss */
-h3 {
-  color: #666666;
-  font-family: Helvetica, sans-serif;
-  font-size: 1em;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #BBB;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
-
-/* line 42, ../../compass/src/main.scss */
-h4 {
-  color: #666666;
-  font-family: Helvetica, sans-serif;
-  font-size: 0.9em;
+em {
+    font-style: italic;
 }
-
-/* line 46, ../../compass/src/main.scss */
-time {
-  color: #c0c0c0;
-  font-size: 50%;
-}
-
-/* line 51, ../../compass/src/main.scss */
-img {
-  border: none;
-}
-
-/* line 55, ../../compass/src/main.scss */
-blockquote {
-  border-left: 1px solid #A5ABAB;
-  margin: 0px;
-  padding: 0 12px 0 12px;
-}
-
-/* line 61, ../../compass/src/main.scss */
-p {
-  line-height: 30px;
-  margin: 30px auto;
-  text-indent: 0px;
-}
-/* line 65, ../../compass/src/main.scss */
-p.caption {
-  font-size: 80%;
-  margin-top: 0;
-}
-
-/* line 71, ../../compass/src/main.scss */
-a {
-  border-bottom: #999 1px solid;
-  color: #303030;
-  text-decoration: none;
-}
-/* line 75, ../../compass/src/main.scss */
-a:hover {
-  color: #999;
-}
-
-/* line 78, ../../compass/src/main.scss */
-ul, ol {
-  padding: .5em 0em 1em 3.2em;
-}
-/* line 80, ../../compass/src/main.scss */
-ul li, ol li {
-  line-height: 30px;
-  padding: 6px 0 0 0;
-}
-
-/* line 86, ../../compass/src/main.scss */
 strong {
-  color: #555555;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: bold;
+    font-weight: bold;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    background-color: var(--main-bg-color);
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-/* line 92, ../../compass/src/main.scss */
-tt, pre {
-  background-color: #fafafa;
-  font-family: Inconsolata, Monaco, monospace;
-  line-height: 1.2em;
+body {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.5em;
 }
 
-/* line 98, ../../compass/src/main.scss */
-pre {
-  font-size: 0.8em;
-  overflow: auto;
-  padding: 10px;
+header, #wrapper {
+    padding: 0 10px;
+    max-width: 910px;
+    margin: auto;
 }
 
-/* line 104, ../../compass/src/main.scss */
-header {
-  padding-bottom: 20px;
-}
-/* line 106, ../../compass/src/main.scss */
-header a {
-  border-bottom: none;
-}
-/* line 108, ../../compass/src/main.scss */
-header a#page-title {
-  font-weight: bold;
+a {
+    text-decoration: none;
+    color: #15A9DB;
 }
 
-/* line 112, ../../compass/src/main.scss */
-#article-list {
-  margin-top: 100px;
-}
-/* line 114, ../../compass/src/main.scss */
-#article-list ol li {
-  line-height: 1.2em;
-  list-style-type: none;
-  padding-bottom: 10px;
+ul {
+    list-style: outside disc;
 }
 
-/* line 121, ../../compass/src/main.scss */
-.note {
-  background: #efefef;
-  margin: 1em 0;
-}
-/* line 124, ../../compass/src/main.scss */
-.note p {
-  display: inline;
-}
-/* line 126, ../../compass/src/main.scss */
-.note p.first {
-  font-weight: bold;
-}
-/* line 128, ../../compass/src/main.scss */
-.note p.first:after {
-  content: ' : ';
+ol {
+    list-style: outside decimal;
 }
 
-/* line 135, ../../compass/src/main.scss */
+h1, h2, h3, h4, h5, h6 {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+h1, h2, h3 {
+    font-size: 1.5em;
+    line-height: 1em;
+    margin: 1em 0;
+}
+
+img, p, .post > .highlight, .highlighttable, h4, h5, h6 {
+    margin-top: 1.2em;
+}
+img + em {
+    font-size: .8em;
+}
+
+blockquote {
+    margin: 1.5em 1.5em 1.5em .75em;
+    padding-left: .75em;
+    border-left: 1px solid #EEE;
+}
+
+table {
+    width: 100%;
+    margin: 1em 0;
+}
+thead {
+    border-bottom: 1px solid black;
+}
+
+.avatar {
+    border-radius: 50%;
+    -mox-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    position: relative;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    display: inline;
+    padding-right: 5px;
+}
+
+.date {
+    color: #CCC;
+    float: left;
+    clear: both;
+    width: 130px;
+    font-size: 1.5em;
+    line-height: 1em;
+    margin: 0 20px 1em 0;
+}
+
+.info {
+    margin-top: 1.3em;
+    font-family: sans-serif;
+    text-align: right;
+    color: #BBB;
+}
+.info a {
+    color: inherit;
+}
+.info a.tags {
+    background: var(--info-bg-color);
+    color: #FFF;
+    display: inline-block;
+    padding: 0 .3em;
+    border: 1px transparent solid;
+    border-radius: 5px;
+    margin: 0 0 0.3em 0;
+}
+.info a.tags:hover {
+    background: inherit;
+    color: inherit;
+}
+.info a.tags.selected {
+    border: 1px #999 solid;
+}
+
+.post {
+    margin: 0 0 4.5em 150px;
+}
+.post.archives {
+    margin-bottom: 1.5em;
+    margin-left: 160px;
+}
+.post p {
+    text-align: justify;
+}
+
+.page {
+    margin: 0 90px;
+}
+
+.highlight {
+    border-radius: 3px;
+}
+.code > .highlight {
+    border-radius: 0px 3px 3px 0px;
+    background-color: var(--code-bg-color);
+}
+.linenos {
+    border-radius: 3px 0px 0px 3px;
+    background-color: var(--code-bg-color);
+    border-right: 1px solid #00232C;
+    color: #586E75;
+    text-shadow: 0px -1px #021014;
+    font-size: 12.6px;
+}
+td.code {
+    width: 100%;
+    max-width: 100px;
+}
+.linenos a {
+    color: #586E75;
+}
+
+img {
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 0.3em;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*sub and sup stolen from Twitter bootstrap.*/
+sub, sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+.post pre, .page pre {
+    padding: .8em;
+    font-size: 12.6px;
+    font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+    line-height: 18px;
+    overflow: auto;
+    background-color: var(--code-bg-color);
+}
+
+form.inline_edit {
+    clear: both;
+    margin: 4.5em 0;
+    background-color: #DDD;
+    color: #000;
+    padding: 20px;
+    border-radius: 5px;
+}
+.inline_edit .sub {
+    color: #888;
+    white-space: nowrap;
+}
+.inline_edit label {
+    float: left;
+    clear: both;
+    width: 140px;
+    margin-right: 20px;
+}
+.inline_edit .buttons {
+    display: block;
+    text-align: right;
+}
+
+nav ul {
+    float: right;
+    list-style: none;
+    margin: 0 0 0 3em;
+    padding: 0;
+}
+nav li {
+    float: left;
+}
+nav a {
+    display: block;
+    padding: 4.5em 10px 10px 10px;
+}
+nav a:hover {
+    background-color: var(--tab-bg-hover);
+    color: var(--accent-color);
+}
+nav li.selected a {
+    background-color: #15A9DB;
+    color: #FFF;
+}
+
+header .header_box {
+/*    padding-top: 4.5em; */
+    
+}
+.site_title {
+    position: relative; 
+    bottom: 15px; 
+    color: #15A9DB
+}
+header h1 {
+    font-size: 1.5em;
+    line-height: 1em;
+    margin: 0;
+}
+header h2 {
+    font-size: 1em;
+    margin: .3em 0;
+    color: #DDD;
+}
+
+#content {
+    margin-top: 3em;
+}
+
+.pages {
+    font-family: sans-serif;
+    line-height: 2.5em;
+    margin: 4.5em 0 3em;
+    background-color:  #2e4053;
+    border-radius: 5px;
+}
+.pages a.next_page {
+    float: right;
+    width: 140px;
+    text-align: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #EEE;
+}
+.pages a.prev_page {
+    float: left;
+    width: 140px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #EEE;
+}
+.pages a {
+    color: inherit;
+    border: none;
+}
+.pages a:hover {
+    background-color: #DDD;
+}
+.pages span {
+    display: block;
+    margin: 0 160px;
+    text-align: center;
+}
+
+code {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    box-sizing: border-box;
+    background-color: #17202a;
+    color: #C7254E;
+    font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+    font-size: 12.6px;
+    line-height: 18px;
+    padding-bottom: 2px;
+    padding-left: 0px;
+    padding-right: 4px;
+    padding-top: 2px;
+}
+
 footer {
-  background: #fff;
-  color: #666;
-  font-family: helvetica, sans-serif;
-  font-size: 13px;
-  letter-spacing: 4px;
-  margin-left: 20px;
+    font-family: sans-serif;
+    line-height: 2.5em;
+    text-align: center;
+    color: #BBB;
+    margin: 3em 0;
+    border: 1px solid #EEE;
+    border-radius: 5px;
 }
-/* line 142, ../../compass/src/main.scss */
-footer a {
-  border-bottom: none;
-  color: #c0c0c0;
+footer p { margin: 0; }
+
+.right { float: right; }
+
+.clear { clear: both; }
+
+@media screen and (max-width: 1024px) {
+    #wrapper {
+        margin-left: 2.6em;
+        padding:1em;
+    }
 }
-/* line 146, ../../compass/src/main.scss */
-footer li {
-  display: inline;
+
+@media screen and (max-width: 800px), print {
+    #wrapper {
+        margin: 0;
+        padding: 1em;
+    }
+    .date {
+        width: 100%;
+        margin: 0 0 .5em 0;
+    }
+    .post {
+        margin: 0 0 4.5em 0;
+    }
+    .post pre,
+    .post code {
+        white-space: pre-wrap;
+    }
+    .archives {
+        margin: 0 0 1.5em 0 !important;
+    }
+    nav ul {
+        margin: 0 0 1em 0;
+    }
 }
-/* line 149, ../../compass/src/main.scss */
-footer p {
-  text-align: right;
+@media print {
+    * {
+        background: #fff;
+    }
+    #wrapper, #content {
+        margin: 0;
+        padding: 0;
+    }
+    header, footer, nav {
+        display: none;
+    }
+    img {
+        break-inside: avoid;
+    }
+    p, table, pre {
+        widows: 3;
+        orphans: 3;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid;
+    }
+    h1, h2 {
+        font-size: 14pt;
+    }
+    h3, h4, h4.date {
+        font-size: 12pt;
+    }
+    .post p, .post ul li, .post ol li, .post table {
+        font-size: 11pt;
+    }
+}
+@page {
+    margin: 1.5cm;
 }
