@@ -5,7 +5,7 @@ Slug: Sphinix
 Authors: MedSecure
 Summary: About the author of Sphinix aka Medsecure
 
-Hidden in the crowd, invisible man, a passenger to this strange world, observer, quiet, two eyes, two ears, one mouth, speak only when absolately neccessary, actions speak louder.
+Hidden in the crowd, invisible man, source of life, a passenger to this strange world, observer, quiet, two eyes, two ears, one mouth, speak only when absolately neccessary, actions speak louder.
                                                                         -- Medsecure --
 
 ```PS

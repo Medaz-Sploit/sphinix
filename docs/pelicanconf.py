@@ -4,6 +4,8 @@ SITEURL = ""
 
 PATH = "content"
 
+THEME = "/Users/slimanaz/pelican-themes/mnmlist"
+
 TIMEZONE = 'Africa/Casablanca'
 
 DEFAULT_LANG = 'en'
