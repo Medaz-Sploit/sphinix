@@ -2,7 +2,7 @@ Title: OSCP NOTES
 Date: 2024-05-17 21:46
 Category: GHOST
 Authors: MedSecure
-Status: published
+Status: hidden
 
 # **Recon**
 
