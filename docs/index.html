@@ -1,173 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="generator" content="Pelican" />
-        <title>Sphinix Purpose</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sphinix Purpose</title>
+    <link rel="shortcut icon" type="image/png" href="https://sphinix.kozow.com/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://sphinix.kozow.com/favicon.ico">
+    <link rel="stylesheet" href="https://sphinix.kozow.com/theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="https://sphinix.kozow.com/theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="MedSecure" />
 </head>
+<body>
+    <header>
+        <nav style="overflow: hidden;">
+            <ul>
+                <li class="selected"><a href="https://sphinix.kozow.com/">Home</a></li>
+            </ul>
+        </nav>
+        <div class="header_box" style="height: 50px">
+        <h1><a href="https://sphinix.kozow.com/">
+            <image src='' class="avatar" width="50px" /><span class="site_title">Sphinix Purpose</span>
+            </a></h1></div>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Sphinix Purpose</a></h1>
-                <nav><ul>
-                    <li><a href="/pages/Sphinix.html">About me</a></li>
-                    <li><a href="/pages/setup-your-windows-10-lab-on-linux-using-qemukvm.html">Setup your Windows 10 Lab on Linux Using QEMU/KVM</a></li>
-                    <li><a href="/category/oscp.html">OSCP</a></li>
-                    <li><a href="/category/purpose.html">Purpose</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/passive-enumeration.html">Passive Enumeration</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2024-05-09T02:09:00+01:00">
-                Published: Thu 09 May 2024
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/medsecure.html">MedSecure</a>
-        </address>
-<p>In <a href="/category/oscp.html">OSCP</a>.</p>
-
-</footer><!-- /.post-info --><h3>WHOIS Enumeration</h3>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">whois</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">-h</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">251</span>
-<span class="n">Domain</span> <span class="n">Name</span><span class="p">:</span> <span class="n">MEGACORPONE</span><span class="p">.</span><span class="n">COM</span>
-<span class="n">Registry</span> <span class="n">Domain</span> <span class="n">ID</span><span class="p">:</span> <span class="n">1775445745_DOMAIN_COM-VRSN</span>
-<span class="n">Registrar</span> <span class="n">WHOIS</span> <span class="n">Server</span><span class="p">:</span> <span class="n">whois</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span>
-<span class="n">Registrar</span> <span class="n">URL</span><span class="p">:</span> <span class="n">http</span><span class="p">://</span><span class="n">www</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span>
-<span class="n">Updated</span> <span class="n">Date</span><span class="p">:</span> <span class="n">2019</span><span class="p">-</span><span class="n">01</span><span class="p">-</span><span class="n">01T09</span><span class="p">:</span><span class="n">45</span><span class="p">:</span><span class="n">03Z</span>
-<span class="n">Creation</span> <span class="n">Date</span><span class="p">:</span> <span class="n">2013</span><span class="p">-</span><span class="n">01</span><span class="p">-</span><span class="n">22T23</span><span class="p">:</span><span class="n">01</span><span class="p">:</span><span class="n">00Z</span>
-<span class="n">Registry</span> <span class="n">Expiry</span> <span class="n">Date</span><span class="p">:</span> <span class="n">2023</span><span class="p">-</span><span class="n">01</span><span class="p">-</span><span class="n">22T23</span><span class="p">:</span><span class="n">01</span><span class="p">:</span><span class="n">00Z</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">whois</span> <span class="n">38</span><span class="p">.</span><span class="n">100</span><span class="p">.</span><span class="n">193</span><span class="p">.</span><span class="n">70</span> <span class="n">-h</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">251</span>
-<span class="p">...</span>
-<span class="n">NetRange</span><span class="p">:</span>
-<span class="n">38</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span> <span class="p">-</span> <span class="n">38</span><span class="p">.</span><span class="n">255</span><span class="p">.</span><span class="n">255</span><span class="p">.</span><span class="n">255</span>
-<span class="n">CIDR</span><span class="p">:</span>
-<span class="n">38</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">8</span>
-</code></pre></div>
-
-<h3>Google Hacking</h3>
-<ul>
-<li>site:megacorpone.com</li>
-<li>ext:php</li>
-<li>filetype:html</li>
-<li>intitle:"index of" "parent directory"</li>
-<li>https://www.exploit-db.com/google-hacking-database</li>
-</ul>
-<h3>Netcraft</h3>
-<p>Let’s review some of Netcraft’s capabilities. For example, we can use Netcraft’s DNS search page
-(https://searchdns.netcraft.com) to gather information about the megacorpone.com domain.</p>
-<h3>Open-Source Code</h3>
-<p>This includes open-source projects and online code repositories such as GitHub, GitHub Gist, GitLab, and SourceForge</p>
-<p>Once we’ve logged in to our Github account, we can search MegaCorp One’s repos for interesting
-information. Let’s use filename:users to search for any files with the word “users” in the name.</p>
-<p>For larger repos, we can use several tools to
-help automate some of the searching, such as Gitrob and Gitleaks. Most of these tools
-require an access tokento use the source code-hosting provider’s API.</p>
-<blockquote>
-<p>Tools that search through source code for secrets, like Gitrob or Gitleaks,
-  generally rely on regular expressions or entropy233-based detections to identify
-  potentially useful information. Entropy-based detection attempts to find strings
-  that are randomly generated. The idea is that a long string of random characters
-  and numbers is probably a password. No matter how a tool searches for secrets,
-  no tool is perfect and they will miss things that a manual inspection might find.</p>
-</blockquote>
-<h3>Shodan</h3>
-<ul>
-<li>hostname:megacorpone.com.</li>
-<li>port:"22"</li>
-</ul>
-<h3>Security Headers and SSL/TLS</h3>
-<p>One such site, Security Headers will analyze HTTP response headers and provide basic
-analysis of the target site’s security posture. We can use this to get an idea of an organization’s
-coding and security practices based on the results.
-Let’s scan www.megacorpone.com and check the results.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/active-enumeration.html" rel="bookmark"
-                           title="Permalink to Active Enumeration">Active Enumeration</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-05-08T21:00:00+01:00">
-                Published: Wed 08 May 2024
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/medsecure.html">MedSecure</a>
-        </address>
-<p>In <a href="/category/oscp.html">OSCP</a>.</p>
-
-</footer><!-- /.post-info -->                <h3>DNS Enumeration</h3>
-<ul>
-<li><strong>NS</strong>: Nameserver records contain the name of the authoritative servers hosting the DNS records for a domain.</li>
-<li><strong>A</strong>: Also known as a host record, the “a record” contains the IPv4 address of a hostname (such as www.megacorpone.com)</li>
-<li><strong>AAAA</strong>: Also known as a quad A host record …</li></ul>
-                <a class="readmore" href="/active-enumeration.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/sphinix-purpose.html" rel="bookmark"
-                           title="Permalink to Sphinix Purpose">Sphinix Purpose</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-05-01T02:00:00+01:00">
-                Published: Wed 01 May 2024
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/medsecure.html">MedSecure</a>
-        </address>
-<p>In <a href="/category/purpose.html">Purpose</a>.</p>
-
-</footer><!-- /.post-info -->                <p>The Porpose of this website </p>
-                <a class="readmore" href="/sphinix-purpose.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="https://getpelican.com/">Pelican</a></li>
-                            <li><a href="https://www.python.org/">Python.org</a></li>
-                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/tcarwash/blue-penguin-dark">Blue Penguin Dark</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
 </body>
 </html>

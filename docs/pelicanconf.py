@@ -1,8 +1,10 @@
 AUTHOR = 'MedSecure'
 SITENAME = 'Sphinix Purpose'
-SITEURL = ""
+SITEURL = "https://sphinix.kozow.com"
 
 PATH = "content"
+
+THEME = "/Users/slimanaz/pelican-themes/blue-penguin-dark"
 
 TIMEZONE = 'Africa/Casablanca'
 
@@ -17,7 +19,7 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = (
-    ("Pelican", "https://getpelican.com/"),
+    ("Twiiter", "https://getpelican.com/"),
     ("Python.org", "https://www.python.org/"),
     ("Jinja2", "https://palletsprojects.com/p/jinja/"),
     ("You can modify those links in your config file", "#"),
@@ -25,7 +27,7 @@ LINKS = (
 
 # Social widget
 SOCIAL = (
-    ("You can add links in your config file", "#"),
+    ("https://github.com/Medaz-Sploit", "#"),
     ("Another social link", "#"),
 )
 
