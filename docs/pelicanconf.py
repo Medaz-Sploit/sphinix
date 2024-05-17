@@ -18,8 +18,17 @@ DISPLAY_MENU   = True
 DARK_LIGHT_SWITCHING_OFF = True
 
 # provided as examples, they make ‘clean’ urls. used by MENU_INTERNAL_PAGES.
+AUTHORS_URL        = 'authors'
+AUTHORS_SAVE_AS    = 'authors/index.html'
+CATEGORIES_URL     = 'categories'
+CATEGORIES_SAVE_AS = 'categories/index.html'
 
 # use those if you want pelican standard pages to appear in your menu
+MENU_INTERNAL_PAGES = (
+    ('Authors', AUTHORS_URL, AUTHORS_SAVE_AS),
+    ('Categories', CATEGORIES_URL, CATEGORIES_SAVE_AS),
+)
+
 # additional menu items
 MENUITEMS = (
     ('GitHub', 'https://github.com/Medaz-Sploit'),
