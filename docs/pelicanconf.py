@@ -1,5 +1,5 @@
 AUTHOR = 'MedSecure'
-SITENAME = 'Sphinix Purpose'
+SITENAME = 'Sphinix'
 SITEURL = "https://sphinix.kozow.com"
 
 # all the following settings are *optional*
