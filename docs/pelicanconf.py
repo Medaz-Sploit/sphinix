@@ -34,12 +34,6 @@ MENUITEMS = (
     ('GitHub', 'https://github.com/Medaz-Sploit'),
 )
 
-SOCIAL = (
-    ("twitter", "http://twitter.com/ametaireau"),
-    ("lastfm", "http://lastfm.com/user/akounet"),
-    ("github", "http://github.com/ametaireau"),
-)
-
 # example pagination pattern
 PAGINATION_PATTERNS = (
     (1, '{url}', '{save_as}'),
