@@ -8,7 +8,7 @@ SITEURL = "https://sfinx.kozow.com"
 SITELOGO = ''
 
 # HTML metadata
-SITEDESCRIPTION = ''
+SITEDESCRIPTION = 'Ghost Shell, lurking throughs the realm of electronic device, find a way to break in while you being the watcher of my work. follow me alonng the journey, To the Abyss.'
 
 # all defaults to True.
 DISPLAY_HEADER = True
@@ -22,18 +22,21 @@ AUTHORS_URL        = 'authors'
 AUTHORS_SAVE_AS    = 'authors/index.html'
 CATEGORIES_URL     = 'categories'
 CATEGORIES_SAVE_AS = 'categories/index.html'
-ARCHIVES_URL       = 'archives'
-ARCHIVES_SAVE_AS   = 'archives/index.html'
 
 # use those if you want pelican standard pages to appear in your menu
 MENU_INTERNAL_PAGES = (
     ('Authors', AUTHORS_URL, AUTHORS_SAVE_AS),
     ('Categories', CATEGORIES_URL, CATEGORIES_SAVE_AS),
-    ('Archives', ARCHIVES_URL, ARCHIVES_SAVE_AS),
 )
 # additional menu items
 MENUITEMS = (
     ('GitHub', 'https://github.com/Medaz-Sploit'),
+)
+
+SOCIAL = (
+    ("twitter", "http://twitter.com/ametaireau"),
+    ("lastfm", "http://lastfm.com/user/akounet"),
+    ("github", "http://github.com/ametaireau"),
 )
 
 # example pagination pattern
