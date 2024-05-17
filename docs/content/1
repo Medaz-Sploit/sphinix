@@ -1,7 +1,0 @@
-xdg-settings: default-url-scheme-handler not implemented for xfce
-Warning: loader_scanned_icd_add: Could not get 'vkCreateInstance' via 'vk_icdGetInstanceProcAddr' for ICD libGLX_nvidia.so.0
-Warning: terminator_CreateInstance: Failed to CreateInstance in ICD 4.  Skipping ICD.
-Warning: EGL_EXT_create_context_robustness must be supported
-    at Create (../../third_party/dawn/src/dawn/native/opengl/ContextEGL.cpp:79)
-    at Create (../../third_party/dawn/src/dawn/native/opengl/PhysicalDeviceGL.cpp:110)
-
