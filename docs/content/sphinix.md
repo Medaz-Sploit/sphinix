@@ -1,4 +1,4 @@
-Title: Sphinix Purpose
+Title: Sphinx Purpose
 Date: 2024-05-01 02:00
 Category: Purpose
 
