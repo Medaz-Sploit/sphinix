@@ -1,8 +1,7 @@
 Title: OSCP NOTES
 Date: 2024-05-17 21:46
-Category: GHOST
+Category: GHOST SHELL
 Author: MedSecure
-Status: hidden
 
 Table of Contents
 =================

@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Sphinx - MedSecure</title><link>https://sfinx.kozow.com/</link><description></description><lastBuildDate>Thu, 09 May 2024 02:09:00 +0100</lastBuildDate><item><title>Passive Enumeration</title><link>https://sfinx.kozow.com/passive-enumeration.html</link><description>&lt;h3&gt;WHOIS Enumeration&lt;/h3&gt;
+<rss version="2.0"><channel><title>Sphinx - MedSecure</title><link>https://sfinx.kozow.com/</link><description></description><lastBuildDate>Fri, 17 May 2024 21:46:00 +0100</lastBuildDate><item><title>OSCP NOTES</title><link>https://sfinx.kozow.com/oscp-notes.html</link><description>&lt;h1&gt;Table of Contents&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#table-of-contents"&gt;Table of Contents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#recon"&gt;&lt;strong&gt;Recon&lt;/strong&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#enumeration-aio"&gt;Enumeration AIO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#file-enumeration"&gt;File enumeration&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#common"&gt;Common&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#disk-files"&gt;Disk files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#images"&gt;Images&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#audio"&gt;Audio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-21-ftp"&gt;Port 21 - FTP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-22-ssh"&gt;Port 22 - SSH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-25-smtp"&gt;Port 25 - SMTP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-69-udp-tftp"&gt;Port 69 - UDP - TFTP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-79-finger"&gt;Port 79 - Finger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#kerberos-88"&gt;Kerberos - 88&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-110-pop3"&gt;Port 110 - Pop3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-111-rpcbind"&gt;Port 111 - Rpcbind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-135-msrpc"&gt;Port 135 - MSRPC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-139445-smb"&gt;Port 139/445 - SMB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#port-143993-imap"&gt;Port 143/993 …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">MedSecure</dc:creator><pubDate>Fri, 17 May 2024 21:46:00 +0100</pubDate><guid isPermaLink="false">tag:sfinx.kozow.com,2024-05-17:/oscp-notes.html</guid><category>GHOST SHELL</category></item><item><title>Passive Enumeration</title><link>https://sfinx.kozow.com/passive-enumeration.html</link><description>&lt;h3&gt;WHOIS Enumeration&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;whois&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;-h&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;251&lt;/span&gt;
 &lt;span class="n"&gt;Domain&lt;/span&gt; &lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;MEGACORPONE&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;COM&lt;/span&gt;
 &lt;span class="n"&gt;Registry&lt;/span&gt; &lt;span class="n"&gt;Domain&lt;/span&gt; &lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;1775445745_DOMAIN_COM-VRSN&lt;/span&gt;
