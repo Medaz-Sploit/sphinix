@@ -4,7 +4,7 @@ SITEURL = "https://sphinix.kozow.com"
 
 PATH = "content"
 
-THEME = "/Users/slimanaz/pelican-themes/blue-penguin-dark"
+THEME = "/home/kali/pelican-themes/blue-penguin-dark"
 
 TIMEZONE = 'Africa/Casablanca'
 
