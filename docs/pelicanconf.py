@@ -18,14 +18,15 @@ DISPLAY_MENU   = True
 DARK_LIGHT_SWITCHING_OFF = True
 
 # provided as examples, they make ‘clean’ urls. used by MENU_INTERNAL_PAGES.
-AUTHORS_URL        = 'authors'
-AUTHORS_SAVE_AS    = 'authors/index.html'
+ARTICLE_PATHS	   = ['HTB']	
+ARTICLE_URL	   = 'article'
+ARTICLE_SAVE_AS	   = 'article/{slug}.html'
 CATEGORIES_URL     = 'categories'
 CATEGORIES_SAVE_AS = 'categories/index.html'
 
 # use those if you want pelican standard pages to appear in your menu
 MENU_INTERNAL_PAGES = (
-    ('Authors', AUTHORS_URL, AUTHORS_SAVE_AS),
+    ('HTB', ARTICLE_URL, ARTICLE_SAVE_AS),
     ('Categories', CATEGORIES_URL, CATEGORIES_SAVE_AS),
 )
 
@@ -43,7 +44,7 @@ PAGINATION_PATTERNS = (
 
 PATH = "content"
 
-THEME = "/home/kali/pelican-themes/blue-penguin-dark"
+THEME = "/Users/slimanaz/pelican-themes/blue-penguin-dark"
 
 TIMEZONE = 'Africa/Casablanca'
 
