@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/all-en.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-19T21:05:00+01:00</updated><entry><title>SQL Injection UNION Attacks</title><link href="https://sfinx.kozow.com/2024/5/19/sqli-union/" rel="alternate"></link><published>2024-05-19T21:05:00+01:00</published><updated>2024-05-19T21:05:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sqli-union/</id><summary type="html">&lt;h1&gt;SQL injection UNION attacks&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-union/SQLI_UNION/union_based_sql_injection.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/all-en.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-19T21:05:00+01:00</updated><entry><title>SQL Injection UNION Attacks</title><link href="https://sfinx.kozow.com/2024/5/19/sqli-union.html" rel="alternate"></link><published>2024-05-19T21:05:00+01:00</published><updated>2024-05-19T21:05:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sqli-union.html</id><summary type="html">&lt;h1&gt;SQL injection UNION attacks&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI_UNION/union_based_sql_injection.png"&gt;&lt;/p&gt;
 &lt;p&gt;When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.&lt;/p&gt;
 &lt;p&gt;The ==UNION== keyword …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;SQL injection UNION attacks&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-union/SQLI_UNION/union_based_sql_injection.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI_UNION/union_based_sql_injection.png"&gt;&lt;/p&gt;
 &lt;p&gt;When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.&lt;/p&gt;
 &lt;p&gt;The ==UNION== keyword lets you execute one or more additional ==SELECT== queries and append the results to the original query. For example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;table1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;table2&lt;/span&gt;
@@ -148,8 +148,8 @@ carlos~montoya
 &lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column"&gt;SQL injection UNION attack, retrieving multiple values in a single column&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</content><category term="web"></category></entry><entry><title>SQL Injection Cheat Sheet</title><link href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/" rel="alternate"></link><published>2024-05-19T21:03:00+01:00</published><updated>2024-05-19T21:03:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sqli-cheat-sheet/</id><summary type="html">&lt;h1&gt;SQL injection cheat sheet&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"&gt;&lt;/p&gt;
+&lt;/table&gt;</content><category term="web"></category></entry><entry><title>SQL Injection Cheat Sheet</title><link href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet.html" rel="alternate"></link><published>2024-05-19T21:03:00+01:00</published><updated>2024-05-19T21:03:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sqli-cheat-sheet.html</id><summary type="html">&lt;h1&gt;SQL injection cheat sheet&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"&gt;&lt;/p&gt;
 &lt;p&gt;This &lt;strong&gt;SQL injection&lt;/strong&gt; cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.&lt;/p&gt;
 &lt;h2&gt;String concatenation&lt;/h2&gt;
 &lt;p&gt;You can concatenate together multiple strings to make a single string.&lt;/p&gt;
@@ -164,7 +164,7 @@ carlos~montoya
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
 &lt;td style="text-align: center;"&gt;=='foo' …&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;</summary><content type="html">&lt;h1&gt;SQL injection cheat sheet&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"&gt;&lt;/p&gt;
 &lt;p&gt;This &lt;strong&gt;SQL injection&lt;/strong&gt; cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.&lt;/p&gt;
 &lt;h2&gt;String concatenation&lt;/h2&gt;
 &lt;p&gt;You can concatenate together multiple strings to make a single string.&lt;/p&gt;
@@ -288,11 +288,11 @@ carlos~montoya
 &lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</content><category term="web"></category></entry><entry><title>SQL Injection</title><link href="https://sfinx.kozow.com/2024/5/19/sql-injection/" rel="alternate"></link><published>2024-05-19T20:48:00+01:00</published><updated>2024-05-19T20:48:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sql-injection/</id><summary type="html">&lt;h1&gt;💉SQL Injection&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
+&lt;/table&gt;</content><category term="web"></category></entry><entry><title>SQL Injection</title><link href="https://sfinx.kozow.com/2024/5/19/sql-injection.html" rel="alternate"></link><published>2024-05-19T20:48:00+01:00</published><updated>2024-05-19T20:48:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sql-injection.html</id><summary type="html">&lt;h1&gt;💉SQL Injection&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.&lt;/p&gt;
 &lt;p&gt;For a brief resume on all payloads to use for SQL injection testing, try the …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;💉SQL Injection&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.&lt;/p&gt;
 &lt;p&gt;For a brief resume on all payloads to use for SQL injection testing, try the following cheat sheet:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -452,7 +452,7 @@ Depending on the nature of the vulnerability and the database involved, the foll
 &lt;h3&gt;Second-order SQL injection&lt;/h3&gt;
 &lt;p&gt;First-order SQL injection arises where the application takes user input from an HTTP request and, in the course of processing that request, incorporates the input into a SQL query in an unsafe way.
 In second-order SQL injection (also known as stored SQL injection), the application takes user input from an HTTP request and stores it for future use. This is usually done by placing the input into a database, but no vulnerability arises at the point where the data is stored. Later, when handling a different HTTP request, the application retrieves the stored data and incorporates it into a SQL query in an unsafe way.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/image 2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI/image 2.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Second-order SQL injection often arises in situations where developers are aware of SQL injection vulnerabilities, and so safely handle the initial placement of the input into the database. When the data is later processed, it is deemed to be safe, since it was previously placed into the database safely. At this point, the data is handled in an unsafe way, because the developer wrongly deems it to be trusted.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3&gt;Examining the database&lt;/h3&gt;
@@ -530,7 +530,7 @@ For a parameterized query to be effective in preventing SQL injection, the strin
 &lt;blockquote&gt;
 &lt;p&gt;Read more
 * &lt;a href="https://portswigger.net/burp/vulnerability-scanner"&gt;Find SQL injection vulnerabilities using Burp Suite's web vulnerability scanner&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="PortSwigger"></category></entry><entry><title>Dancing Machine</title><link href="https://sfinx.kozow.com/2024/5/19/dancing/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/dancing/</id><summary type="html">&lt;h1&gt;Dancing Machine&lt;/h1&gt;
+&lt;/blockquote&gt;</content><category term="PortSwigger"></category></entry><entry><title>Dancing Machine</title><link href="https://sfinx.kozow.com/2024/5/19/dancing.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/dancing.html</id><summary type="html">&lt;h1&gt;Dancing Machine&lt;/h1&gt;
 &lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
 &lt;p&gt;In this machine we learn to enumerate SMB file shares.&lt;/p&gt;
 &lt;h3&gt;To list shares&lt;/h3&gt;
@@ -547,12 +547,12 @@ For a parameterized query to be effective in preventing SQL injection, the strin
 
 &lt;h3&gt;To download all file to a backup file become handing when u have a large file system&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;/&amp;lt;shareDisk&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N&lt;span class="w"&gt; &lt;/span&gt;-Tc&lt;span class="w"&gt; &lt;/span&gt;backup.tar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Explosion Machine</title><link href="https://sfinx.kozow.com/2024/5/19/explosion/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/explosion/</id><content type="html">&lt;h1&gt;Explosion&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Explosion Machine</title><link href="https://sfinx.kozow.com/2024/5/19/explosion.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/explosion.html</id><content type="html">&lt;h1&gt;Explosion&lt;/h1&gt;
 &lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
 &lt;p&gt;This machine teach you how to interact with RDP protocol and enumerate it .&lt;/p&gt;
 &lt;p&gt;Let’s start by map to scan all open ports, since this machine is focused on RDP , we will reduce time by specifying the port on 3389 ;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Redeemer Machine</title><link href="https://sfinx.kozow.com/2024/5/19/redeemer/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/redeemer/</id><summary type="html">&lt;h1&gt;Redeemer&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Redeemer Machine</title><link href="https://sfinx.kozow.com/2024/5/19/redeemer.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/redeemer.html</id><summary type="html">&lt;h1&gt;Redeemer&lt;/h1&gt;
 &lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
 &lt;p&gt;This machine show you how to interact with a Redis server .&lt;/p&gt;
 &lt;p&gt;Doing Nmap scan show open port and specifically redid port open on :&lt;/p&gt;
@@ -618,7 +618,7 @@ For a parameterized query to be effective in preventing SQL injection, the strin
 
 &lt;p&gt;Print specified key value;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;get&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;keyname&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Squid Machine</title><link href="https://sfinx.kozow.com/2024/5/19/squid/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/squid/</id><summary type="html">&lt;h1&gt;SQUID - MACHINE / PG&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Squid Machine</title><link href="https://sfinx.kozow.com/2024/5/19/squid.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/squid.html</id><summary type="html">&lt;h1&gt;SQUID - MACHINE / PG&lt;/h1&gt;
 &lt;h1&gt;PG/easy_windows&lt;/h1&gt;
 &lt;p&gt;This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128&lt;/p&gt;
 &lt;h4&gt;Mysql 3306:&lt;/h4&gt;

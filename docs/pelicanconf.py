@@ -22,7 +22,7 @@ PATH = 'content'
 ARTICLE_PATHS = ['portswigger','htb']
 DATE_FORMAT = { 'en': '%d %m %Y'}
 DEFAULT_DATE_FORMAT = '%d %m %Y'
-ARTICLE_URL = '{date:%Y}/{date:%-m}/{date:%-d}/{slug}/'
+ARTICLE_URL = '{date:%Y}/{date:%-m}/{date:%-d}/{slug}.html'
 ARTICLE_SAVE_AS = ARTICLE_URL + 'index.html'
 CATEGORIES_URL     = 'categories'
 CATEGORIES_SAVE_AS = 'categories/index.html'
@@ -30,7 +30,6 @@ CATEGORIES_SAVE_AS = 'categories/index.html'
 # use those if you want pelican standard pages to appear in your menu
 MENU_INTERNAL_PAGES = (
     ('PortSwigger', ARTICLE_URL, ARTICLE_SAVE_AS),
-    ('HTB', ARTICLE_URL, ARTICLE_SAVE_AS),
     ('Categories', CATEGORIES_URL, CATEGORIES_SAVE_AS),
 )
 
