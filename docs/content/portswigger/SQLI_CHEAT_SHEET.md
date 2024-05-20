@@ -5,7 +5,6 @@ Slug: sqli-cheat-sheet
 
 
 # SQL injection cheat sheet
-#OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION
 
 ![Photo]({attach}SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp)
 

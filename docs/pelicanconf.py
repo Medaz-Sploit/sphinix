@@ -19,13 +19,11 @@ DARK_LIGHT_SWITCHING_OFF = True
 
 # provided as examples, they make ‘clean’ urls. used by MENU_INTERNAL_PAGES.
 PATH = 'content'
+ARTICLE_PATHS = ['portswigger','htb']
 DATE_FORMAT = { 'en': '%d %m %Y'}
 DEFAULT_DATE_FORMAT = '%d %m %Y'
-PDF_GENERATOR = False
-REVERSE_CATEGORY_ORDER = True
 ARTICLE_URL = '{date:%Y}/{date:%-m}/{date:%-d}/{slug}/'
 ARTICLE_SAVE_AS = ARTICLE_URL + 'index.html'
-ARTICLE_PATHS = ['portswigger','htb']
 CATEGORIES_URL     = 'categories'
 CATEGORIES_SAVE_AS = 'categories/index.html'
 

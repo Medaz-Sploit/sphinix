@@ -5,7 +5,6 @@ Slug: sql-injection
 
 
 # 💉SQL Injection
-#OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION
 
 
 

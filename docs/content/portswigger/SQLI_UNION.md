@@ -6,7 +6,6 @@ Slug: sqli-union
 
 
 # SQL injection UNION attacks
-#OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION
 
 ![Photo]({attach}SQLI_UNION/union_based_sql_injection.png)
 
