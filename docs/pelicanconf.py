@@ -30,6 +30,7 @@ CATEGORIES_SAVE_AS = 'categories/index.html'
 # use those if you want pelican standard pages to appear in your menu
 MENU_INTERNAL_PAGES = (
     ('PortSwigger', ARTICLE_URL, ARTICLE_SAVE_AS),
+    ('HTB', ARTICLE_URL, ARTICLE_SAVE_AS),
     ('Categories', CATEGORIES_URL, CATEGORIES_SAVE_AS),
 )
 
