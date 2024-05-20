@@ -1,7 +1,7 @@
-Title : Redeemer Machine
-Date  : 2024-05-19 19:10 
-Category : HTB
-Slug : redeemer
+Title: Redeemer Machine
+Date: 2024-05-19 19:10 
+Category: HTB
+Slug: redeemer
 
 
 # Redeemer

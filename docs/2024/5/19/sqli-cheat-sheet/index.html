@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sphinx | SQL Injection Cheat Sheet</title>
+    <link rel="shortcut icon" type="image/png" href="https://sfinx.kozow.com/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://sfinx.kozow.com/favicon.ico">
+    <link href="https://sfinx.kozow.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Full Atom Feed" />
+    <link href="https://sfinx.kozow.com/feeds/web.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Categories Atom Feed" />
+    <link rel="stylesheet" href="https://sfinx.kozow.com/theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="https://sfinx.kozow.com/theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="Ghost Shell, lurking throughs the realm of electronic device, find a way to break in while you being the watcher of my work. follow me alonng the journey, To the Abyss." />
+    <meta name="author" content="MedSecure" />
+
+</head>
+<body>
+    <header>
+        <nav style="overflow: hidden;">
+            <ul>
+                <li><a href="https://sfinx.kozow.com/">Home</a></li>
+                <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
+                <li><a href="https://sfinx.kozow.com/{date:%Y}/{date:%-m}/{date:%-d}/{slug}/">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
+            </ul>
+        </nav>
+        <div class="header_box" style="height: 50px">
+        <h1><a href="https://sfinx.kozow.com/">
+            <image src='' class="avatar" width="50px" /><span class="site_title">Sphinx</span>
+            </a></h1></div>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/" rel="bookmark" title="Permanent Link to &quot;SQL Injection Cheat Sheet&quot;">SQL Injection Cheat Sheet</a>
+                </h2>
+
+                
+                
+
+                <h1>SQL injection cheat sheet</h1>
+<h1>OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION</h1>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"></p>
+<p>This <strong>SQL injection</strong> cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.</p>
+<h2>String concatenation</h2>
+<p>You can concatenate together multiple strings to make a single string.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">=='foo'||'bar'==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">=='foo'+'bar'==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">=='foo'||'bar'==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">=='foo' 'bar'== [Note the space between the two strings]<br>==CONCAT('foo','bar')==</td>
+</tr>
+<tr>
+<td style="text-align: center;">## Substring</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>You can extract part of a string, from a specified offset with a specified length. Note that the offset index is 1-based. Each of the following expressions will return the string ==ba==.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SUBSTR('foobar', 4, 2)==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SUBSTRING('foobar', 4, 2)==</td>
+</tr>
+</tbody>
+</table>
+<h2>Comments</h2>
+<p>You can use comments to truncate a query and remove the portion of the original query that follows your input.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==--comment==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==/*comment*/==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==#comment==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==-- comment==  [Note the space after the double dash]</td>
+</tr>
+</tbody>
+</table>
+<h2>Database version</h2>
+<p>You can query the database to determine its type and version. This information is useful when formulating more complicated attacks.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SELECT banner FROM v$version==<br>==SELECT version FROM v$instance==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SELECT version()==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+</tbody>
+</table>
+<h2>Database contents</h2>
+<p>You can list the tables that exist in the database, and the columns that those tables contain.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Oracle</th>
+<th style="text-align: center;">==SELECT banner FROM v$version==<br>==SELECT version FROM v$instance==</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Microsoft</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PostgreSQL</strong></td>
+<td style="text-align: center;">==SELECT version()==</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>MySQL</strong></td>
+<td style="text-align: center;">==SELECT @@version==</td>
+</tr>
+</tbody>
+</table>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-cheat-sheet/">posted at 21:03</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/web.html" rel="tag">web</a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/tcarwash/blue-penguin-dark">Blue Penguin Dark</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="https://sfinx.kozow.com/feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>

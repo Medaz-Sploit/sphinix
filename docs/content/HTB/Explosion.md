@@ -1,7 +1,7 @@
-Title : Explosion Machine
-Date  : 2024-05-19 19:10 
-Category : HTB
-Slug : explosion
+Title: Explosion Machine
+Date: 2024-05-19 19:10 
+Category: HTB
+Slug: explosion
 
 
 # Explosion

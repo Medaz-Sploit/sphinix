@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sphinx | SQL Injection UNION Attacks</title>
+    <link rel="shortcut icon" type="image/png" href="https://sfinx.kozow.com/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://sfinx.kozow.com/favicon.ico">
+    <link href="https://sfinx.kozow.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Full Atom Feed" />
+    <link href="https://sfinx.kozow.com/feeds/web.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Categories Atom Feed" />
+    <link rel="stylesheet" href="https://sfinx.kozow.com/theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="https://sfinx.kozow.com/theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="Ghost Shell, lurking throughs the realm of electronic device, find a way to break in while you being the watcher of my work. follow me alonng the journey, To the Abyss." />
+    <meta name="author" content="MedSecure" />
+
+</head>
+<body>
+    <header>
+        <nav style="overflow: hidden;">
+            <ul>
+                <li><a href="https://sfinx.kozow.com/">Home</a></li>
+                <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
+                <li><a href="https://sfinx.kozow.com/{date:%Y}/{date:%-m}/{date:%-d}/{slug}/">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
+            </ul>
+        </nav>
+        <div class="header_box" style="height: 50px">
+        <h1><a href="https://sfinx.kozow.com/">
+            <image src='' class="avatar" width="50px" /><span class="site_title">Sphinx</span>
+            </a></h1></div>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">May 19, 2024</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-union/" rel="bookmark" title="Permanent Link to &quot;SQL Injection UNION Attacks&quot;">SQL Injection UNION Attacks</a>
+                </h2>
+
+                
+                
+
+                <h1>SQL injection UNION attacks</h1>
+<h1>OSCP/WEB/PORTSWIGGER/LearningPath/ServerSide/SQLINJECTION</h1>
+<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/sqli-union/SQLI_UNION/union_based_sql_injection.png"></p>
+<p>When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.</p>
+<p>The ==UNION== keyword lets you execute one or more additional ==SELECT== queries and append the results to the original query. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span>
+</code></pre></div>
+
+<p>This SQL query will return a single result set with two columns, containing values from columns ==a== and ==b== in ==table1== and columns c and d in table2.
+For a ==UNION== query to work, two key requirements must be met:
+* The individual queries must return the same number of columns.
+* The data types in each column must be compatible between the individual queries.</p>
+<p>⠀To carry out a SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+* How many columns are being returned from the original query?
+* Which columns returned from the original query are of a suitable data type to hold the results from the injected query?</p>
+<h2>Determining the number of columns required in a SQL injection UNION attacks</h2>
+<p>When performing a SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
+The first method involves injecting a series of ==ORDER BY== clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the ==WHERE== clause of the original query, you would submit:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; ORDER BY 1--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">2</span><span class="c1">--</span>
+<span class="err">&#39;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">3</span><span class="c1">--</span>
+<span class="n">etc</span><span class="p">.</span>
+</code></pre></div>
+
+<p>This series of payloads modifies the original query to order the results by different columns in the result set. The column in an ==ORDER BY== clause can be specified by its index, so you don't need to know the names of any columns. When the specified column index exceeds the number of actual columns in the result set, the database returns an error, such as:</p>
+<div class="highlight"><pre><span></span><code>The ORDER BY position number 3 is out of range of the number of items in the select list.
+</code></pre></div>
+
+<p>The application might actually return the database error in its HTTP response, or it might return a generic error, or simply return no results. Provided you can detect some difference in the application's response, you can infer how many columns are being returned from the query.
+The second method involves submitting a series of ==UNION== ==SELECT== payloads specifying a different number of null values:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="n">etc</span><span class="p">.</span>
+</code></pre></div>
+
+<p>If the number of nulls does not match the number of columns, the database returns an error, such as:</p>
+<div class="highlight"><pre><span></span><code>All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.
+</code></pre></div>
+
+<p>Again, the application might actually return this error message, or might just return a generic error or no results. When the number of nulls matches the number of columns, the database returns an additional row in the result set, containing null values in each column. The effect on the resulting HTTP response depends on the application's code. If you are lucky, you will see some additional content within the response, such as an extra row on an HTML table. Otherwise, the null values might trigger a different error, such as a ==NullPointerException==. Worst case, the response might be indistinguishable from that which is caused by an incorrect number of nulls, making this method of determining the column count ineffective.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns">SQL injection UNION attack, determining the number of columns returned by the query</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>
+* The reason for using ==NULL== as the values returned from the injected ==SELECT== query is that the data types in each column must be compatible between the original and the injected queries. Since ==NULL== is convertible to every commonly used data type, using ==NULL== maximizes the chance that the payload will succeed when the column count is correct.
+* On Oracle, every ==SELECT== query must use the ==FROM== keyword and specify a valid table. There is a built-in table on Oracle called ==dual== which can be used for this purpose. So the injected queries on Oracle would need to look like: </p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">DUAL</span><span class="c1">--</span>
+</code></pre></div>
+
+<blockquote>
+<ul>
+<li>The payloads described use the double-dash comment sequence ==--== to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character ==#== can be used to identify a comment.
+  For more details of database-specific syntax, see the [[SQL injection cheat sheet]].</li>
+</ul>
+</blockquote>
+<h2>Finding columns with a useful data type in a SQL injection UNION attack</h2>
+<p>The reason for performing a SQL injection UNION attack is to be able to retrieve the results from an injected query. Generally, the interesting data that you want to retrieve will be in string form, so you need to find one or more columns in the original query results whose data type is, or is compatible with, string data.
+Having already determined the number of required columns, you can probe each column to test whether it can hold string data by submitting a series of ==UNION SELECT== payloads that place a string value into each column in turn. For example, if the query returns four columns, you would submit:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT &#39;</span><span class="n">a</span><span class="s1">&#39;,NULL,NULL,NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="c1">--</span>
+<span class="s1">&#39; UNION SELECT NULL,NULL,&#39;</span><span class="n">a</span><span class="s1">&#39;,NULL--</span>
+<span class="s1">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="c1">--</span>
+</code></pre></div>
+
+<p>If the data type of a column is not compatible with string data, the injected query will cause a database error, such as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Conversion</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">converting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">varchar</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="o">.</span>
+</code></pre></div>
+
+<p>If an error does not occur, and the application's response contains some additional content including the injected string value, then the relevant column is suitable for retrieving string data.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text">SQL injection UNION attack, finding a column containing text</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Using a SQL injection UNION attack to retrieve interesting data</h2>
+<p>When you have determined the number of columns returned by the original query and found which columns can hold string data, you are in a position to retrieve interesting data.
+Suppose that:
+* The original query returns two columns, both of which can hold string data.
+* The injection point is a quoted string within the ==WHERE== clause.
+* The database contains a table called ==users== with the columns ==username== and ==password==.</p>
+<p>⠀In this situation, you can retrieve the contents of the ==users== table by submitting the input:</p>
+<div class="highlight"><pre><span></span><code><span class="err">&#39;</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="c1">--</span>
+</code></pre></div>
+
+<p>Of course, the crucial information needed to perform this attack is that there is a table called ==users== with two columns called ==username== and ==password==. Without this information, you would be left trying to guess the names of tables and columns. In fact, all modern databases provide ways of examining the database structure, to determine what tables and columns it contains.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables">SQL injection UNION attack, retrieving data from other tables</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Read more</strong>
+* [[Examining the database in SQL injection attacks]]</p>
+</blockquote>
+<h2>Retrieving multiple values within a single column</h2>
+<p>In the preceding example, suppose instead that the query only returns a single column.
+You can easily retrieve multiple values together within this single column by concatenating the values together, ideally including a suitable separator to let you distinguish the combined values. For example, on Oracle you could submit the input:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39; UNION SELECT username || &#39;</span><span class="o">~</span><span class="err">&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="c1">--</span>
+</code></pre></div>
+
+<p>This uses the double-pipe sequence ==||== which is a string concatenation operator on Oracle. The injected query concatenates together the values of the ==username== and ==password== fields, separated by the ==~== character.
+The results from the query will let you read all of the usernames and passwords, for example:</p>
+<div class="highlight"><pre><span></span><code>...
+administrator~s3cure
+wiener~peter
+carlos~montoya
+...
+</code></pre></div>
+
+<p>Note that different databases use different syntax to perform string concatenation. For more details, see the <a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">SQL injection cheat sheet</a>.</p>
+<table>
+<thead>
+<tr>
+<th>🧪 LAB PRACTITIONER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column">SQL injection UNION attack, retrieving multiple values in a single column</a></td>
+</tr>
+</tbody>
+</table>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="https://sfinx.kozow.com/2024/5/19/sqli-union/">posted at 21:05</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/web.html" rel="tag">web</a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/tcarwash/blue-penguin-dark">Blue Penguin Dark</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="https://sfinx.kozow.com/feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>

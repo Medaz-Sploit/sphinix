@@ -1,7 +1,7 @@
-Title : Rancing Machine
-Date  : 2024-05-19 19:10 
-Category : HTB
-Slug : dancing
+Title: Dancing Machine
+Date: 2024-05-19 19:10 
+Category: HTB
+Slug: dancing
 
 # Dancing Machine
 #HTB/STARTING_POINT

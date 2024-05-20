@@ -1,7 +1,7 @@
-Title : Squid Machine
-Date  : 2024-05-19 19:10 
-Category : HTB
-Slug : squid
+Title: Squid Machine
+Date: 2024-05-19 19:10 
+Category: HTB
+Slug: squid
 
 
 # SQUID - MACHINE / PG
