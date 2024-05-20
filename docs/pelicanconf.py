@@ -23,7 +23,7 @@ ARTICLE_PATHS = ['portswigger','htb']
 DATE_FORMAT = { 'en': '%d %m %Y'}
 DEFAULT_DATE_FORMAT = '%d %m %Y'
 ARTICLE_URL = '{date:%Y}/{date:%-m}/{date:%-d}/{slug}.html'
-ARTICLE_SAVE_AS = ARTICLE_URL + 'index.html'
+ARTICLE_SAVE_AS = ARTICLE_URL
 CATEGORIES_URL     = 'categories'
 CATEGORIES_SAVE_AS = 'categories/index.html'
 
