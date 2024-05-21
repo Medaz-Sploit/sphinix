@@ -22,7 +22,8 @@
                 <li class="ephemeral selected"><a href="https://sfinx.kozow.com/category/portswigger.html">PortSwigger</a></li>
                 <li><a href="https://sfinx.kozow.com/">Home</a></li>
                 <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
-                <li><a href="https://sfinx.kozow.com/{date:%Y}/{date:%-m}/{date:%-d}/{slug}.html">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/category/web.html">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/category/htb.html">HTB</a></li>
                 <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
             </ul>
         </nav>
@@ -37,14 +38,14 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="https://sfinx.kozow.com/2024/5/19/sql-injection.html" rel="bookmark" title="Permanent Link to &quot;SQL Injection&quot;">SQL Injection</a>
+                    <a href="https://sfinx.kozow.com/sql-injection.html" rel="bookmark" title="Permanent Link to &quot;SQL Injection&quot;">SQL Injection</a>
                 </h2>
 
                 
                 
 
                 <h1>💉SQL Injection</h1>
-<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI/SQL-Injection.jpg"></p>
+<p><img alt="Photo" src="https://sfinx.kozow.com/article/SQLI/SQL-Injection.jpg"></p>
 <p>In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.</p>
 <p>For a brief resume on all payloads to use for SQL injection testing, try the following cheat sheet:</p>
 <blockquote>
@@ -204,7 +205,7 @@ Depending on the nature of the vulnerability and the database involved, the foll
 <h3>Second-order SQL injection</h3>
 <p>First-order SQL injection arises where the application takes user input from an HTTP request and, in the course of processing that request, incorporates the input into a SQL query in an unsafe way.
 In second-order SQL injection (also known as stored SQL injection), the application takes user input from an HTTP request and stores it for future use. This is usually done by placing the input into a database, but no vulnerability arises at the point where the data is stored. Later, when handling a different HTTP request, the application retrieves the stored data and incorporates it into a SQL query in an unsafe way.</p>
-<p><img alt="Photo" src="https://sfinx.kozow.com/2024/5/19/SQLI/image 2.jpg"></p>
+<p><img alt="Photo" src="https://sfinx.kozow.com/article/SQLI/image 2.jpg"></p>
 <p>Second-order SQL injection often arises in situations where developers are aware of SQL injection vulnerabilities, and so safely handle the initial placement of the input into the database. When the data is later processed, it is deemed to be safe, since it was previously placed into the database safely. At this point, the data is handled in an unsafe way, because the developer wrongly deems it to be trusted.</p>
 <hr>
 <h3>Examining the database</h3>
@@ -286,7 +287,7 @@ For a parameterized query to be effective in preventing SQL injection, the strin
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="https://sfinx.kozow.com/2024/5/19/sql-injection.html">posted at 20:48</a>
+                    <a href="https://sfinx.kozow.com/sql-injection.html">posted at 20:48</a>
                     &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/portswigger.html" rel="tag">PortSwigger</a>
                 </div>
             </article>

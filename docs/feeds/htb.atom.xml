@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx - HTB</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/htb.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-19T19:10:00+01:00</updated><entry><title>Dancing Machine</title><link href="https://sfinx.kozow.com/2024/5/19/dancing.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/dancing.html</id><summary type="html">&lt;h1&gt;Dancing Machine&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx - HTB</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/htb.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-19T19:10:00+01:00</updated><entry><title>Dancing Machine</title><link href="https://sfinx.kozow.com/dancing.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/dancing.html</id><summary type="html">&lt;h1&gt;Dancing Machine&lt;/h1&gt;
 &lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
 &lt;p&gt;In this machine we learn to enumerate SMB file shares.&lt;/p&gt;
 &lt;h3&gt;To list shares&lt;/h3&gt;
@@ -16,12 +16,12 @@
 
 &lt;h3&gt;To download all file to a backup file become handing when u have a large file system&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kali@kali:~$&lt;span class="w"&gt; &lt;/span&gt;smbclient&lt;span class="w"&gt; &lt;/span&gt;//&amp;lt;serverIP/name&amp;gt;/&amp;lt;shareDisk&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-N&lt;span class="w"&gt; &lt;/span&gt;-Tc&lt;span class="w"&gt; &lt;/span&gt;backup.tar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Explosion Machine</title><link href="https://sfinx.kozow.com/2024/5/19/explosion.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/explosion.html</id><content type="html">&lt;h1&gt;Explosion&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Explosion Machine</title><link href="https://sfinx.kozow.com/explosion.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/explosion.html</id><content type="html">&lt;h1&gt;Explosion&lt;/h1&gt;
 &lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
 &lt;p&gt;This machine teach you how to interact with RDP protocol and enumerate it .&lt;/p&gt;
 &lt;p&gt;Let’s start by map to scan all open ports, since this machine is focused on RDP , we will reduce time by specifying the port on 3389 ;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Redeemer Machine</title><link href="https://sfinx.kozow.com/2024/5/19/redeemer.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/redeemer.html</id><summary type="html">&lt;h1&gt;Redeemer&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Redeemer Machine</title><link href="https://sfinx.kozow.com/redeemer.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/redeemer.html</id><summary type="html">&lt;h1&gt;Redeemer&lt;/h1&gt;
 &lt;h1&gt;HTB/STARTING_POINT&lt;/h1&gt;
 &lt;p&gt;This machine show you how to interact with a Redis server .&lt;/p&gt;
 &lt;p&gt;Doing Nmap scan show open port and specifically redid port open on :&lt;/p&gt;
@@ -87,7 +87,7 @@
 
 &lt;p&gt;Print specified key value;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;redis-cli&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;get&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;keyname&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Squid Machine</title><link href="https://sfinx.kozow.com/2024/5/19/squid.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/2024/5/19/squid.html</id><summary type="html">&lt;h1&gt;SQUID - MACHINE / PG&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="HTB"></category></entry><entry><title>Squid Machine</title><link href="https://sfinx.kozow.com/squid.html" rel="alternate"></link><published>2024-05-19T19:10:00+01:00</published><updated>2024-05-19T19:10:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/squid.html</id><summary type="html">&lt;h1&gt;SQUID - MACHINE / PG&lt;/h1&gt;
 &lt;h1&gt;PG/easy_windows&lt;/h1&gt;
 &lt;p&gt;This machine a proxy named squid that proxy all network traffic from outside . It operate on port 3128&lt;/p&gt;
 &lt;h4&gt;Mysql 3306:&lt;/h4&gt;

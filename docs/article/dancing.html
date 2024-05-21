@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Sphinx | Explosion Machine</title>
+    <title>Sphinx | Dancing Machine</title>
     <link rel="shortcut icon" type="image/png" href="https://sfinx.kozow.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="https://sfinx.kozow.com/favicon.ico">
     <link href="https://sfinx.kozow.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Full Atom Feed" />
@@ -21,7 +21,8 @@
             <ul>
                 <li><a href="https://sfinx.kozow.com/">Home</a></li>
                 <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
-                <li><a href="https://sfinx.kozow.com/{date:%Y}/{date:%-m}/{date:%-d}/{slug}.html">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/category/web.html">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/category/htb.html">HTB</a></li>
                 <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
             </ul>
         </nav>
@@ -36,22 +37,26 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="https://sfinx.kozow.com/2024/5/19/explosion.html" rel="bookmark" title="Permanent Link to &quot;Explosion Machine&quot;">Explosion Machine</a>
+                    <a href="https://sfinx.kozow.com/dancing.html" rel="bookmark" title="Permanent Link to &quot;Dancing Machine&quot;">Dancing Machine</a>
                 </h2>
 
                 
                 
 
-                <h1>Explosion</h1>
+                <h1>Dancing Machine</h1>
 <h1>HTB/STARTING_POINT</h1>
-<p>This machine teach you how to interact with RDP protocol and enumerate it .</p>
-<p>Let’s start by map to scan all open ports, since this machine is focused on RDP , we will reduce time by specifying the port on 3389 ;</p>
-<div class="highlight"><pre><span></span><code>
+<p>In this machine we learn to enumerate SMB file shares.</p>
+<h3>To list shares</h3>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>smbclient<span class="w"> </span>-L<span class="w"> </span>//&lt;serverIP/name&gt;<span class="w"> </span>-N
+</code></pre></div>
+
+<h3>To download all file to a backup file become handing when u have a large file system</h3>
+<div class="highlight"><pre><span></span><code>kali@kali:~$<span class="w"> </span>smbclient<span class="w"> </span>//&lt;serverIP/name&gt;/&lt;shareDisk&gt;<span class="w"> </span>-N<span class="w"> </span>-Tc<span class="w"> </span>backup.tar
 </code></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="https://sfinx.kozow.com/2024/5/19/explosion.html">posted at 19:10</a>
+                    <a href="https://sfinx.kozow.com/dancing.html">posted at 19:10</a>
                     &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/htb.html" rel="tag">HTB</a>
                 </div>
             </article>

