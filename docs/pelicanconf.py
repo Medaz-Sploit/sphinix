@@ -34,6 +34,7 @@ MENUITEMS = (
     ('GitHub', 'https://github.com/Medaz-Sploit'),
     ('PortSwigger', 'https://sfinx.kozow.com/category/portswigger.html'),
     ('HTB', 'https://sfinx.kozow.com/category/htb.html'),
+    ('OSCP', 'https://sfinx.kozow.com/category/oscp.html'),
 )
 
 # example pagination pattern
