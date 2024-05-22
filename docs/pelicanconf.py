@@ -19,7 +19,7 @@ DARK_LIGHT_SWITCHING_OFF = True
 # provided as examples, they make ‘clean’ urls. used by MENU_INTERNAL_PAGES.
 PATH = 'content'
 INDEX_SAVE_AS = 'homepage.html'
-ARTICLE_URL = '{slug}.html'
+ARTICLE_URL = 'article/{slug}.html'
 ARTICLE_SAVE_AS = 'article/{slug}.html'
 CATEGORIES_URL     = 'categories'
 CATEGORIES_SAVE_AS = 'categories/index.html'
