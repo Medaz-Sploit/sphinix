@@ -1,11 +1,10 @@
 Title: SQL Injection UNION Attacks
 Date: 2024-05-19 21:05
-Category: web
+Category: PortSwigger
 Slug: sqli-union
 
 
 
-# SQL injection UNION attacks
 
 ![Photo]({attach}SQLI_UNION/union_based_sql_injection.png)
 

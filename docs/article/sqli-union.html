@@ -7,7 +7,7 @@
     <link rel="shortcut icon" type="image/png" href="https://sfinx.kozow.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="https://sfinx.kozow.com/favicon.ico">
     <link href="https://sfinx.kozow.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Full Atom Feed" />
-    <link href="https://sfinx.kozow.com/feeds/web.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Categories Atom Feed" />
+    <link href="https://sfinx.kozow.com/feeds/portswigger.atom.xml" type="application/atom+xml" rel="alternate" title="Sphinx Categories Atom Feed" />
     <link rel="stylesheet" href="https://sfinx.kozow.com/theme/css/main.css" type="text/css" />
     <link rel="stylesheet" href="https://sfinx.kozow.com/theme/css/pygments.css" type="text/css" />
     <meta name="generator" content="Pelican" />
@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="https://sfinx.kozow.com/">Home</a></li>
                 <li><a href="https://github.com/Medaz-Sploit">GitHub</a></li>
-                <li><a href="https://sfinx.kozow.com/category/web.html">PortSwigger</a></li>
+                <li><a href="https://sfinx.kozow.com/category/portswigger.html">PortSwigger</a></li>
                 <li><a href="https://sfinx.kozow.com/category/htb.html">HTB</a></li>
                 <li><a href="https://sfinx.kozow.com/categories">Categories</a></li>
             </ul>
@@ -43,8 +43,7 @@
                 
                 
 
-                <h1>SQL injection UNION attacks</h1>
-<p><img alt="Photo" src="https://sfinx.kozow.com/article/SQLI_UNION/union_based_sql_injection.png"></p>
+                <p><img alt="Photo" src="https://sfinx.kozow.com/article/SQLI_UNION/union_based_sql_injection.png"></p>
 <p>When an application is vulnerable to SQL injection and the results of the query are returned within the application's responses, the ==UNION== keyword can be used to retrieve data from other tables within the database. This results in a SQL injection UNION attack.</p>
 <p>The ==UNION== keyword lets you execute one or more additional ==SELECT== queries and append the results to the original query. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span>
@@ -194,7 +193,7 @@ carlos~montoya
 
                 <div class="info">
                     <a href="https://sfinx.kozow.com/article/sqli-union.html">posted at 21:05</a>
-                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/web.html" rel="tag">web</a>
+                    &nbsp;&middot;&nbsp;<a href="https://sfinx.kozow.com/category/portswigger.html" rel="tag">PortSwigger</a>
                 </div>
             </article>
             <div class="clear"></div>

@@ -4,10 +4,6 @@ Category: PortSwigger
 Slug: sql-injection
 
 
-# 💉SQL Injection
-
-
-
 
 ![Photo]({attach}SQLI/SQL-Injection.jpg)
 

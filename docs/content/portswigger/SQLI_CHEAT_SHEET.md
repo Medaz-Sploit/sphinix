@@ -1,10 +1,9 @@
 Title: SQL Injection Cheat Sheet
 Date: 2024-05-19 21:03
-Category: web
+Category: PortSwigger
 Slug: sqli-cheat-sheet
 
 
-# SQL injection cheat sheet
 
 ![Photo]({attach}SQLI_CHEAT_SHEET/black-green-cheat-sheet-stamp-black-green-cheat-sheet-stamp-illustration-graphic-concept-108947651.jpg.webp)
 
