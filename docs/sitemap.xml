@@ -1,92 +1,147 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+xmlns:xhtml="http://www.w3.org/1999/xhtml"
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-  <loc>https://sfinx.kozow.com/</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/category/portswigger.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/category/htb.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/category/oscp.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/categories/</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/about-me.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/category/me.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/sqli-union.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/sqli-cheat-sheet.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/sql-injection.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/dancing.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/explosion.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/redeemer.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/squid.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/passive-enumeration.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://sfinx.kozow.com/article/active-enumeration.html</loc>
-  <lastmod>2024-05-22T23:19:24+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://sfinx.kozow.com/archives.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
 </url>
 
+<url>
+<loc>https://sfinx.kozow.com/article/about-me.html</loc>
+<lastmod>2024-05-21T05:09:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/active-enumeration.html</loc>
+<lastmod>2024-05-08T21:00:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/dancing.html</loc>
+<lastmod>2024-05-19T19:10:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/explosion.html</loc>
+<lastmod>2024-05-19T19:10:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/passive-enumeration.html</loc>
+<lastmod>2024-05-09T02:09:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/redeemer.html</loc>
+<lastmod>2024-05-19T19:10:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/sql-injection.html</loc>
+<lastmod>2024-05-19T20:48:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/sqli-cheat-sheet.html</loc>
+<lastmod>2024-05-19T21:03:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/sqli-union.html</loc>
+<lastmod>2024-05-19T21:05:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/article/squid.html</loc>
+<lastmod>2024-05-19T19:10:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/author/medsecure.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/authors.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/categories/</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/category/htb.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/category/me.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/category/oscp.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/category/portswigger.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/homepage.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://sfinx.kozow.com/tags.html</loc>
+<lastmod>2024-05-23T03:50:17-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
 
 </urlset>

@@ -9,6 +9,20 @@ SITELOGO = ''
 # HTML metadata
 SITEDESCRIPTION = 'Ghost Shell, lurking throughs the realm of electronic device, find a way to break in while you being the watcher of my work. follow me alonng the journey, To the Abyss.'
 
+SITEMAP = {
+    "format": "xml",
+    "priorities": {
+        "articles": 0.5,
+        "indexes": 0.5,
+        "pages": 0.5
+    },
+    "changefreqs": {
+        "articles": "monthly",
+        "indexes": "daily",
+        "pages": "monthly"
+    }
+}
+
 # all defaults to True.
 DISPLAY_HEADER = True
 DISPLAY_FOOTER = True
